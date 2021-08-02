@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Boost.Ublas: The Boost Ublas Library</title>
+<title>Range and Slice Storage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,47 +436,312 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Boost.Ublas: The Boost Ublas Library</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#copyright_and_license">Appendix A: Copyright and License</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="copyright_and_license">Appendix A: Copyright and License</h2>
+<h2 id="_range_and_slice_storage">Range and Slice Storage</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="toc"><span id="range">Range&lt;SizeType,DistanceType&gt;</span></h3>
+<div class="sect3">
+<h4 id="_description">Description</h4>
 <div class="paragraph">
-<p>This documentation is</p>
+<p>The class <code>range</code> specifies a range of indicies. The range is a sequence
+of indices from a start value to stop value. The indices increase by one
+and exlude the stop value. <code>range</code> can therefore be used to specify
+ranges of elements from vectors and matrices.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_example">Example</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage.hpp&gt;
+
+int main () {
+    using namespace boost::numeric::ublas;
+    range r (0, 3);
+    for (unsigned i = 0; i &lt; r.size (); ++ i) {
+        std::cout &lt;&lt; r (i) &lt;&lt; std::endl;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_definition">Definition</h4>
+<div class="paragraph">
+<p>Defined in the header storage.hpp.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_model_of">Model of</h4>
+<div class="paragraph">
+<p>Reversible Container.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_type_requirements">Type requirements</h4>
+<div class="paragraph">
+<p>None, except for those imposed by the requirements of Reversible
+Container.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_public_base_classes">Public base classes</h4>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_members">Members</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>range (size_type start, size_type stop)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs a range of
+indicies from <code>start</code> to <code>stop (excluded)</code> .</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type start () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the beginning of the <code>range</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type size () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the size of the <code>range</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference operator [] (size_type i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the value
+<code>start + i</code> of the <code>i</code> -th element.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>range compose (const range &amp;r) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the composite range
+from <code>start + r.start ()</code> to <code>start + r.start () + r.size ()</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator == (const range &amp;r) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests two ranges for
+equality.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator != (const range &amp;r) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests two ranges for
+inequality.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator begin () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to
+the beginning of the <code>range</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator end () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to
+the end of the <code>range</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator rbegin () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
+<code>const_reverse_iterator</code> pointing to the beginning of the reversed
+<code>range</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator rend () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
+<code>const_reverse_iterator</code> pointing to the end of the reversed <code>range</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_preconditions">Preconditions</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Copyright 2021 Shikhar Vashistha</p>
+<p><code>start () &lt; = stop ()</code></p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_slicesizetypedistancetype"><span id="slice">Slice&lt;SizeType,DistanceType&gt;</span></h3>
+<div class="sect3">
+<h4 id="_description_2">Description</h4>
 <div class="paragraph">
-<p>and is distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
+<p>The class <code>slice</code> specifies a 'slice' of indicies. Slices are more
+general then ranges, the stride allows the sequence of indicies to
+increase and decrease by the specified amount between element. <code>slice</code>
+can therefore be used to specify slices of element from vectors and
+matrices.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_2">Example</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage.hpp&gt;
+
+int main () {
+    using namespace boost::numeric::ublas;
+    slice s (0, 1, 3);
+    for (unsigned i = 0; i &lt; s.size (); ++ i) {
+        std::cout &lt;&lt; s (i) &lt;&lt; std::endl;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_definition_2">Definition</h4>
+<div class="paragraph">
+<p>Defined in the header storage.hpp.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_model_of_2">Model of</h4>
+<div class="paragraph">
+<p>Reversible Container.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_type_requirements_2">Type requirements</h4>
+<div class="paragraph">
+<p>None, except for those imposed by the requirements of Reversible
+Container.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_public_base_classes_2">Public base classes</h4>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_members_2">Members</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slice (size_type start, size_type stride, size_type size)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs
+a slice <code>start,start+stride,start+2*stride&#8230;&#8203;</code> with <code>size</code> elements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type start () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the beginning of the <code>slice</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type stride () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the stride of the <code>slice</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type size () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the size of the <code>slice</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference operator [] (size_type i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the value
+<code>start + i * stride</code> of the <code>i</code>-th element.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slice compose (const range &amp;r) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the composite slice
+from <code>start + stride * r.start ()</code> to
+<code>start + stride * (r.start () + r.size ())</code> with stride <code>stride</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slice compose (const slice &amp;s) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the composite slice
+from <code>start + stride * s.start ()</code> to
+<code>start + stride * s.stride () * (s.start () + s.size ())</code> with stride
+<code>stride * s.stride ()</code> .</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator == (const slice &amp;s) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests two slices for
+equality.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator != (const slice &amp;s) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests two slices for
+inequality.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator begin () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to
+the beginning of the <code>slice</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator end () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to
+the end of the <code>slice</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator rbegin () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
+<code>const_reverse_iterator</code> pointing to the beginning of the reversed
+<code>slice</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator rend () const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
+<code>const_reverse_iterator</code> pointing to the end of the reversed <code>slice</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_preconditions_2">Preconditions</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>None all strides are vaild. However when an index is returned or an
+iterator is dereferenced its value must be representable as the
+size_type.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2000-2004 Michael Stevens, Mathias Koch, Joerg Walter,
+Gunter Winkler<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-02 06:25:13 UTC
+Last updated 2021-08-02 06:22:40 UTC
 </div>
 </div>
-<style>
-
-    *:not(pre)>code { background: none; color: #600000; }
-    :not(pre):not([class^=L])>code { background: none; color: #600000; }
-    table tr.even, table tr.alt, table tr:nth-of-type(even) { background: none; }
-
-    </style>
 </body>
 </html>

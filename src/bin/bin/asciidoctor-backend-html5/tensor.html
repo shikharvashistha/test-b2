@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Boost.Ublas: The Boost Ublas Library</title>
+<title>Tensor</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,47 +436,650 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Boost.Ublas: The Boost Ublas Library</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#copyright_and_license">Appendix A: Copyright and License</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="copyright_and_license">Appendix A: Copyright and License</h2>
+<h2 id="_tensor">Tensor</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This documentation is</p>
-</div>
-<div class="ulist">
-<ul>
+<div id="toc" class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Copyright 2021 Shikhar Vashistha</p>
+<p>##Tensor<br></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#tensor_1">Description</a><br></p>
 </li>
-</ul>
+<li>
+<p><a href="#tensor_2">Example</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_3">Definition</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_4">Model of</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_5">Type requirements</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_6">Public base classes</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_7">Template parameters</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_8">Member types</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_9">Alias templates</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_10">Member Functions</a><br></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="#tensor_11">Construction</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_12">Assignment</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_13">Capacity</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_14">Element access</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_15">Proxy Generation</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_16">Iterators</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_17">Modifiers</a><br></p>
+</li>
+<li>
+<p><a href="#tensor_18">Notes</a><br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_a_description">a. <span id="tensor_1">Description</span></h4>
+<div class="paragraph">
+<p>The templated class <code>tensor&lt;value_t,format_t,storage_t&gt;</code> is the base
+container adaptor for dense tensors. Every element
+\(t_\{i_1,i_2,\dots,i_p}\) of a \(p\)-order \((n_1 \times n_2 \times \cdots
+\times n_p)\)-dimensional tensor \(T\) is mapped to \(j\)-th element of a
+one-dimensional container where \(j = \sum_\{r=1}^p i_r \cdot w_r\) with
+\(1 \leq i_r \leq n_r \) for \(1 \leq r \leq p\). For the first-order
+orientation \(w_1 = 1\) and \(w_k = n_\{k-1} \cdot w_\{k-1}\) for \(k &gt; 1\).
+For last-order orientation \(w_p = 1\) and \( w_k = n_\{k+1} \cdot
+w_\{k+1}\) for \(k &lt; p\).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_b_example">b. <span id="tensor_2">Example</span></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/tensor.hpp&gt;
+
+int main () {
+  using namespace boost::numeric::ublas;
+  tensor&lt;double&gt; t{4,2,3};
+  for (auto k = 0ul; k &lt; t.size (2); ++ k)
+    for (auto j = 0ul; j &lt; t.size (1); ++ j)
+      for (auto i = 0ul; i &lt; t.size (0); ++ i)
+        t.at(i,j,k) = 3*i + 2*j + 5*k;
+
+  std::cout &lt;&lt; t &lt;&lt; std::endl;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c_definition">c. <span id="tensor_3">Definition</span></h4>
+<div class="paragraph">
+<p>Defined in the header file <code>tensor/tensor.hpp</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_d_model_of">d. <span id="tensor_4">Model of</span></h4>
+<div class="paragraph">
+<p><a href="container_concept.adoc#tensor">Tensor</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_type_requirements">e. <span id="tensor_5">Type requirements</span></h4>
+<div class="paragraph">
+<p>None, except for those imposed by the requirements of
+<a href="container_concept.adoc#tensor">Tensor</a> .</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_f_public_base_classes">f. <span id="tensor_6">Public base classes</span></h4>
+<div class="paragraph">
+<p><code>tensor_container&lt;tensor&lt;value_t,format_t,storage_t&gt; &gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_g_template_parameters">g. <span id="tensor_7">Template parameters</span></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of object stored in the tensor.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>format_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage organization. <a href="#tensor_1">[1</a>]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>first_order</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>storage_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the Storage array. <a href="#tensor_2">[2</a>]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>std::vector&lt;value_t&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_h_member_types">h. <span id="tensor_8">Member types</span></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type <code>value_t</code> of the tensor elements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>layout_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format of the tensor which is either <code>first_order</code> or
+<code>last_order</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sequence container type that stores all tensor elements
+and is accessible with a single index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>strides_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the strides vector
+<code>basic_strides&lt;std::size_t,layout_type&gt;</code> that stores all tensor elements
+and is accessible with a single index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>extents_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the dimension extents vector <code>shape</code> that
+stores all tensor elements and is accessible with a single index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unsigned integer which is usually <code>std::size_t</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>difference_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unsigned integer which is usually <code>std::ptrdiff_t</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type <code>storage_type::reference</code> which is in most
+cases <code>value_type&amp;</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant reference type
+<code>storage_type::const_reference</code> which is in most cases
+<code>const value_type&amp;</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pointer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer type <code>storage_type::pointer</code> which is in most cases
+<code>value_type*</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_pointer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant reference type
+<code>storage_type::const_reference</code> which is in most cases
+<code>const value_type*</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RandomAccessIterator <code>storage_type::iterator</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant RandomAccessIterator
+<code>storage_type::const_iterator</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reverse_iterator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reverse RandomAccessIterator
+<code>storage_type::reverse_iterator</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reverse RandomAccessIterator
+<code>storage_type::const_reverse_iterator</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>matrix_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the matrix
+<code>matrix&lt;value_type,layout_type,array_type&gt;</code> with which the tensor type
+interacts.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the vector
+<code>matrix&lt;value_type,layout_type,array_type&gt;</code> with which the tensor type
+interacts.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_i_alias_templates">i. <span id="tensor_9">Alias templates</span></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alias template</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>template&lt;class derived_type&gt;  using tensor_expression_type = detail::tensor_expression&lt;self_type,derived_type&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of <a href="tensor/tensor_expression.adoc#tensor_expression">tensor_expression</a> where <code>self_type</code> is the <code>tensor</code> type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>template&lt;class derived_type&gt;  using matrix_expression_type = matrix_expression&lt;derived_type&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of <a href="matrix_expression.adoc#matrix_expression">matrix_expression</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>template&lt;class derived_type&gt;  using vector_expression_type = vector_expression&lt;derived_type&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of <a href="vector_expression.adoc#vector_expression">vector_expression</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_j_member_functions">j. <span id="tensor_10">Member Functions</span></h4>
+<div class="sect4">
+<h5 id="_i_construction">i. <span id="tensor_11">Construction</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor ()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an uninitialized <code>tensor</code> that holds zero
+elements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (std::initializer_list&lt;size_type&gt; list)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an
+uninitialized <code>tensor</code> where <code>list</code> specifies the dimension
+<a href="tensor/extents.adoc">extents</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (extents_type const&amp; s)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an uninitialized
+<code>tensor</code> where <code>s</code> specifies the dimension
+<a href="tensor/extents.adoc">extents</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (extents_type const&amp; e, array_type const&amp; a)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an
+uninitialized <code>tensor</code> where <code>e</code> specifies the dimension
+<a href="tensor/extents.adoc">extents</a> and <code>a</code> the data elements of the
+tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (tensor&lt;value_type,other_layout&rt; const&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs
+tensor by copying elements from <code>other</code> where the layout is different
+from this layout type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (tensor const&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs tensor by copying elements
+from <code>other</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (tensor &amp;&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs tensor by moving elements from
+<code>other</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (matrix_type const&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs tensor by copying
+elements from <code>other</code> <a href="matrix.adoc">matrix</a>. The tensor will have the
+order 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (matrix_type &amp;&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs tensor by moving elements
+from <code>other</code> <a href="matrix.adoc">matrix</a>. The tensor will have the order 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (vector_type const&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs tensor by copying
+elements from <code>other</code> <a href="vector.adoc">vector</a>. The tensor will have the
+order 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (vector_type &amp;&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs tensor by moving elements
+from <code>other</code> <a href="vector.adoc">vector</a>. The tensor will have the order 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (tensor_expression_type&lt;derived_type&gt; const&amp; expr)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs
+tensor by evaluating the <a href="tensor/tensor_expression.adoc">tensor
+expression</a> <code>expr</code> and copying all elements of the result.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (matrix_expression_type&lt;derived_type&gt; const&amp; expr)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs
+tensor by evaluating the <a href="matrix_expression.adoc">matrix expression</a>
+<code>expr</code> and copying all elements of the result.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor (vector_expression_type&lt;derived_type&gt; const&amp; expr)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs
+tensor by evaluating the <a href="vector_expression.adoc">vector expression</a>
+<code>expr</code> and copying all elements of the result.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_ii_assignment">ii. <span id="tensor_12">Assignment</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor&amp; operator=(tensor_expression_type&lt;derived_type&gt; const&amp; expr)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evaluates the <a href="tensor/tensor_expression.adoc">tensor expression</a>
+<code>expr</code> and copyies all elements of the result.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor&amp; operator=(tensor other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copies or moves elements of <code>other</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor&amp; operator=(const_reference v)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialiates all elements of a
+tensor with <code>v</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_iii_capacity">iii. <span id="tensor_13">Capacity</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool empty() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if a tensor has zero elements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type size() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the number of elements of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type rank() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the number of dimensions of the
+tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type order() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the number of dimensions of the
+tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>strides_type const&amp; strides() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a constant reference to
+the <a href="tensor/strides.adoc">strides</a> of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>extents_type const&amp; extents() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a constant reference to
+the <a href="tensor/extents.adoc">extents</a> of the tensor.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_iv_element_access">iv. <span id="tensor_14">Element access</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pointer data()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>pointer</code> the first element of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_pointer data() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_pointer</code> the first
+element of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference operator[](size_type j)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reference</code> to the
+<code>j</code>-th element of the storage array of the tensor. Corresponds to the
+function call <code>tensor::data()+j</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference operator[](size_type j) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
+<code>const_reference</code> to the <code>j</code>-th element of the storage array of the
+tensor. Corresponds to the function call <code>tensor::data()+j</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>template&lt;class &#8230;&#8203; size_types&gt;  reference at(size_type i, size_types &#8230;&#8203; is)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reference</code> to the <code>(i,is&#8230;&#8203;)</code>-th element of the tensor where
+` (i,is&#8230;&#8203;)` denotes a multi-index with <code>tensor::order()</code> elements. If
+<code>sizeof&#8230;&#8203;(is)==0</code>, <code>tensor::operator[i]</code> is called.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>template&lt;class &#8230;&#8203; size_types&gt;  const_reference at(size_type i, size_types &#8230;&#8203; is)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_reference</code> to the <code>(i,is&#8230;&#8203;)</code>-th element of the tensor
+where ` (i,is&#8230;&#8203;)` denotes a multi-index with <code>tensor::order()</code>
+elements. If <code>sizeof&#8230;&#8203;(is)==0</code>, <code>tensor::operator[i]</code> is called.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_v_proxy_generation">v. <span id="tensor_15">Proxy Generation</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>template&lt;std::size_t I, class &#8230;&#8203; index_types&gt;  tensor_index operator()(indices::Index&lt;I&gt; p, index_types &#8230;&#8203; ps)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <a href="tensor/tensor_index.adoc">tensor index</a> instance with
+index objects <code>(p,ps&#8230;&#8203;)</code> for a tensor contraction where
+<code>sizeof&#8230;&#8203;(ps)+1</code> must be equal to <code>tensor::order()</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_vi_iterators">vi. <span id="tensor_16">Iterators</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator begin() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a const_iterator pointing to
+the first element of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator cbegin() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a const_iterator pointing to
+the first element of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator begin()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns an iterator pointing to the first element
+of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator end() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a const_iterator pointing to the
+position after the last element of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator cend() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a const_iterator pointing to the
+position after the last element of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator begin()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns an iterator pointing to the position after
+the last element of the tensor.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_vii_modifiers">vii. <span id="tensor_17">Modifiers</span></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>void reshape(extents_type const&amp; e, value_type v = value_type{})</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reshapes the tensor according to the extents <code>e</code>. If <code>e.product()</code> is
+greater than <code>tensor::size()</code>, the tensor is resized with <code>v</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_viii_notes">viii. <span id="tensor_18">Notes</span></h5>
+<div class="paragraph">
+<p><span id="tensor_1">[1]</span> Supported parameters for the storage organization are
+<code>first_order</code> and <code>last_order</code>.</p>
 </div>
 <div class="paragraph">
-<p>and is distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
+<p><span id="tensor_2">[2]</span> Common parameters for the storage array are
+<code>std::array&lt;N,T&gt;</code> and <code>std::vector&lt;T&gt;</code>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2018 Cem Bassoy<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-02 06:25:13 UTC
+Last updated 2021-08-02 06:22:40 UTC
 </div>
 </div>
-<style>
-
-    *:not(pre)>code { background: none; color: #600000; }
-    :not(pre):not([class^=L])>code { background: none; color: #600000; }
-    table tr.even, table tr.alt, table tr:nth-of-type(even) { background: none; }
-
-    </style>
 </body>
 </html>

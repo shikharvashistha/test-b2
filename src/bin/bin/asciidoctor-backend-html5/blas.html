@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Boost.Ublas: The Boost Ublas Library</title>
+<title>Level 3 BLAS</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,47 +436,594 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Boost.Ublas: The Boost Ublas Library</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#copyright_and_license">Appendix A: Copyright and License</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="copyright_and_license">Appendix A: Copyright and License</h2>
+<h2 id="_level_3_blas">Level 3 BLAS</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This documentation is</p>
+<hr>
+<div class="sect2">
+<h3 id="_functions">Functions</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T, class M2, class M3&gt; M1 &amp; <a href="#blas_1">boost::numeric::ublas::blas_3::tmm</a> (M1 &amp;m1, const T &amp;t,
+const M2 &amp;m2, const M3 &amp;m3) triangular matrix multiplication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T, class M2, class C&gt; M1 &amp; <a href="#blas_2">boost::numeric::ublas::blas_3::tsm</a> (M1 &amp;m1, const T &amp;t,
+const M2 &amp;m2, C) triangular solve <em>m2</em> * <em>x</em> = <em>t</em> * <em>m1</em> in place, <em>m2</em> is a
+triangular matrix</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T1, class T2, class M2, class M3&gt; M1 &amp; <a href="#blas_3">boost::numeric::ublas::blas_3::gmm</a> (M1 &amp;m1, const T1 &amp;t1,
+const T2 &amp;t2, const M2 &amp;m2, const M3 &amp;m3) general matrix multiplication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T1, class T2, class M2&gt; M1 &amp; <a href="#blas_4">boost::numeric::ublas::blas_3::srk</a> (M1 &amp;m1, const T1 &amp;t1,
+const T2 &amp;t2, const M2 &amp;m2) symmetric rank k update: <em>m1</em> = <em>t</em> * <em>m1</em> + <em>t2</em> * (<em>m2</em> * <em>m2<sup>T</sup></em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T1, class T2, class M2&gt; M1 &amp; <a href="#blas_5">boost::numeric::ublas::blas_3::hrk</a> (M1 &amp;m1, const T1 &amp;t1,
+const T2 &amp;t2, const M2 &amp;m2) hermitian rank k update: <em>m1</em> = <em>t</em> * <em>m1</em> + <em>t2</em> * (<em>m2</em> * <em>m2<sup>H</sup></em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T1, class T2, class M2, class M3&gt; M1 &amp; <a href="#blas_6">boost::numeric::ublas::blas_3::sr2k</a> (M1 &amp;m1, const T1 &amp;t1,
+const T2 &amp;t2, const M2 &amp;m2, const M3 &amp;m3) generalized symmetric rank k update: <em>m1</em> = <em>t1</em> * <em>m1</em> + <em>t2</em> *
+(<em>m2</em> * <em>m3<sup>T</sup></em>) + <em>t2</em> * (<em>m3</em> * <em>m2<sup>T</sup></em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M1, class T1, class T2, class M2, class M3&gt; M1 &amp; <a href="#blas_7">boost::numeric::ublas::blas_3::hr2k</a> (M1 &amp;m1, const T1 &amp;t1,
+const T2 &amp;t2, const M2 &amp;m2, const M3 &amp;m3) generalized hermitian rank k update: <em>m1</em> = <em>t1</em> * <em>m1</em> + <em>t2</em> *
+(<em>m2</em> * <em>m3<sup>H</sup></em>) + (<em>m3</em> * (<em>t2</em> * <em>m2</em>)<sup>H</sup>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M, class E1, class E2&gt; BOOST_UBLAS_INLINE M &amp; <a href="products.adoc#product_3">boost::numeric::ublas::axpy_prod</a> (const
+matrix_expression&lt; E1 &gt; &amp;e1, const matrix_expression&lt; E2 &gt; &amp;e2, M &amp;m,
+bool init=true) computes <code>M += A X</code> or <code>M = A X</code> in an optimized fashion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">template&lt;class M, class E1, class E2&gt; BOOST_UBLAS_INLINE M &amp; <a href="products.adoc#product_4">boost::numeric::ublas::opb_prod</a> (const
+matrix_expression&lt; E1 &gt; &amp;e1, const matrix_expression&lt; E2 &gt; &amp;e2, M &amp;m,
+bool init=true) computes <code>M += A X</code> or <code>M = A X</code> in an optimized fashion.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Copyright 2021 Shikhar Vashistha</p>
-</li>
-</ul>
-</div>
+<div class="sect2">
+<h3 id="_function_documentation">Function Documentation</h3>
 <div class="paragraph">
-<p>and is distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
+<p><span id="blas_1">1.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; tmm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M3 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m3</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">triangular matrix multiplication</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="blas_2">2.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; tsm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C </p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">triangular solve <em>m2</em> * <em>x</em> = <em>t</em> * <em>m1</em> in place, <em>m2</em> is a
+triangular matrix</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="blas_3">3.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; gmm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M3 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m3</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">general matrix multiplication</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="blas_4">4.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; srk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>symmetric rank k update: <em>m1</em> = <em>t</em> * <em>m1</em> + <em>t2</em> * (<em>m2</em> * <em>m2<sup>T</sup></em>)</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Todo:</strong></dt>
+<dd>
+<p>use opb_prod()</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="blas_5">5.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; hrk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>hermitian rank k update: <em>m1</em> = <em>t</em> * <em>m1</em> + <em>t2</em> * (<em>m2</em> * <em>m2<sup>H</sup></em>)</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Todo:</strong></dt>
+<dd>
+<p>use opb_prod()</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="blas_6">6.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; sr2k</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M3 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m3</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>generalized symmetric rank k update: <em>m1</em> = <em>t1</em> * <em>m1</em> + <em>t2</em> * (<em>m2</em> *
+<em>m3<sup>T</sup></em>) + <em>t2</em> * (<em>m3</em> * <em>m2<sup>T</sup></em>)</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Todo:</strong></dt>
+<dd>
+<p>use opb_prod()</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="blas_7">7.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1&amp; hr2k</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">( </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T1 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const T2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M2 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const M3 &amp; </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m3</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">) </p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>generalized hermitian rank k update: <em>m1</em> = <em>t1</em> * <em>m1</em> + <em>t2</em> * (<em>m2</em> *
+<em>m3<sup>H</sup></em>) + (<em>m3</em> * (<em>t2</em> * <em>m2</em>)<sup>H</sup>)</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Todo:</strong></dt>
+<dd>
+<p>use opb_prod()</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2000-2004 Michael Stevens, Mathias Koch, Joerg Walter,
+Gunter Winkler<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a>).</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-02 06:25:13 UTC
+Last updated 2021-08-02 06:22:40 UTC
 </div>
 </div>
-<style>
-
-    *:not(pre)>code { background: none; color: #600000; }
-    :not(pre):not([class^=L])>code { background: none; color: #600000; }
-    table tr.even, table tr.alt, table tr:nth-of-type(even) { background: none; }
-
-    </style>
 </body>
 </html>

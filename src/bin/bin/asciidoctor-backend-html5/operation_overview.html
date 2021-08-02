@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Boost.Ublas: The Boost Ublas Library</title>
+<title>Overview of Tensor, Matrix and Vector Operations</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,47 +436,385 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Boost.Ublas: The Boost Ublas Library</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#copyright_and_license">Appendix A: Copyright and License</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="copyright_and_license">Appendix A: Copyright and License</h2>
+<h2 id="_overview_of_tensor_matrix_and_vector_operations">Overview of Tensor, Matrix and Vector Operations</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This documentation is</p>
+<div id="toc" class="dlist">
+<dl>
+<dt class="hdlist1">Contents</dt>
+<dd>
+<p><a href="#blas">Basic Linear Algebra</a>
++
+<a href="#advanced">Advanced Functions</a>
++
+<a href="#sub">Submatrices, Subvectors</a>
++
+<a href="#speed">Speed Improvements</a></p>
+</dd>
+</dl>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Copyright 2021 Shikhar Vashistha</p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="_definitions">Definitions</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X, Y, Z</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are tensors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>A, B, C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are matrices</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>u, v, w</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are vectors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>i, j, k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are integer values</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t, t1, t2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are scalar values</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r, r1, r2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are <a href="range.adoc">ranges</a>, e.g. <code>range(0, 3)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s, s1, s2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">are <a href="range.adoc#slice">slices</a>, e.g. <code>slice(0, 1, 3)</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_basic_linear_algebra"><span id="blas">Basic Linear Algebra</span></h3>
+<div class="sect3">
+<h4 id="_standard_operations_addition_subtraction_multiplication_by_a_scalar">standard operations: addition, subtraction, multiplication by a scalar</h4>
+<div class="literalblock">
+<div class="content">
+<pre>X = Y + Z; X = Y - Z; X = -Y;
+C = A + B; C = A - B; C = -A;
+w = u + v; w = u - v; w = -u;
+X = t * Y; Y = X * t; X = Y / t;
+C = t * A; C = A * t; C = A / t;
+w = t * u; w = u * t; w = u / t;</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_computed_assignments">computed assignments</h4>
+<div class="literalblock">
+<div class="content">
+<pre>X += Y; X -= Y;
+C += A; C -= A;
+w += u; w -= u;
+X *= t; X /= t;
+C *= t; C /= t;
+w *= t; w /= t;</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inner_outer_and_other_products">inner, outer and other products</h4>
+<div class="literalblock">
+<div class="content">
+<pre>t = inner_prod(u, v);
+C = outer_prod(u, v);
+w = prod(A, u); w = prod(u, A); w = prec_prod(A, u); w = prec_prod(u, A);
+C = prod(A, B); C = prec_prod(A, B);
+w = element_prod(u, v); w = element_div(u, v);
+C = element_prod(A, B); C = element_div(A, B);</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tensor_products">tensor products</h4>
+<div class="literalblock">
+<div class="content">
+<pre>Z = prod(X, v, t);
+Z = prod(X, A, t);
+Z = prod(X, Y, p);
+Z = prod(X, Y, pa, pb);
+t = inner_prod(X, Y);
+Z = outer_prod(X, Y);</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_transformations">transformations</h4>
+<div class="literalblock">
+<div class="content">
+<pre>w = conj(u); w = real(u); w = imag(u);
+C = trans(A); C = conj(A); C = herm(A); C = real(A); C = imag(A);
+Z = trans(X); Z = conj(X); Z = real(X); Z = imag(X);</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_advanced_functions"><span id="advanced">Advanced functions</span></h3>
+<div class="sect3">
+<h4 id="_norms">norms</h4>
+<div class="literalblock">
+<div class="content">
+<pre>t = norm_inf(v); i = index_norm_inf(v);
+t = norm_1(v);   t = norm_2(v);
+t = norm_2_square(v);
+t = norm_inf(A); i = index_norm_inf(A);
+t = norm_1(A);   t = norm_frobenius(A);
+t = norm(X);</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_products">products</h4>
+<div class="literalblock">
+<div class="content">
+<pre>axpy_prod(A, u, w, true);  // w = A * u
+axpy_prod(A, u, w, false); // w += A * u
+axpy_prod(u, A, w, true);  // w = trans(A) * u
+axpy_prod(u, A, w, false); // w += trans(A) * u
+axpy_prod(A, B, C, true);  // C = A * B
+axpy_prod(A, B, C, false); // C += A * B</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>and is distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
+<p><strong><em>Note:</em> The last argument (<code>bool init</code>) of <code>axpy_prod</code> is optional.
+Currently it defaults to <code>true</code>, but this may change in the future.
+Setting the <code>init</code> to <code>true</code> is equivalent to calling <code>w.clear()</code> before
+<code>axpy_prod</code>. There are some specialisation for products of compressed
+matrices that give a large speed up compared to <code>prod</code>.</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>w = block_prod&lt;matrix_type, 64&gt; (A, u); // w = A * u
+w = block_prod&lt;matrix_type, 64&gt; (u, A); // w = trans(A) * u
+C = block_prod&lt;matrix_type, 64&gt; (A, B); // C = A * B</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong><em>Note:</em> The blocksize can be any integer. However, the actual speed
+depends very significantly on the combination of blocksize, CPU and
+compiler. The function <code>block_prod</code> is designed for large dense
+matrices.</strong></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rank_k_updates">rank-k updates</h4>
+<div class="literalblock">
+<div class="content">
+<pre>opb_prod(A, B, C, true);  // C = A * B
+opb_prod(A, B, C, false); // C += A * B</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong><em>Note:</em> The last argument (<code>bool init</code>) of <code>opb_prod</code> is optional.
+Currently it defaults to <code>true</code>, but this may change in the future. This
+function may give a speedup if <code>A</code> has less columns than rows, because
+the product is computed as a sum of outer products.</strong></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_submatrices_subvectors"><span id="sub">Submatrices, Subvectors</span></h3>
+<div class="paragraph">
+<p>Accessing submatrices and subvectors via <strong>proxies</strong> using <code>project</code>
+functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>w = project(u, r);         // the subvector of u specifed by the index range r
+w = project(u, s);         // the subvector of u specifed by the index slice s
+C = project(A, r1, r2);    // the submatrix of A specified by the two index ranges r1 and r2
+C = project(A, s1, s2);    // the submatrix of A specified by the two index slices s1 and s2
+w = row(A, i); w = column(A, j);    // a row or column of matrix as a vector</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assigning to submatrices and subvectors via <strong>proxies</strong> using <code>project</code>
+functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>project(u, r) = w;         // assign the subvector of u specifed by the index range r
+project(u, s) = w;         // assign the subvector of u specifed by the index slice s
+project(A, r1, r2) = C;    // assign the submatrix of A specified by the two index ranges r1 and r2
+project(A, s1, s2) = C;    // assign the submatrix of A specified by the two index slices s1 and s2
+row(A, i) = w; column(A, j) = w;    // a row or column of matrix as a vector</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong><em>Note:</em> A range <code>r = range(start, stop)</code> contains all indices <code>i</code> with
+<code>start &#8656; i &lt; stop</code>. A slice is something more general. The slice
+<code>s = slice(start, stride, size)</code> contains the indices
+<code>start, start+stride, &#8230;&#8203;, start+(size-1)*stride</code>. The stride can be 0
+or negative! If <code>start &gt;= stop</code> for a range or <code>size == 0</code> for a slice
+then it contains no elements.</strong></p>
+</div>
+<div class="paragraph">
+<p>Sub-ranges and sub-slices of vectors and matrices can be created
+directly with the <code>subrange</code> and <code>sublice</code> functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>w = subrange(u, 0, 2);         // the 2 element subvector of u
+w = subslice(u, 0, 1, 2);      // the 2 element subvector of u
+C = subrange(A, 0,2, 0,3);     // the 2x3 element submatrix of A
+C = subslice(A, 0,1,2, 0,1,3); // the 2x3 element submatrix of A
+subrange(u, 0, 2) = w;         // assign the 2 element subvector of u
+subslice(u, 0, 1, 2) = w;      // assign the 2 element subvector of u
+subrange(A, 0,2, 0,3) = C;     // assign the 2x3 element submatrix of A
+subrange(A, 0,1,2, 0,1,3) = C; // assigne the 2x3 element submatrix of A</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are to more ways to access some matrix elements as a vector:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>matrix_vector_range&lt;matrix_type&gt; (A, r1, r2);
+matrix_vector_slice&lt;matrix_type&gt; (A, s1, s2);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong><em>Note:</em> These matrix proxies take a sequence of elements of a matrix and
+allow you to access these as a vector. In particular
+<code>matrix_vector_slice</code> can do this in a very general way.
+<code>matrix_vector_range</code> is less useful as the elements must lie along a
+diagonal.</strong></p>
+</div>
+<div class="paragraph">
+<p><em>Example:</em> To access the first two elements of a sub column of a matrix
+we access the row with a slice with stride 1 and the column with a slice
+with stride 0 thus:<br>
+<code>matrix_vector_slice&lt;matrix_type&gt; (A, slice(0,1,2), slice(0,0,2));</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_speed_improvements"><span id="speed">Speed improvements</span></h3>
+<div class="sect3">
+<h4 id="_matrix_vector_assignment"><span id="noalias">Matrix / Vector assignment</span></h4>
+<div class="paragraph">
+<p>If you know for sure that the left hand expression and the right hand
+expression have no common storage, then assignment has no <em>aliasing</em>. A
+more efficient assignment can be specified in this case:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>noalias(C) = prod(A, B);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This avoids the creation of a temporary matrix that is required in a
+normal assignment. 'noalias' assignment requires that the left and right
+hand side be size conformant.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sparse_element_access">Sparse element access</h4>
+<div class="paragraph">
+<p>The matrix element access function <code>A(i1,i2)</code> or the equivalent vector
+element access functions (<code>v(i) or v[i]</code>) usually create 'sparse element
+proxies' when applied to a sparse matrix or vector. These <em>proxies</em>
+allow access to elements without having to worry about nasty C++ issues
+where references are invalidated.</p>
+</div>
+<div class="paragraph">
+<p>These 'sparse element proxies' can be implemented more efficiently when
+applied to <code>const</code> objects. Sadly in C++ there is no way to distinguish
+between an element access on the left and right hand side of an
+assignment. Most often elements on the right hand side will not be
+changed and therefore it would be better to use the <code>const</code> proxies. We
+can do this by making the matrix or vector <code>const</code> before accessing it&#8217;s
+elements. For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>value = const_cast&lt;const VEC&gt;(v)[i];   // VEC is the type of V</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If more then one element needs to be accessed <code>const_iterator</code> 's should
+be used in preference to <code>iterator</code> 's for the same reason. For the more
+daring 'sparse element proxies' can be completely turned off in uBLAS by
+defining the configuration macro <code>BOOST_UBLAS_NO_ELEMENT_PROXIES</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_controlling_the_complexity_of_nested_products">Controlling the complexity of nested products</h4>
+<div class="paragraph">
+<p>What is the complexity (the number of add and multiply operations)
+required to compute the following?</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> R = prod(A, prod(B,C));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Firstly the complexity depends on matrix size. Also since prod is
+transitive (not commutative) the bracket order affects the complexity.</p>
+</div>
+<div class="paragraph">
+<p>uBLAS evaluates expressions without matrix or vector temporaries and
+honours the bracketing structure. However avoiding temporaries for
+nested product unnecessarly increases the complexity. Conversly by
+explictly using temporary matrices the complexity of a nested product
+can be reduced.</p>
+</div>
+<div class="paragraph">
+<p>uBLAS provides 3 alternative syntaxes for this purpose:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> temp_type T = prod(B,C); R = prod(A,T);   // Preferable if T is preallocated</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> prod(A, temp_type(prod(B,C));</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> prod(A, prod&lt;temp_type&gt;(B,C));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The 'temp_type' is important. Given A,B,C are all of the same type. Say
+matrix&lt;float&gt;, the choice is easy. However if the value_type is mixed
+(int with float or double) or the matrix type is mixed (sparse with
+symmetric) the best solution is not so obvious. It is up to you! It
+depends on numerical properties of A and the result of the prod(B,C).</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2000-2007 Joerg Walter, Mathias Koch, Gunter Winkler,
+Michael Stevens<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-02 06:25:13 UTC
+Last updated 2021-08-02 06:22:40 UTC
 </div>
 </div>
-<style>
-
-    *:not(pre)>code { background: none; color: #600000; }
-    :not(pre):not([class^=L])>code { background: none; color: #600000; }
-    table tr.even, table tr.alt, table tr:nth-of-type(even) { background: none; }
-
-    </style>
 </body>
 </html>

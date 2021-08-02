@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Boost.Ublas: The Boost Ublas Library</title>
+<title>Special Products</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,47 +436,404 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Boost.Ublas: The Boost Ublas Library</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#copyright_and_license">Appendix A: Copyright and License</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="copyright_and_license">Appendix A: Copyright and License</h2>
+<h2 id="_special_products">Special Products</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="toc">Functions</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">template&lt;class V, class E1, class E2&gt; BOOST_UBLAS_INLINE V &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#product_1">axpy_prod</a> (const matrix_expression&lt; E1 &gt; &amp;e1, const vector_expression&lt; E2 &gt; &amp;e2, V &amp;v, bool init=true) computes <code>v += A x</code> or <code>v = A x</code> in an optimized fashion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">template&lt;class V, class E1, class E2&gt; BOOST_UBLAS_INLINE V &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#product_2">axpy_prod</a> (const vector_expression&lt; E1 &gt; &amp;e1, const matrix_expression&lt; E2 &gt; &amp;e2, V &amp;v, bool init=true) computes <code>v += AT x</code> or <code>v = AT x</code> in an optimized fashion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">template&lt;class M, class E1, class E2&gt; BOOST_UBLAS_INLINE M &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#product_3">axpy_prod</a> (const matrix_expression&lt; E1 &gt; &amp;e1, const matrix_expression&lt; E2 &gt; &amp;e2, M &amp;m, bool init=true) computes <code>M += A X</code> or <code>M = A X</code> in an optimized fashion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">template&lt;class M, class E1, class E2&gt; BOOST_UBLAS_INLINE M &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#product_4">opb_prod</a> (const matrix_expression&lt; E1 &gt; &amp;e1, const matrix_expression&lt; E2 &gt; &amp;e2, M &amp;m, bool init=true) computes <code>M += A X</code> or <code>M = A X</code> in an optimized fashion.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
 <div class="paragraph">
-<p>This documentation is</p>
+<p><span id="product_1">1.</span></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Copyright 2021 Shikhar Vashistha</p>
-</li>
-</ul>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BOOST_UBLAS_INLINE V&amp; axpy_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const matrix_expression&lt; E1 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const vector_expression&lt; E2 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>v</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>init</em> = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>computes <code>v += A x</code> or <code>v = A x</code> in an optimized fashion.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Parameters:</strong></dt>
+<dd>
+<p><em>e1</em>  the matrix expression <code>A</code>,
+<em>e2</em>  the vector expression <code>x</code>,
+<em>v</em>  the result vector <code>v</code>,
+<em>init</em>  a boolean parameter</p>
+</dd>
+</dl>
 </div>
 <div class="paragraph">
-<p>and is distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
+<p><code>axpy_prod(A, x, v, init)</code> implements the well known axpy-product.
+Setting <em>init</em> to <code>true</code> is equivalent to call <code>v.clear()</code> before
+<code>axpy_prod</code>. Currently <em>init</em> defaults to <code>true</code>, but this may change in
+the future.</p>
+</div>
+<div class="paragraph">
+<p>Up to now there are some specialisation for compressed matrices that
+give a large speed up compared to prod.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="product_2">2.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BOOST_UBLAS_INLINE V&amp; axpy_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const vector_expression&lt; E1 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const matrix_expression&lt; E2 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>v</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>init</em> = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>computes <code>v += AT x</code> or <code>v = AT x</code> in an optimized fashion.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Parameters:</strong></dt>
+<dd>
+<p><em>e1</em>  the vector expression <code>x</code>,
+<em>e2</em>  the matrix expression <code>A</code>,
+<em>v</em>  the result vector <code>v</code>,
+<em>init</em>  a boolean parameter</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>axpy_prod(x, A, v, init)</code> implements the well known axpy-product.
+Setting <em>init</em> to <code>true</code> is equivalent to call <code>v.clear()</code> before
+<code>axpy_prod</code>. Currently <em>init</em> defaults to <code>true</code>, but this may change in
+the future.</p>
+</div>
+<div class="paragraph">
+<p>Up to now there are some specialisation for compressed matrices that
+give a large speed up compared to prod.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="product_3">3.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BOOST_UBLAS_INLINE M&amp; axpy_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const matrix_expression&lt; E1 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const matrix_expression&lt; E2 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>init</em> = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>computes <code>M += A X</code> or <code>M = A X</code> in an optimized fashion.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Parameters:</strong></dt>
+<dd>
+<p><em>e1</em>  !the matrix expression <code>A</code>,
+<em>e2</em>  !the matrix expression <code>X</code>,
+<em>m</em>  !the result matrix <code>M</code>,
+<em>init</em>  !a boolean parameter</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>axpy_prod(A, X, M, init)</code> implements the well known axpy-product.
+Setting <em>init</em> to <code>true</code> is equivalent to call <code>M.clear()</code> before
+<code>axpy_prod</code>. Currently <em>init</em> defaults to <code>true</code>, but this may change in
+the future.</p>
+</div>
+<div class="paragraph">
+<p>Up to now there are no specialisations.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span id="product_4">4.</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BOOST_UBLAS_INLINE M&amp; opb_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const matrix_expression&lt; E1 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e1</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">const matrix_expression&lt; E2 &gt; &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e2</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M &amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m</em>,</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>init</em> = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>computes <code>M += A X</code> or <code>M = A X</code> in an optimized fashion.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Parameters:</strong></dt>
+<dd>
+<p><em>e1</em>  the matrix expression <code>A</code>
+<em>e2</em>  the matrix expression <code>X</code>
+<em>m</em>  the result matrix <code>M</code>
+<em>init</em>  a boolean parameter</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>opb_prod(A, X, M, init)</code> implements the well known axpy-product.
+Setting <em>init</em> to <code>true</code> is equivalent to call <code>M.clear()</code> before
+<code>opb_prod</code>. Currently <em>init</em> defaults to <code>true</code>, but this may change in
+the future.</p>
+</div>
+<div class="paragraph">
+<p>This function may give a speedup if <code>A</code> has less columns than rows,
+because the product is computed as a sum of outer products.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2000-2004 Michael Stevens, Mathias Koch, Joerg Walter,
+Gunter Winkler<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-02 06:25:13 UTC
+Last updated 2021-08-02 06:22:40 UTC
 </div>
 </div>
-<style>
-
-    *:not(pre)>code { background: none; color: #600000; }
-    :not(pre):not([class^=L])>code { background: none; color: #600000; }
-    table tr.even, table tr.alt, table tr:nth-of-type(even) { background: none; }
-
-    </style>
 </body>
 </html>

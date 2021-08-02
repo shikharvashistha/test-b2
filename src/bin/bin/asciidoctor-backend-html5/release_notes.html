@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Boost.Ublas: The Boost Ublas Library</title>
+<title>Boost Basic Linear Algebra - Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,47 +436,160 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Boost.Ublas: The Boost Ublas Library</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#copyright_and_license">Appendix A: Copyright and License</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="copyright_and_license">Appendix A: Copyright and License</h2>
+<h2 id="_boost_basic_linear_algebra_release_notes">Boost Basic Linear Algebra - Release Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This documentation is</p>
+<p><a href="index.adoc">back to uBLAS home</a></p>
 </div>
+<div class="sect2">
+<h3 id="toc">Release 1.70.0</h3>
+<div class="sect3">
+<h4 id="_improvements">improvements</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Copyright 2021 Shikhar Vashistha</p>
+<p>Add support for GPU-accelerated operations via
+<a href="http://boostorg.github.io/compute/">Boost.Compute</a></p>
+</li>
+<li>
+<p>Add support for a new (arbitrary-rank) tensor type and associated
+operations.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_release_1_52_0">Release 1.52.0</h3>
+<div class="sect3">
+<h4 id="_improvements_2">improvements</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/4024">[4024</a>] improve
+performance of inplace_solve</p>
+</li>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/6511">[6511</a>] Division by
+scalar should use enable_if&lt;&gt;</p>
+</li>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/7297">[7297</a>] Make the free
+functions 'num_columns' and 'num_rows' support the uBLAS traits system
+and better work with expression types</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bug_fixes">bug fixes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/7296">[7296</a>] fixes and
+improvements to test utility functions</p>
+</li>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/7363">[7363</a>] fixed
+coordinate_matrix::sort() for gcc 4.7 and others</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_release_1_43_0">Release 1.43.0</h3>
+<div class="sect3">
+<h4 id="_bug_fixes_2">bug fixes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/3968">[3968</a>] fixed
+coordinate_matrix sort problem on MSVC10</p>
+</li>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/3539">[3539</a>] changed
+computation of <code>norm_inf</code> for complex types to match mathematical
+definition.<br>
+<strong>Note:</strong> This might cause a performance drop because now <code>std::abs(z)</code> is
+called for each vector element. The old implementation used
+<code>std::max(std::abs(real(z)),std::abs(imag(z))</code>. Further <code>norm_inf</code> and
+<code>norm_1</code> will now return the same values for complex vector.</p>
+</li>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/3501">[3501</a>] Moved free
+functions in <code>concepts.hpp</code> into anonymous namespace.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_release_1_41_1">Release 1.41.1</h3>
+<div class="sect3">
+<h4 id="_new_features">new features</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Move semantics of vector/matrix container assignments have been
+implemented. They can be enabled by setting BOOST_UBLAS_MOVE_SEMANTICS.
+More details are on the <a href="options.adoc">preprocessor options page</a>.</p>
+</li>
+<li>
+<p>Introduce new free functions. See
+<a href="https://svn.boost.org/trac/boost/ticket/3449">[3449</a>], the new tests in
+libs/numeric/ublas/test and the inline documentation of the files in
+boost/numeric/ublas/operation/.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bug_fixes_3">bug fixes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/3293">[3293</a>] Fix resizing
+problem in <code>identity_matrix</code></p>
+</li>
+<li>
+<p><a href="https://svn.boost.org/trac/boost/ticket/3499">[3499</a>] Add
+DefaultConstructible to concept checks</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_release_1_40_0_and_before">Release 1.40.0 and before</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Release notes were not available in this form.</p>
+</li>
+</ul>
+</div>
+<hr>
 <div class="paragraph">
-<p>and is distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
+<p>Copyright (©) 2000-2009 Joerg Walter, Mathias Koch, Gunter Winkler<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-02 06:25:13 UTC
+Last updated 2021-08-02 06:22:40 UTC
 </div>
 </div>
-<style>
-
-    *:not(pre)>code { background: none; color: #600000; }
-    :not(pre):not([class^=L])>code { background: none; color: #600000; }
-    table tr.even, table tr.alt, table tr:nth-of-type(even) { background: none; }
-
-    </style>
 </body>
 </html>
