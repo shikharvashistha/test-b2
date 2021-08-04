@@ -12,6 +12,8 @@ using asciidoctor ;
 
 html ublas : ublas.adoc ;
 
+html tensor/extents : ublas/tensor/extents.adoc ;
+
 html banded : ublas/banded.adoc ;
 
 html blas : ublas/blas.adoc ;

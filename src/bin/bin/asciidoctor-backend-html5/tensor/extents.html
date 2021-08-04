@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Sparse Storage</title>
+<title>Extents</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,31 +441,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_sparse_storage">Sparse Storage</h2>
+<h2 id="_extents">Extents</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="toc"><span id="map_std">Default Standard Map</span></h3>
+<h3 id="toc"><span id="extents">basic_extents&lt;size_type&gt;</span></h3>
 <div class="sect3">
 <h4 id="_description">Description</h4>
 <div class="paragraph">
-<p>The templated class <code>map_std&lt;I, T, ALLOC&gt;</code> provides a wrapper for the
-standard library associative container <code>std::map</code>. The wrapper has one
-simple purpose. It allows the definition of a default template parameter
-(for the adapted array) when declaring the sparse container types.</p>
+<p>The template class <code>basic_extents</code> specifies dimension extents of a
+<a href="../tensor.adoc#tensor">tensor</a> instance.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_example">Example</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage_sparse.hpp&gt;
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/tensor/extents.hpp&gt;
 
 int main () {
     using namespace boost::numeric::ublas;
-    map_std&lt;int, double&gt; a (3);
-    for (unsigned i = 0; i &lt; a.size (); ++ i) {
-        a [i] = i;
-        std::cout &lt;&lt; a [i] &lt;&lt; std::endl;
+    shape s{4,3,2};
+    for (auto i = 0u; i &lt; s.size(); ++i) {
+        std::cout &lt;&lt; s.at(i) &lt;&lt; std::endl;
     }
 }</code></pre>
 </div>
@@ -474,155 +471,42 @@ int main () {
 <div class="sect3">
 <h4 id="_definition">Definition</h4>
 <div class="paragraph">
-<p>Defined in the header storage_sparse.hpp.</p>
+<p>Defined in the header tensor/extents.hpp.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_public_base_classes">Public base classes</h4>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specialization">Specialization</h4>
+<div class="paragraph">
+<p><code>using shape = basic_extents&lt;std::size_t&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_template_parameters">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>I</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of index stored in the array.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of object stored in the array.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ALLOC</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An STL Allocator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">std::allocator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unsigned integer type.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of">Model of</h4>
-<div class="paragraph">
-<p>Reversible Container.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_type_requirements">Type requirements</h4>
-<div class="paragraph">
-<p>None, except for those imposed by the requirements of Reversible
-Container.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_public_base_classes">Public base classes</h4>
-<div class="paragraph">
-<p>std::map</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_map_array"><span id="map_array">Map Array</span></h3>
-<div class="sect3">
-<h4 id="_description_2">Description</h4>
-<div class="paragraph">
-<p>The templated class <code>map_array&lt;I, T, ALLOC&gt;</code> implements a <code>std::map</code>
-like associative container as a sorted array. It therefore some of the
-Associative Container interface without having the same semantics as an
-std::map.</p>
-</div>
-<div class="paragraph">
-<p>At any time the <code>map_array</code> has a capacity up to which new element can
-be inserted. If <code>insert</code> would cause the size of the <code>map_array</code> to
-exceeds its capactity then it is <strong>reallocated</strong>. Iterators and reference
-are invalidated. The capacity can be directly control using the
-<code>reserve</code> member function.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_2">Example</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage_sparse.hpp&gt;
-
-int main () {
-    using namespace boost::numeric::ublas;
-    map_array&lt;int, double&gt; a (3);
-    for (unsigned i = 0; i &lt; a.size (); ++ i) {
-        a [i] = i;
-        std::cout &lt;&lt; a [i] &lt;&lt; std::endl;
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_definition_2">Definition</h4>
-<div class="paragraph">
-<p>Defined in the header storage_sparse.hpp.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_template_parameters_2">Template parameters</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>I</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of index stored in the array.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of object stored in the array.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ALLOC</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An STL Allocator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">std::allocator</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_model_of_2">Model of</h4>
-<div class="paragraph">
-<p>Reversible Container.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_type_requirements_2">Type requirements</h4>
-<div class="paragraph">
-<p>None, except for those imposed by the requirements of Reversible
-Container.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_public_base_classes_2">Public base classes</h4>
-<div class="paragraph">
-<p>None.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_members">Members</h4>
+<h4 id="_member_types">Member types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -630,154 +514,171 @@ Container.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Member type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>map_array (ALLOC &amp;a = ALLOC())</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allocates a <code>map_array</code> that holds at
-most zero elements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type <code>size_type</code> of the extents.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>map_array (const map_array &amp;c)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The copy constructor.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unsigned integer such as <code>std::size_t</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>~map_array ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deallocates the <code>map_array</code> itself.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>value_type&amp;</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>void reserve (size_type capacity)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Changes the`map_array` capacity.
-It can hold at most`capacity` elements without reallocation. The
-capacity can be reduced such that <code>capacity &gt;= size()</code>. The content of
-the`map_array` is preserved.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant reference type which is
+<code>const value_type&amp;</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type size () const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the size of the <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pointer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer type which is <code>value_type*</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type size () const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the capacity of the <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_pointer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant reference type which is <code>const value_type*</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_member_functions">Member Functions</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member Function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents ()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an empty instance of <code>basic_extents</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data_reference operator [] (index_type i)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a reference of the
-element that is associated with a particular index. If the <code>map_array</code>
-does not already contain such an element, <code>operator[]</code> inserts the
-default <code>T ()</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (std::vector&lt;value_type&gt; const&amp; vector)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance copying the content of <code>vector</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>map_array &amp;operator = (const map_array &amp;a)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The assignment operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (std::vector&lt;value_type&gt; &amp;&amp; vector)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance moving the content of <code>vector</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>map_array &amp;assign_temporary (map_array &amp;a)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Assigns a temporary. May
-change the array <code>a</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (std::initializer_list&lt;value_type&gt; list)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from <code>list</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>void swap (map_array &amp;a)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Swaps the contents of the arrays.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (const_iterator first, const_iterator last)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from the range specified by <code>[first</code>,<code>last)</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>std::pair insert (const value_type &amp;p)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Inserts <code>p</code> into the array.
-The second part of the return value is <code>true</code> if <code>p</code> was inserted and
-<code>false</code> if was not inserted because it was aleady present.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (basic_extents const&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from <code>other</code> copying its elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator insert (iterator it, const value_type &amp;p)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Inserts <code>p</code> into
-the array, using <code>it</code> as a hint to where it will be inserted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (basic_extents &amp;&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from <code>other</code> by moving its elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>void erase (iterator it)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Erases the value at <code>it</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents&amp; operator= (basic_extents other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assigns the elements of <code>other</code> to this instance.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>void clear ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clears the array.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_scalar() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the elements are <code>(1,1,[1,&#8230;&#8203;,1])</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator find (index_type i) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds an element whose
-index is <code>i</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_vector() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the elements are <code>(n,1,[1,&#8230;&#8203;,1])</code> or <code>(1,n,[1,&#8230;&#8203;,1])</code> where <code>n&gt;1</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator find (index_type i)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds an element whose index is <code>i</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_matrix() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the elements are <code>(m,n,[1,&#8230;&#8203;,1])</code> where <code>m&gt;1</code> and
+<code>n&gt;1</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator lower_bound (index_type i) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds the first
-element whose index is not less than <code>i</code> .</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_tensor() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if it is not a scalar, vector or matrix.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator lower_bound (index_type i)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds the first element whose
-index is not less than <code>i</code> .</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_pointer data() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_pointer</code> to the first element.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator upper_bound (index_type i) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds the first
-element whose index is greater than <code>i</code> .</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pointer data()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>pointer</code> to the first element.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator upper_bound (index_type i)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds the first element whose
-index is greater than <code>i</code> .</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference operator[](size_type i)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reference</code> to the <code>i</code>-th element.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator begin () const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to
-the beginning of the <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference operator[](size_type i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_reference</code> to the <code>i</code>-th element.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator end () const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to
-the end of the <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference at(size_type i)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reference</code> to the <code>i</code>-th element.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator begin ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>iterator</code> pointing to the beginning of
-the <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference at(size_type i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_reference</code> to the <code>i</code>-th element.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iterator end ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>iterator</code> pointing to the end of the
-<code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool empty()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the container has no elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator rbegin () const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
-<code>const_reverse_iterator</code> pointing to the beginning of the reversed
-<code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type size() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the number of elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reverse_iterator rend () const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
-<code>const_reverse_iterator</code> pointing to the end of the reversed
-<code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool valid() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if size()&gt;1 and all elements are greater than one.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reverse_iterator rbegin ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reverse_iterator</code> pointing to
-the beginning of the reversed <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type product() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the multiplication of all entries.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reverse_iterator rend ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reverse_iterator</code> pointing to
-the end of the reversed <code>map_array</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents squeeze() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a new instance where entries equal to one are eliminated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator==(basic_extents const&amp; b) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if all elements are equal.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator!=(basic_extents const&amp; b) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if some elements are not equal.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator begin() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns an <code>const_iterator pointing to the first element.</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator end() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to an element passed the last element.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>std::vector&lt;size_type&gt; base() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a const reference to the private member sequence container holding all elements.</p></td>
 </tr>
 </tbody>
 </table>
 <hr>
 <div class="paragraph">
-<p>Copyright (©) 2000-2002 Joerg Walter, Mathias Koch<br>
+<p>Copyright (©) 2018 Cem Bassoy<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -790,7 +691,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-04 05:39:27 UTC
+Last updated 2021-08-04 05:41:59 UTC
 </div>
 </div>
 </body>
