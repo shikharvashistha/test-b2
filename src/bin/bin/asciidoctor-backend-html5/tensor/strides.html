@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Extents</title>
+<title>Strides</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,29 +441,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_extents">Extents</h2>
+<h2 id="_strides">Strides</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="toc"><span id="extents">basic_extents&lt;size_type&gt;</span></h3>
+<h3 id="toc"><span id="extents">basic_strides&lt;size_type, format_type&gt;</span></h3>
 <div class="sect3">
 <h4 id="_description">Description</h4>
 <div class="paragraph">
-<p>The template class <code>basic_extents</code> specifies dimension extents of a
-<a href="../tensor.html#tensor">tensor</a> instance.</p>
+<p>The template class <code>basic_strides</code> contains weights for a given storage
+format in order to map multi-indices to scalar memory indices for
+<a href="../tensor.html#tensor">tensor</a> instances.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_example">Example</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/tensor/extents.hpp&gt;
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/tensor/strides.hpp&gt;
 
 int main () {
     using namespace boost::numeric::ublas;
-    shape s{4,3,2};
-    for (auto i = 0u; i &lt; s.size(); ++i) {
-        std::cout &lt;&lt; s.at(i) &lt;&lt; std::endl;
-    }
+    auto wf = strides&lt;first_order&gt;(shape{4,3,2});
+    for (auto i = 0u; i &lt; wf.size(); ++i)
+        std::cout &lt;&lt; wf.at(i) &lt;&lt; std::endl;
+        // 1,4,12
+
+    auto wl = strides&lt;first_order&gt;(shape{4,3,2});
+    for (auto i = 0u; i &lt; wl.size(); ++i)
+        std::cout &lt;&lt; wl.at(i) &lt;&lt; std::endl;
+        // 6,2,1
 }</code></pre>
 </div>
 </div>
@@ -471,7 +477,7 @@ int main () {
 <div class="sect3">
 <h4 id="_definition">Definition</h4>
 <div class="paragraph">
-<p>Defined in the header tensor/extents.hpp.</p>
+<p>Defined in the header tensor/strides.hpp.</p>
 </div>
 </div>
 <div class="sect3">
@@ -483,7 +489,7 @@ int main () {
 <div class="sect3">
 <h4 id="_specialization">Specialization</h4>
 <div class="paragraph">
-<p><code>using shape = basic_extents&lt;std::size_t&gt;</code></p>
+<p><code>template&lt;class format_t&gt;using strides = basic_strides&lt;std::size_t,format_t&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -521,7 +527,7 @@ int main () {
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>value_type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type <code>size_type</code> of the extents.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type <code>size_type</code> of the strides.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type</code></p></td>
@@ -542,7 +548,13 @@ int main () {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_pointer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constant reference type which is <code>const value_type*</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant pointer type which is <code>const value_type*</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>layout_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layout type which can be either
+<code>boost::numeric::ublas::first_order</code> or
+<code>boost::numeric::ublas::last_order</code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -562,77 +574,53 @@ int main () {
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents ()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an empty instance of <code>basic_extents</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides ()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an empty instance of <code>basic_strides</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (std::vector&lt;value_type&gt; const&amp; vector)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance copying the content of <code>vector</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides (basic_extents&lt;value_type&gt; const&amp; be)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an
+instance based on the tensor extents specified by <code>be</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (std::vector&lt;value_type&gt; &amp;&amp; vector)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance moving the content of <code>vector</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides (std::vector&lt;value_type&gt; const&amp; v)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an
+instance copying the content of <code>v</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (std::initializer_list&lt;value_type&gt; list)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from <code>list</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides (std::vector&lt;value_type&gt; &amp;&amp; v)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance
+moving the content of <code>v</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (const_iterator first, const_iterator last)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from the range specified by <code>[first</code>,<code>last)</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides (basic_strides const&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance
+from <code>other</code> copying its elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (basic_extents const&amp; other)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from <code>other</code> copying its elements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides (basic_strides &amp;&amp; other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from
+<code>other</code> by moving its elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents (basic_extents &amp;&amp; other)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs an instance from <code>other</code> by moving its elements.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents&amp; operator= (basic_extents other)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Assigns the elements of <code>other</code> to this instance.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_scalar() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the elements are <code>(1,1,[1,&#8230;&#8203;,1])</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_vector() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the elements are <code>(n,1,[1,&#8230;&#8203;,1])</code> or <code>(1,n,[1,&#8230;&#8203;,1])</code> where <code>n&gt;1</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_matrix() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if the elements are <code>(m,n,[1,&#8230;&#8203;,1])</code> where <code>m&gt;1</code> and
-<code>n&gt;1</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool is_tensor() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if it is not a scalar, vector or matrix.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_strides&amp; operator= (basic_strides other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assigns the elements
+of <code>other</code> to this instance.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_pointer data() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_pointer</code> to the first element.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pointer data()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>pointer</code> to the first element.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference operator[](size_type i)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reference</code> to the <code>i</code>-th element.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_pointer</code> to the first
+element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference operator[](size_type i) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_reference</code> to the <code>i</code>-th element.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reference at(size_type i)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>reference</code> to the <code>i</code>-th element.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a
+<code>const_reference</code> to the <code>i</code>-th element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_reference at(size_type i) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_reference</code> to the <code>i</code>-th element.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_reference</code> to
+the <code>i</code>-th element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool empty()</code></p></td>
@@ -643,36 +631,60 @@ int main () {
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the number of elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool valid() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if size()&gt;1 and all elements are greater than one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>void clear()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Erases all elements.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size_type product() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the multiplication of all entries.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator==(basic_strides const&amp; b) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if all
+elements are equal.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic_extents squeeze() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a new instance where entries equal to one are eliminated.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator==(basic_extents const&amp; b) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if all elements are equal.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator!=(basic_extents const&amp; b) const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if some elements are not equal.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool operator!=(basic_strides const&amp; b) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if some
+elements are not equal.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator begin() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns an <code>const_iterator pointing to the first element.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns an <code>const_iterator</code> pointing to
+the first element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>const_iterator end() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to an element passed the last element.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const_iterator</code> pointing to an
+element passed the last element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>std::vector&lt;size_type&gt; base() const</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a const reference to the private member sequence container holding all elements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the private member
+sequence container holding all elements.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_non_member_functions">Non-Member Functions</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>access(std::vector&lt;size_type&gt; const&amp; i, strides&lt;layout_type&gt; w)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns relative memory location depending on the multi-index vector
+<code>i</code> and strides <code>w</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>access(size_type sum, strides&lt;layout_type&gt; w, size_type i, size_types &#8230;&#8203; is)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns relative memory location depending on the indices <code>i</code>,
+<code>is &#8230;&#8203;</code> and stride vector <code>w</code> (recursive function).</p></td>
 </tr>
 </tbody>
 </table>
@@ -691,7 +703,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-05 05:43:37 UTC
+Last updated 2021-08-05 05:44:16 UTC
 </div>
 </div>
 </body>

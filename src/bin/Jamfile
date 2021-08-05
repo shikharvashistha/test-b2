@@ -14,6 +14,8 @@ html ublas : ublas.adoc ;
 
 html tensor/extents : ublas/tensor/extents.adoc ;
 
+html tensor/strides : ublas/tensor/strides.adoc ;
+
 html banded : ublas/banded.adoc ;
 
 html blas : ublas/blas.adoc ;
