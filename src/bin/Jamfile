@@ -10,7 +10,7 @@
 
 using asciidoctor ;
 
-html ublas : ublas.adoc ;
+html index : index.adoc ;
 
 html tensor/extents : ublas/tensor/extents.adoc ;
 
