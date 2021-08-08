@@ -441,7 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>Boost.Ublas: The Boost Ublas Library</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
+<ul class="sectlevel2">
+<li><a href="#ublas_overview">uBLAS Overview</a></li>
 <li><a href="#basic_linear_algebra_library">Basic Linear Algebra Library</a>
 <ul class="sectlevel2">
 <li><a href="#functionality">Functionality</a></li>
@@ -456,6 +457,1096 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
+<div class="sect2">
+<h3 id="ublas_overview">uBLAS Overview</h3>
+<div class="sect3">
+<h4 id="toc">Rationale</h4>
+<div class="paragraph">
+<p>It would be nice if every kind of numeric software could be written in
+C without loss of efficiency, but unless something can be found that
+achieves this without compromising the C type system it may be
+preferable to rely on Fortran, assembler or architecture-specific
+extensions (Bjarne Stroustrup).</p>
+</div>
+<div class="paragraph">
+<p>This C++ library is directed towards scientific computing on the level
+of basic linear algebra constructions with matrices and vectors and
+their corresponding abstract operations. The primary design goals were:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>mathematical notation</p>
+</li>
+<li>
+<p>efficiency</p>
+</li>
+<li>
+<p>functionality</p>
+</li>
+<li>
+<p>compatibility</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Another intention was to evaluate, if the abstraction penalty resulting
+from the use of such matrix and vector classes is acceptable.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="resources">Resources</h4>
+<div class="paragraph">
+<p>The development of this library was guided by a couple of similar
+efforts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.netlib.org/blas/index.html">BLAS</a> by Jack Dongarra et al.</p>
+</li>
+<li>
+<p><a href="http://www.oonumerics.org/blitz/">Blitz++</a> by Todd Veldhuizen</p>
+</li>
+<li>
+<p><a href="http://acts.nersc.gov/pooma/">POOMA</a> by Scott Haney et al.</p>
+</li>
+<li>
+<p><a href="http://www.lsc.nd.edu/research/mtl/">MTL</a> by Jeremy Siek et al.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>BLAS seems to be the most widely used library for basic linear algebra
+constructions, so it could be called a de-facto standard. Its interface
+is procedural, the individual functions are somewhat abstracted from
+simple linear algebra operations. Due to the fact that is has been
+implemented using Fortran and its optimizations, it also seems to be one
+of the fastest libraries available. As we decided to design and
+implement our library in an object-oriented way, the technical
+approaches are distinct. However anyone should be able to express BLAS
+abstractions in terms of our library operators and to compare the
+efficiency of the implementations.</p>
+</div>
+<div class="paragraph">
+<p>Blitz is an impressive library implemented in C. Its main design
+seems to be oriented towards multidimensional arrays and their
+associated operators including tensors. The author of Blitz states,
+that the library achieves performance on par or better than
+corresponding Fortran code due to his implementation technique using
+expression templates and template metaprograms. However we see some
+reasons, to develop an own design and implementation approach. We do not
+know whether anybody tries to implement traditional linear algebra and
+other numerical algorithms using Blitz. We also presume that even
+today Blitz needs the most advanced C compiler technology due to its
+implementation idioms. On the other hand, Blitz++ convinced us, that the
+use of expression templates is mandatory to reduce the abstraction
+penalty to an acceptable limit.</p>
+</div>
+<div class="paragraph">
+<p>POOMA&#8217;s design goals seem to parallel Blitz's in many parts . It
+extends Blitz's concepts with classes from the domains of partial
+differential equations and theoretical physics. The implementation
+supports even parallel architectures.</p>
+</div>
+<div class="paragraph">
+<p>MTL is another approach supporting basic linear algebra operations in
+C. Its design mainly seems to be influenced by BLAS and the C
+Standard Template Library. We share the insight that a linear algebra
+library has to provide functionality comparable to BLAS. On the other
+hand we think, that the concepts of the C++ standard library have not
+yet been proven to support numerical computations as needed. As another
+difference MTL currently does not seem to use expression templates. This
+may result in one of two consequences: a possible loss of expressiveness
+or a possible loss of performance.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="concepts">Concepts</h4>
+<div class="sect4">
+<h5 id="mathematical_notation">Mathematical Notation</h5>
+<div class="paragraph">
+<p>The usage of mathematical notation may ease the development of
+scientific algorithms. So a C library implementing basic linear
+algebra concepts carefully should overload selected C operators on
+matrix and vector classes.</p>
+</div>
+<div class="paragraph">
+<p>We decided to use operator overloading for the following primitives:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Operator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indexing of vectors and matrices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector::operator(size_t i); matrix::operator(size_t i, size_t j);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assignment of vectors and matrices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector::operator = (const vector_expression &amp;); vector::operator += (const vector_expression &amp;); vector::operator -= (const vector_expression &amp;); vector::operator *= (const scalar_expression &amp;); matrix::operator = (const matrix_expression &amp;); matrix::operator += (const matrix_expression &amp;); matrix::operator -= (const matrix_expression &amp;); matrix::operator *= (const scalar_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unary operations on vectors and matrices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector_expression operator - (const vector_expression &amp;); matrix_expression operator - (const matrix_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binary operations on vectors and matrices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector_expression operator + (const vector_expression &amp;, const vector_expression &amp;); vector_expression operator - (const vector_expression &amp;, const vector_expression &amp;); matrix_expression operator + (const matrix_expression &amp;, const matrix_expression &amp;); matrix_expression operator - (const matrix_expression &amp;, const matrix_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplication of vectors and matrices with a scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector_expression operator * (const scalar_expression &amp;, const vector_expression &amp;); vector_expression operator * (const vector_expression &amp;, const scalar_expression &amp;); matrix_expression operator * (const scalar_expression &amp;, const matrix_expression &amp;); matrix_expression operator * (const matrix_expression &amp;, const scalar_expression &amp;);</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We decided to use no operator overloading for the following other
+primitives:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left multiplication of vectors with a matrix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector_expression prod&lt;vector_type
+&gt; (const matrix_expression &amp;, const vector_expression &amp;); vector_expression prod (const matrix_expression &amp;, const vector_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right multiplication of vectors with a matrix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vector_expression prod&lt;vector_type
+&gt; (const vector_expression &amp;, const matrix_expression &amp;); vector_expression prod (const vector_expression &amp;, const matrix_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplication of matrices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>matrix_expression prod&lt;matrix_type
+&gt; (const matrix_expression &amp;, const matrix_expression &amp;); matrix_expression prod (const matrix_expression &amp;, const matrix_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inner product of vectors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scalar_expression inner_prod (const vector_expression &amp;, const vector_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outer product of vectors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>matrix_expression outer_prod (const vector_expression &amp;, const vector_expression &amp;);</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transpose of a matrix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>matrix_expression trans (const matrix_expression &amp;);</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="efficiency">Efficiency</h5>
+<div class="paragraph">
+<p>To achieve the goal of efficiency for numerical computing, one has to
+overcome two difficulties in formulating abstractions with C++, namely
+temporaries and virtual function calls. Expression templates solve these
+problems, but tend to slow down compilation times.</p>
+</div>
+<div class="sect5">
+<h6 id="eliminating_temporaries">Eliminating Temporaries</h6>
+<div class="paragraph">
+<p>Abstract formulas on vectors and matrices normally compose a couple of
+unary and binary operations. The conventional way of evaluating such a
+formula is first to evaluate every leaf operation of a composition into
+a temporary and next to evaluate the composite resulting in another
+temporary. This method is expensive in terms of time especially for
+small and space especially for large vectors and matrices. The approach
+to solve this problem is to use lazy evaluation as known from modern
+functional programming languages. The principle of this approach is to
+evaluate a complex expression element wise and to assign it directly to
+the target.</p>
+</div>
+<div class="paragraph">
+<p>Two interesting and dangerous facts result:</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aliases">Aliases</h6>
+<div class="paragraph">
+<p>One may get serious side effects using element wise evaluation on
+vectors or matrices. Consider the matrix vector product <em>x = A x</em>.
+Evaluation of <em>A</em><sub><em>1</em></sub><em>x</em> and assignment to <em>x</em><sub><em>1</em></sub> changes the
+right hand side, so that the evaluation of <em>A</em><sub><em>2</em></sub><em>x</em> returns a wrong
+result. In this case there are <strong>aliases</strong> of the elements <em>x</em><sub><em>n</em></sub> on
+both the left and right hand side of the assignment.</p>
+</div>
+<div class="paragraph">
+<p>Our solution for this problem is to evaluate the right hand side of an
+assignment into a temporary and then to assign this temporary to the
+left hand side. To allow further optimizations, we provide a
+corresponding member function for every assignment operator and also a
+<a href="operations_overview.html#noalias"><code>noalias</code> syntax.</a> By using this
+syntax a programmer can confirm, that the left and right hand sides of
+an assignment are independent, so that element wise evaluation and
+direct assignment to the target is safe.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="complexity">Complexity</h6>
+<div class="paragraph">
+<p>The computational complexity may be unexpectedly large under certain
+cirumstances. Consider the chained matrix vector product <em>A (B x)</em>.
+Conventional evaluation of <em>A (B x)</em> is quadratic. Deferred evaluation
+of <em>B x</em><sub><em>i</em></sub> is linear. As every element <em>B x</em><sub><em>i</em></sub> is needed
+linearly depending of the size, a completely deferred evaluation of the
+chained matrix vector product <em>A (B x)</em> is cubic. In such cases one
+needs to reintroduce temporaries in the expression.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="eliminating_virtual_function_calls">Eliminating Virtual Function Calls</h6>
+<div class="paragraph">
+<p>Lazy expression evaluation normally leads to the definition of a class
+hierarchy of terms. This results in the usage of dynamic polymorphism to
+access single elements of vectors and matrices, which is also known to
+be expensive in terms of time. A solution was found a couple of years
+ago independently by David Vandervoorde and Todd Veldhuizen and is
+commonly called expression templates. Expression templates contain lazy
+evaluation and replace dynamic polymorphism with static, i.e. compile
+time polymorphism. Expression templates heavily depend on the famous
+Barton-Nackman trick, also coined 'curiously defined recursive
+templates' by Jim Coplien.</p>
+</div>
+<div class="paragraph">
+<p>Expression templates form the base of our implementation.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="compilation_times">Compilation times</h6>
+<div class="paragraph">
+<p>It is also a well known fact, that expression templates challenge
+currently available compilers. We were able to significantly reduce the
+amount of needed expression templates using the Barton-Nackman trick
+consequently.</p>
+</div>
+<div class="paragraph">
+<p>We also decided to support a dual conventional implementation (i.e. not
+using expression templates) with extensive bounds and type checking of
+vector and matrix operations to support the development cycle. Switching
+from debug mode to release mode is controlled by the <code>NDEBUG</code>
+preprocessor symbol of <code>&lt;cassert&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Functionality</p>
+</div>
+<div class="paragraph">
+<p>Every C++ library supporting linear algebra will be measured against the
+long-standing Fortran package BLAS. We now describe how BLAS calls may
+be mapped onto our classes.</p>
+</div>
+<div class="paragraph">
+<p>The page <a href="operations_overview.html">Overview of Matrix and Vector
+Operations</a> gives a short summary of the most used operations on vectors
+and matrices.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="blas_level_1">Blas Level 1</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">BLAS Call</th>
+<th class="tableblock halign-left valign-top">Mapped Library Expression</th>
+<th class="tableblock halign-left valign-top">Mathematical Description</th>
+<th class="tableblock halign-left valign-top">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sasum</code> OR <code>dasum</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>norm_1 (x)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sum(mod(x<sub>i</sub>))</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the <em>l<sub>1</sub></em>
+(sum) norm of a real vector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scasum</code> OR <code>dzasum</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>real (sum (v)) + imag (sum (v))</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><em>sum
+re(x<sub>i</sub>) + sum im(x<sub>i</sub>)</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the sum of elements of a complex
+vector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_nrm2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>norm_2 (x)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sqrt sum(mod(x<sub>i</sub>)<sup><em>2</em></sup>)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the
+<em>l<sub>2</sub></em> (euclidean) norm of a vector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>i_amax</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>norm_inf (x) index_norm_inf (x)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>max(mod(x<sub>i</sub>))</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the <em>l<sub>inf</sub></em> (maximum) norm of a vector.<br>
+BLAS computes the index of the first element having this value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_dot _dotu _dotc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inner_prod (x, y)</code> or <code>inner_prod (conj (x), y)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x</em><sup><em>T</em></sup> <em>y</em> or<br>
+<em>x</em><sup><em>H</em></sup> <em>y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the inner product of two vectors.<br>
+BLAS implements certain loop unrollment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dsdot sdsdot</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a + prec_inner_prod (x, y)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>a + x</em><sup><em>T</em></sup> <em>y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the inner product in double precision.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_copy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x = y y.assign (x)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x &#8592; y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copies one vector to
+another.<br>
+BLAS implements certain loop unrollment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_swap</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>swap (x, y)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x &#8592;&#8594; y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Swaps two vectors.<br>
+BLAS implements certain loop unrollment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_scal csscal zdscal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x *= a</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x &#8592; a x</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scales a vector.<br>
+BLAS implements certain loop unrollment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_axpy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>y += a * x</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>y &#8592; a x + y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a scaled vector.<br>
+BLAS implements certain loop unrollment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_rot _rotm csrot zdrot</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t.assign (a * x + b * y), y.assign (- b * x + a * y), x.assign (t)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(x, y) &#8592; (a x + b y, -b x + a y)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Applies a plane rotation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_rotg _rotmg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(a, b) &#8592;<br>
+  (? a / sqrt (a</em><sup><em>2</em></sup> + <em>b</em><sup><em>2</em></sup><em>),<br>
+    ? b / sqrt (a</em><sup><em>2</em></sup> + <em>b</em><sup><em>2</em></sup><em>))</em> or<em><br>
+(1, 0) &#8592; (0, 0)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructs a plane rotation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="blas_level_2">Blas Level 2</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">BLAS Call</th>
+<th class="tableblock halign-left valign-top">Mapped Library Expression</th>
+<th class="tableblock halign-left valign-top">Mathematical Description</th>
+<th class="tableblock halign-left valign-top">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_t_mv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x = prod (A, x)</code> or <code>x = prod (trans (A), x)</code> or <code>x = prod (herm (A), x)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x &#8592; A x</em> or<em> + x &#8592; A</em><sup><em>T</em></sup> <em>x</em> or<em> + x &#8592; A</em><sup><em>H</em></sup> <em>x</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the product of a matrix with a vector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_t_sv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>y = solve (A, x, tag)</code> or<br>
+<code>inplace_solve (A, x, tag)</code> or<br>
+<code>y = solve (trans (A), x, tag)</code> or<br>
+<code>inplace_solve (trans (A), x, tag)</code> or<br>
+<code>y = solve (herm (A), x, tag)`or<br>
+`inplace_solve (herm (A), x, tag)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>y &#8592; A</em><sup><em>-1</em></sup> <em>x</em> or<em><br>
+x &#8592; A</em><sup><em>-1</em></sup> <em>x</em> or<em><br>
+y &#8592; A<sup><em>T</em></sup><sup><em>-1</em></sup> <em>x</em> or</em><br>
+x &#8592; A<sup><em>T</em></sup><sup><em>-1</em></sup> <em>x</em> or<em><br>
+y &#8592; A<sup><em>H</em></sup><sup><em>-1</em></sup> <em>x</em> or</em><br>
+x &#8592; A<sup><em>H</em></sup><sup><em>-1</em></sup> <em>x</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solves a system of linear equations with triangular form, i.e. <em>A</em> is
+triangular.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_g_mv _s_mv _h_mv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>y = a * prod (A, x) + b * y</code> or` y = a * prod (trans (A), x) + b * y`
+or` y = a * prod (herm (A), x) + b * y`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>y &#8592; a A x + b y</em> or<em><br>
+y &#8592; a A</em><sup><em>T</em></sup> <em>x + b y<br>
+y &#8592; a A</em><sup><em>H</em></sup> <em>x + b y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds the scaled product of a matrix with a vector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_g_r _g_ru _g_rc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>A += a * outer_prod (x, y)</code> or` A += a * outer_prod (x, conj (y))`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>A &#8592; a x y</em><sup><em>T</em></sup> <em>+ A</em> or<em><br>
+A &#8592; a x y</em><sup><em>H</em></sup> <em>+ A</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs a rank <em>1</em> update.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_s_r _h_r</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>A += a * outer_prod (x, x)</code> or` A += a * outer_prod (x, conj (x))`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>A &#8592; a x x</em><sup><em>T</em></sup> <em>+ A</em> or<em><br>
+A &#8592; a x x</em><sup><em>H</em></sup> <em>+ A</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs a symmetric or hermitian rank <em>1</em> update.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_s_r2 _h_r2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>A += a * outer_prod (x, y) +  a * outer_prod (y, x))</code>
+or` A += a * outer_prod (x, conj (y)) +  conj (a) * outer_prod (y, conj (x)))`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>A &#8592; a x y</em><sup><em>T</em></sup> <em>+ a y x</em><sup><em>T</em></sup> <em>+ A</em> or<em><br>
+A &#8592; a x y</em><sup><em>H</em></sup> <em>+ a</em><sup><em>-</em></sup> <em>y x</em><sup><em>H</em></sup> <em>+ A</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs a symmetric or hermitian rank <em>2</em> update.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="blas_level_3">Blas Level 3</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">BLAS Call</th>
+<th class="tableblock halign-left valign-top">Mapped Library Expression</th>
+<th class="tableblock halign-left valign-top">Mathematical Description</th>
+<th class="tableblock halign-left valign-top">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_t_mm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>B = a * prod (A, B)</code> or<br>
+<code>B = a * prod (trans (A), B)</code> or<br>
+<code>B = a * prod (A, trans (B))</code> or<br>
+<code>B = a * prod (trans (A), trans (B))</code> or<br>
+<code>B = a * prod (herm (A), B)</code> or<br>
+<code>B = a * prod (A, herm (B))</code> or<br>
+<code>B = a * prod (herm (A), trans (B))</code> or<br>
+<code>B = a * prod (trans (A), herm (B))</code> or<br>
+<code>B = a * prod (herm (A), herm (B))</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>B &#8592; a op (A) op (B)</em> with<br>
+  <em>op (X) = X</em> or<br>
+  <em>op (X) = X</em><sup><em>T</em></sup> or<br>
+  <em>op (X) = X</em><sup><em>H</em></sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computes the scaled product of two matrices.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_t_sm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>C = solve (A, B, tag)</code> or<br>
+<code>inplace_solve (A, B, tag)</code> or<br>
+<code>C = solve (trans (A), B, tag)</code> or` inplace_solve (trans (A), B, tag)`
+or` C = solve (herm (A), B, tag)` or` inplace_solve (herm (A), B, tag)`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>C &#8592; A</em><sup><em>-1</em></sup> <em>B</em> or<em><br>
+B &#8592; A</em><sup><em>-1</em></sup> <em>B</em> or<em><br>
+C &#8592; <em>A</em><sup><em>T</em></sup><sup><em>-1</em></sup> <em>B</em> or</em><br>
+B &#8592; <em>A</em><sup><em>-1</em></sup> <em>B</em> or<em><br>
+C &#8592; <em>A</em><sup><em>H</em></sup><sup><em>-1</em></sup> <em>B</em> or</em><br>
+B &#8592; <em>A</em><sup><em>H</em></sup><sup><em>-1</em></sup> <em>B</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solves a system of linear equations with
+triangular form, i.e. <em>A</em> is triangular.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_g_mm _s_mm _h_mm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>C = a * prod (A, B) + b * C</code> or<br>
+<code>C = a * prod (trans (A), B) + b * C</code> or<br>
+<code>C = a * prod (A, trans (B)) + b * C</code> or<br>
+<code>C = a * prod (trans (A), trans (B)) + b * C</code> or<br>
+<code>C = a * prod (herm (A), B) + b * C</code> or<br>
+<code>C = a * prod (A, herm (B)) + b * C</code> or<br>
+<code>C = a * prod (herm (A), trans (B)) + b * C</code> or<br>
+<code>C = a * prod (trans (A), herm (B)) + b * C</code> or<br>
+<code>C = a * prod (herm (A), herm (B)) + b * C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>C &#8592; a op (A) op (B) + b
+C</em> with<br>
+  <em>op (X) = X</em> or<br>
+  <em>op (X) = X</em><sup><em>T</em></sup> or<br>
+  <em>op (X) = X</em><sup><em>H</em></sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds the scaled product of two matrices.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_s_rk _h_rk</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>B = a * prod (A, trans (A)) + b * B</code> or<br>
+<code>B = a * prod (trans (A), A) + b * B</code> or<br>
+<code>B = a * prod (A, herm (A)) + b * B</code> or<br>
+<code>B = a * prod (herm (A), A) + b * B</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>B &#8592; a A A</em><sup><em>T</em></sup> <em>+ b B</em> or<em><br>
+B &#8592; a A</em><sup><em>T</em></sup> <em>A + b B</em> or<br>
+<em>B &#8592; a A A</em><sup><em>H</em></sup> <em>+ b B</em> or<em><br>
+B &#8592; a A</em><sup><em>H</em></sup> <em>A + b B</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs a symmetric or hermitian rank <em>k</em>
+update.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_s_r2k _h_r2k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>C = a * prod (A, trans (B)) +  a * prod (B, trans (A)) + b * C</code> or<br>
+<code>C = a * prod (trans (A), B) +  a * prod (trans (B), A) + b * C</code> or<br>
+<code>C = a * prod (A, herm (B)) +  conj (a) * prod (B, herm (A)) + b * C</code>
+or<br>
+<code>C = a * prod (herm (A), B) +  conj (a) * prod (herm (B), A) + b * C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>C &#8592; a A B</em><sup><em>T</em></sup> <em>+ a B A</em><sup><em>T</em></sup> <em>+ b C</em> or<em><br>
+C &#8592; a A</em><sup><em>T</em></sup> <em>B + a B</em><sup><em>T</em></sup> <em>A + b C</em> or<em><br>
+C &#8592; a A B</em><sup><em>H</em></sup> <em>+ a</em><sup><em>-</em></sup> <em>B A</em><sup><em>H</em></sup> <em>+ b C</em> or<em><br>
+C &#8592; a A</em><sup><em>H</em></sup> <em>B + a</em><sup><em>-</em></sup> <em>B</em><sup><em>H</em></sup> <em>A + b C</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs a
+symmetric or hermitian rank <em>2 k</em> update.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="storage_layout">Storage Layout</h4>
+<div class="paragraph">
+<p>uBLAS supports many different storage layouts. The full details can be
+found at the <a href="types_overview.html">Overview of Types</a>. Most types
+like <code>vector&lt;double&gt;</code> and <code>matrix&lt;double&gt;</code> are by default compatible to
+C arrays, but can also be configured to contain FORTAN compatible data.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="compatibility">Compatibility</h4>
+<div class="paragraph">
+<p>For compatibility reasons we provide array like indexing for vectors and
+matrices. For some types (hermitian, sparse etc) this can be expensive
+for matrices due to the needed temporary proxy objects.</p>
+</div>
+<div class="paragraph">
+<p>uBLAS uses STL compatible allocators for the allocation of the storage
+required for it&#8217;s containers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="benchmark_results">Benchmark Results</h4>
+<div class="paragraph">
+<p>The following tables contain results of one of our benchmarks. This
+benchmark compares a native C implementation ('C array') and some
+library based implementations. The safe variants based on the library
+assume aliasing, the fast variants do not use temporaries and are
+functionally equivalent to the native C implementation. Besides the
+generic vector and matrix classes the benchmark utilizes special classes
+<code>c_vector</code> and <code>c_matrix</code>, which are intended to avoid every overhead
+through genericity.</p>
+</div>
+<div class="paragraph">
+<p>The benchmark program <strong>bench1</strong> was compiled with GCC 4.0 and run on an
+Athlon 64 3000+. Times are scales for reasonable precision by running
+<strong>bench1 100</strong>.</p>
+</div>
+<div class="paragraph">
+<p>First we comment the results for double vectors and matrices of
+dimension 3 and 3 x 3, respectively.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Comment</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inner_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.61</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">782</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_vector</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">554</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector&lt;unbounded_array&gt;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">467</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector + vector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.51</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1122</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abstraction penalty: factor 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_vector fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">489</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">433</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_vector safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">283</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">82</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outer_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">872</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.88</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">585</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.90</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">572</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">310</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">175</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prod (matrix, vector)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">671</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction
+penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.70</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">613</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.79</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">543</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">452</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.61</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">164</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix + matrix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">686</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.99</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">520</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">399</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">303</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">164</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prod (matrix, matrix)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">457</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction
+penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">367</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">320</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">275</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.06</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">208</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We notice a two fold performance loss for small vectors and matrices:
+first the general abstraction penalty for using classes, and then a
+small loss when using the generic vector and matrix classes. The
+difference w.r.t. alias assumptions is also significant.</p>
+</div>
+<div class="paragraph">
+<p>Next we comment the results for double vectors and matrices of dimension
+100 and 100 x 100, respectively.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Implementation</th>
+<th class="tableblock halign-left valign-top">Elapsed [s]</th>
+<th class="tableblock halign-left valign-top">MFLOP/s</th>
+<th class="tableblock halign-left valign-top">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inner_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">889</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_vector</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">862</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector&lt;unbounded_array&gt;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">862</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector + vector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">894</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_vector fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">867</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">867</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_vector safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">501</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vector&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">465</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outer_prod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1144</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.71</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">806</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.57</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1004</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.91</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">300</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.89</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">643</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prod (matrix, vector)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.65</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">876</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction
+penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.65</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">876</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">863</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix, c_vector safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">863</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt;, vector&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">863</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix + matrix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">596</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">473</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">572</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">235</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">440</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prod (matrix, matrix)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.70</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">813</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No significant abstraction
+penalty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.73</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">780</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.76</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">749</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_matrix safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">759</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matrix&lt;unbounded_array&gt; safe</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.76</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">749</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For larger vectors and matrices the general abstraction penalty for
+using classes seems to decrease, the small loss when using generic
+vector and matrix classes seems to remain. The difference w.r.t. alias
+assumptions remains visible, too.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2000-2002 Joerg Walter, Mathias Koch<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="basic_linear_algebra_library">Basic Linear Algebra Library</h2>
 <div class="sectionbody">
@@ -990,7 +2081,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 05:20:20 UTC
 </div>
 </div>
 </body>
