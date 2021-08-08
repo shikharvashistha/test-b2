@@ -11,6 +11,8 @@ using asciidoctor ;
 
 html ublas : ublas.adoc ;
 
+html index : ublas/index.adoc ;
+
 html tensor/strides : ublas/tensor/strides.adoc ;
 
 html tensor/extents : ublas/tensor/extents.adoc ;

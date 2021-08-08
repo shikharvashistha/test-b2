@@ -14,9 +14,9 @@ Distributed under the Boost Software License, Version 1.0.
 
 :leveloffset: +1
 ////
-include::ublas/overview.adoc[]
-include::ublas/changelog.adoc[]
 include::ublas/index.adoc[]
+include::ublas/overview.adoc[]
+include::ublas/tensor.adoc[]
 ////
 :leveloffset: -1
 
