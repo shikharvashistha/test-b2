@@ -10,6 +10,7 @@
 
 using asciidoctor ;
 
+
 html index : index.adoc ;
 
 html tensor/extents : ublas/tensor/extents.adoc ;
@@ -72,20 +73,16 @@ html vector_sparse : ublas/vector_sparse.adoc ;
 
 html vector : ublas/vector.adoc ;
 
-#install html_ : ublas.html : <location>html ;
+install html_ : index.adoc : <location>html ;
 
-pdf ublas.pdf : ublas.adoc ;
+pdf index.pdf : index.adoc ;
+explicit index.pdf ;
 
-explicit ublas.pdf ;
-
-install pdf_ : ublas.pdf : <location>pdf ;
-
+install pdf_ : index.pdf : <location>pdf ;
 explicit pdf_ ;
 
 alias boostdoc ;
-
 explicit boostdoc ;
 
 alias boostrelease : html_ ;
-
 explicit boostrelease ;
