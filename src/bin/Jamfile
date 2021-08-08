@@ -2,7 +2,7 @@ using asciidoctor ;
 
 html ublas.html : ublas.adoc ;
 
-install html_ : ublas.html : <location>../ ;
+install html_ : ublas.html : <location>html ;
 
 pdf ublas.pdf : ublas.adoc ;
 
