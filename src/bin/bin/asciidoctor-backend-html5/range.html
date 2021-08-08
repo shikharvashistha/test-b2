@@ -436,28 +436,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#range_and_slice_storage">Range and Slice Storage</a>
-<ul class="sectlevel2">
-<li><a href="#toc"><span id="range">Range&lt;SizeType,DistanceType&gt;</span></a></li>
-<li><a href="#slicesizetypedistancetype"><span id="slice">Slice&lt;SizeType,DistanceType&gt;</span></a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="range_and_slice_storage">Range and Slice Storage</h2>
+<h2 id="_range_and_slice_storage">Range and Slice Storage</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="range">Range&lt;SizeType,DistanceType&gt;</span></h3>
 <div class="sect3">
-<h4 id="description">Description</h4>
+<h4 id="_description">Description</h4>
 <div class="paragraph">
 <p>The class <code>range</code> specifies a range of indicies. The range is a sequence
 of indices from a start value to stop value. The indices increase by one
@@ -466,7 +455,7 @@ ranges of elements from vectors and matrices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example">Example</h4>
+<h4 id="_example">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage.hpp&gt;
@@ -482,32 +471,32 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition">Definition</h4>
+<h4 id="_definition">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header storage.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="model_of">Model of</h4>
+<h4 id="_model_of">Model of</h4>
 <div class="paragraph">
 <p>Reversible Container.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements">Type requirements</h4>
+<h4 id="_type_requirements">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Reversible
 Container.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes">Public base classes</h4>
+<h4 id="_public_base_classes">Public base classes</h4>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members">Members</h4>
+<h4 id="_members">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -578,7 +567,7 @@ the end of the <code>range</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="preconditions">Preconditions</h4>
+<h4 id="_preconditions">Preconditions</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -589,9 +578,9 @@ the end of the <code>range</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="slicesizetypedistancetype"><span id="slice">Slice&lt;SizeType,DistanceType&gt;</span></h3>
+<h3 id="_slicesizetypedistancetype"><span id="slice">Slice&lt;SizeType,DistanceType&gt;</span></h3>
 <div class="sect3">
-<h4 id="description_2">Description</h4>
+<h4 id="_description_2">Description</h4>
 <div class="paragraph">
 <p>The class <code>slice</code> specifies a 'slice' of indicies. Slices are more
 general then ranges, the stride allows the sequence of indicies to
@@ -601,7 +590,7 @@ matrices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_2">Example</h4>
+<h4 id="_example_2">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage.hpp&gt;
@@ -617,32 +606,32 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_2">Definition</h4>
+<h4 id="_definition_2">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header storage.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="model_of_2">Model of</h4>
+<h4 id="_model_of_2">Model of</h4>
 <div class="paragraph">
 <p>Reversible Container.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_2">Type requirements</h4>
+<h4 id="_type_requirements_2">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Reversible
 Container.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_2">Public base classes</h4>
+<h4 id="_public_base_classes_2">Public base classes</h4>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_2">Members</h4>
+<h4 id="_members_2">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -725,7 +714,7 @@ the end of the <code>slice</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="preconditions_2">Preconditions</h4>
+<h4 id="_preconditions_2">Preconditions</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -751,7 +740,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 06:03:31 UTC
+Last updated 2021-08-08 06:09:16 UTC
 </div>
 </div>
 </body>

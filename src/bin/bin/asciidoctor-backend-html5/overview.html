@@ -436,27 +436,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#ublas_overview">uBLAS Overview</a>
-<ul class="sectlevel2">
-<li><a href="#toc">Rationale</a></li>
-<li><a href="#resources">Resources</a></li>
-<li><a href="#concepts">Concepts</a></li>
-<li><a href="#storage_layout">Storage Layout</a></li>
-<li><a href="#compatibility">Compatibility</a></li>
-<li><a href="#benchmark_results">Benchmark Results</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="ublas_overview">uBLAS Overview</h2>
+<h2 id="_ublas_overview">uBLAS Overview</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc">Rationale</h3>
@@ -494,7 +479,7 @@ from the use of such matrix and vector classes is acceptable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="resources">Resources</h3>
+<h3 id="_resources">Resources</h3>
 <div class="paragraph">
 <p>The development of this library was guided by a couple of similar
 efforts:</p>
@@ -561,9 +546,9 @@ or a possible loss of performance.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="concepts">Concepts</h3>
+<h3 id="_concepts">Concepts</h3>
 <div class="sect3">
-<h4 id="mathematical_notation">Mathematical Notation</h4>
+<h4 id="_mathematical_notation">Mathematical Notation</h4>
 <div class="paragraph">
 <p>The usage of mathematical notation may ease the development of
 scientific algorithms. So a C library implementing basic linear
@@ -654,7 +639,7 @@ primitives:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="efficiency">Efficiency</h4>
+<h4 id="_efficiency">Efficiency</h4>
 <div class="paragraph">
 <p>To achieve the goal of efficiency for numerical computing, one has to
 overcome two difficulties in formulating abstractions with C++, namely
@@ -662,7 +647,7 @@ temporaries and virtual function calls. Expression templates solve these
 problems, but tend to slow down compilation times.</p>
 </div>
 <div class="sect4">
-<h5 id="eliminating_temporaries">Eliminating Temporaries</h5>
+<h5 id="_eliminating_temporaries">Eliminating Temporaries</h5>
 <div class="paragraph">
 <p>Abstract formulas on vectors and matrices normally compose a couple of
 unary and binary operations. The conventional way of evaluating such a
@@ -680,7 +665,7 @@ the target.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aliases">Aliases</h5>
+<h5 id="_aliases">Aliases</h5>
 <div class="paragraph">
 <p>One may get serious side effects using element wise evaluation on
 vectors or matrices. Consider the matrix vector product <em>x = A x</em>.
@@ -701,7 +686,7 @@ direct assignment to the target is safe.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="complexity">Complexity</h5>
+<h5 id="_complexity">Complexity</h5>
 <div class="paragraph">
 <p>The computational complexity may be unexpectedly large under certain
 cirumstances. Consider the chained matrix vector product <em>A (B x)</em>.
@@ -713,7 +698,7 @@ needs to reintroduce temporaries in the expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="eliminating_virtual_function_calls">Eliminating Virtual Function Calls</h5>
+<h5 id="_eliminating_virtual_function_calls">Eliminating Virtual Function Calls</h5>
 <div class="paragraph">
 <p>Lazy expression evaluation normally leads to the definition of a class
 hierarchy of terms. This results in the usage of dynamic polymorphism to
@@ -731,7 +716,7 @@ templates' by Jim Coplien.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="compilation_times">Compilation times</h5>
+<h5 id="_compilation_times">Compilation times</h5>
 <div class="paragraph">
 <p>It is also a well known fact, that expression templates challenge
 currently available compilers. We were able to significantly reduce the
@@ -760,7 +745,7 @@ and matrices.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="blas_level_1">Blas Level 1</h5>
+<h5 id="_blas_level_1">Blas Level 1</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -868,7 +853,7 @@ BLAS implements certain loop unrollment.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="blas_level_2">Blas Level 2</h5>
+<h5 id="_blas_level_2">Blas Level 2</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -943,7 +928,7 @@ A &#8592; a x y</em><sup><em>H</em></sup> <em>+ a</em><sup><em>-</em></sup> <em>
 </table>
 </div>
 <div class="sect4">
-<h5 id="blas_level_3">Blas Level 3</h5>
+<h5 id="_blas_level_3">Blas Level 3</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1043,7 +1028,7 @@ symmetric or hermitian rank <em>2 k</em> update.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="storage_layout">Storage Layout</h3>
+<h3 id="_storage_layout">Storage Layout</h3>
 <div class="paragraph">
 <p>uBLAS supports many different storage layouts. The full details can be
 found at the <a href="types_overview.html">Overview of Types</a>. Most types
@@ -1052,7 +1037,7 @@ C arrays, but can also be configured to contain FORTAN compatible data.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="compatibility">Compatibility</h3>
+<h3 id="_compatibility">Compatibility</h3>
 <div class="paragraph">
 <p>For compatibility reasons we provide array like indexing for vectors and
 matrices. For some types (hermitian, sparse etc) this can be expensive
@@ -1064,7 +1049,7 @@ required for it&#8217;s containers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="benchmark_results">Benchmark Results</h3>
+<h3 id="_benchmark_results">Benchmark Results</h3>
 <div class="paragraph">
 <p>The following tables contain results of one of our benchmarks. This
 benchmark compares a native C implementation ('C array') and some
@@ -1550,7 +1535,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 06:03:23 UTC
+Last updated 2021-08-08 06:09:06 UTC
 </div>
 </div>
 </body>

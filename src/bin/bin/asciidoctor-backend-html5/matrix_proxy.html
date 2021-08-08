@@ -436,38 +436,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#matrix_proxies">Matrix Proxies</a>
-<ul class="sectlevel2">
-<li><a href="#toc"><span id="matrix_row">Matrix Row</span></a></li>
-<li><a href="#matrix_column"><span id="matrix_column">Matrix Column</span></a></li>
-<li><a href="#vector_range"><span id="vector_range">Vector Range</span></a></li>
-<li><a href="#vector_slice"><span id="vector_slice">Vector Slice</span></a></li>
-<li><a href="#matrix_range"><span id="matrix_range">Matrix Range</span></a></li>
-<li><a href="#matrix_slice"><span id="matrix_slice">Matrix Slice</span></a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="matrix_proxies">Matrix Proxies</h2>
+<h2 id="_matrix_proxies">Matrix Proxies</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="matrix_row">Matrix Row</span></h3>
 <div class="sect3">
-<h4 id="description">Description</h4>
+<h4 id="_description">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>matrix_row&lt;M&gt;</code> allows addressing a row of a matrix.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example">Example</h4>
+<h4 id="_example">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -488,13 +473,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition">Definition</h4>
+<h4 id="_definition">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters">Template parameters</h4>
+<h4 id="_template_parameters">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -516,7 +501,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of">Model of</h4>
+<h4 id="_model_of">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
@@ -528,20 +513,20 @@ That is, access to an element which is outside of the matrix is
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements">Type requirements</h4>
+<h4 id="_type_requirements">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes">Public base classes</h4>
+<h4 id="_public_base_classes">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_expression&lt;matrix_row&lt;M&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members">Members</h4>
+<h4 id="_members">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -671,15 +656,15 @@ the end of the reversed <code>matrix_row</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="projections">Projections</h4>
+<h4 id="_projections">Projections</h4>
 <div class="sect4">
-<h5 id="description_2">Description</h5>
+<h5 id="_description_2">Description</h5>
 <div class="paragraph">
 <p>The free <code>row</code> functions support the construction of matrix rows.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="prototypes">Prototypes</h5>
+<h5 id="_prototypes">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">    template&lt;class M&gt;
@@ -690,13 +675,13 @@ the end of the reversed <code>matrix_row</code>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_2">Definition</h5>
+<h5 id="_definition_2">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_2">Type requirements</h5>
+<h5 id="_type_requirements_2">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -707,13 +692,13 @@ the end of the reversed <code>matrix_row</code>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="complexity">Complexity</h5>
+<h5 id="_complexity">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="examples">Examples</h5>
+<h5 id="_examples">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -735,16 +720,16 @@ int main () {
 </div>
 </div>
 <div class="sect2">
-<h3 id="matrix_column"><span id="matrix_column">Matrix Column</span></h3>
+<h3 id="_matrix_column"><span id="matrix_column">Matrix Column</span></h3>
 <div class="sect3">
-<h4 id="description_3">Description</h4>
+<h4 id="_description_3">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>matrix_column&lt;M&gt;</code> allows addressing a column of a
 matrix.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_2">Example</h4>
+<h4 id="_example_2">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -765,13 +750,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_3">Definition</h4>
+<h4 id="_definition_3">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters_2">Template parameters</h4>
+<h4 id="_template_parameters_2">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -793,7 +778,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of_2">Model of</h4>
+<h4 id="_model_of_2">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
@@ -805,20 +790,20 @@ is <em>undefined</em>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_3">Type requirements</h4>
+<h4 id="_type_requirements_3">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_2">Public base classes</h4>
+<h4 id="_public_base_classes_2">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_expression&lt;matrix_column&lt;M&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_2">Members</h4>
+<h4 id="_members_2">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -949,15 +934,15 @@ the end of the reversed <code>matrix_column</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="projections_2">Projections</h4>
+<h4 id="_projections_2">Projections</h4>
 <div class="sect4">
-<h5 id="description_4">Description</h5>
+<h5 id="_description_4">Description</h5>
 <div class="paragraph">
 <p>The free <code>column</code> functions support the construction of matrix columns.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="prototypes_2">Prototypes</h5>
+<h5 id="_prototypes_2">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">    template&lt;class M&gt;
@@ -968,13 +953,13 @@ the end of the reversed <code>matrix_column</code>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_4">Definition</h5>
+<h5 id="_definition_4">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_4">Type requirements</h5>
+<h5 id="_type_requirements_4">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -985,13 +970,13 @@ the end of the reversed <code>matrix_column</code>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="complexity_2">Complexity</h5>
+<h5 id="_complexity_2">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the column.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="examples_2">Examples</h5>
+<h5 id="_examples_2">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1013,16 +998,16 @@ int main () {
 </div>
 </div>
 <div class="sect2">
-<h3 id="vector_range"><span id="vector_range">Vector Range</span></h3>
+<h3 id="_vector_range"><span id="vector_range">Vector Range</span></h3>
 <div class="sect3">
-<h4 id="description_5">Description</h4>
+<h4 id="_description_5">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>matrix_vector_range&lt;M&gt;</code> allows addressing a sub
 vector of a matrix.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_3">Example</h4>
+<h4 id="_example_3">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1043,13 +1028,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_5">Definition</h4>
+<h4 id="_definition_5">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters_3">Template parameters</h4>
+<h4 id="_template_parameters_3">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1071,7 +1056,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of_3">Model of</h4>
+<h4 id="_model_of_3">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
@@ -1083,20 +1068,20 @@ is <em>undefined</em>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_5">Type requirements</h4>
+<h4 id="_type_requirements_5">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_3">Public base classes</h4>
+<h4 id="_public_base_classes_3">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_expression&lt;matrix_vector_range&lt;M&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_3">Members</h4>
+<h4 id="_members_3">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1227,16 +1212,16 @@ the end of the reversed <code>matrix_vector_range</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="vector_slice"><span id="vector_slice">Vector Slice</span></h3>
+<h3 id="_vector_slice"><span id="vector_slice">Vector Slice</span></h3>
 <div class="sect3">
-<h4 id="description_6">Description</h4>
+<h4 id="_description_6">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>matrix_vector_slice&lt;M&gt;</code> allows addressing a sliced
 sub vector of a matrix.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_4">Example</h4>
+<h4 id="_example_4">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1257,13 +1242,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_6">Definition</h4>
+<h4 id="_definition_6">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters_4">Template parameters</h4>
+<h4 id="_template_parameters_4">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1285,7 +1270,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of_4">Model of</h4>
+<h4 id="_model_of_4">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
@@ -1297,20 +1282,20 @@ is <em>undefined</em>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_6">Type requirements</h4>
+<h4 id="_type_requirements_6">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_4">Public base classes</h4>
+<h4 id="_public_base_classes_4">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_expression&lt;matrix_vector_slice&lt;M&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_4">Members</h4>
+<h4 id="_members_4">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1441,16 +1426,16 @@ the end of the reversed <code>matrix_vector_slice</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matrix_range"><span id="matrix_range">Matrix Range</span></h3>
+<h3 id="_matrix_range"><span id="matrix_range">Matrix Range</span></h3>
 <div class="sect3">
-<h4 id="description_7">Description</h4>
+<h4 id="_description_7">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>matrix_range&lt;M&gt;</code> allows addressing a sub matrix of
 a matrix.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_5">Example</h4>
+<h4 id="_example_5">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1470,13 +1455,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_7">Definition</h4>
+<h4 id="_definition_7">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters_5">Template parameters</h4>
+<h4 id="_template_parameters_5">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1498,7 +1483,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of_5">Model of</h4>
+<h4 id="_model_of_5">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
@@ -1510,20 +1495,20 @@ That is, access to an element which is outside of the matrix is
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_7">Type requirements</h4>
+<h4 id="_type_requirements_7">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_5">Public base classes</h4>
+<h4 id="_public_base_classes_5">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_expression&lt;matrix_range&lt;M&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_5">Members</h4>
+<h4 id="_members_5">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1707,15 +1692,15 @@ the end of reversed the <code>matrix_range</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_projections">Simple Projections</h4>
+<h4 id="_simple_projections">Simple Projections</h4>
 <div class="sect4">
-<h5 id="description_8">Description</h5>
+<h5 id="_description_8">Description</h5>
 <div class="paragraph">
 <p>The free <code>subrange</code> functions support the construction of matrix ranges.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="prototypes_3">Prototypes</h5>
+<h5 id="_prototypes_3">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">    template&lt;class M&gt;
@@ -1729,9 +1714,9 @@ the end of reversed the <code>matrix_range</code>.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="generic_projections">Generic Projections</h4>
+<h4 id="_generic_projections">Generic Projections</h4>
 <div class="sect4">
-<h5 id="description_9">Description</h5>
+<h5 id="_description_9">Description</h5>
 <div class="paragraph">
 <p>The free <code>project</code> functions support the construction of matrix ranges.
 Existing <code>matrix_range&#8217;s can be composed with further ranges. The
@@ -1740,7 +1725,7 @@ function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="prototypes_4">Prototypes</h5>
+<h5 id="_prototypes_4">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">    template&lt;class M&gt;
@@ -1755,13 +1740,13 @@ function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_8">Definition</h5>
+<h5 id="_definition_8">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_8">Type requirements</h5>
+<h5 id="_type_requirements_8">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1772,13 +1757,13 @@ function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="complexity_3">Complexity</h5>
+<h5 id="_complexity_3">Complexity</h5>
 <div class="paragraph">
 <p>Quadratic depending from the size of the ranges.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="examples_3">Examples</h5>
+<h5 id="_examples_3">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1799,16 +1784,16 @@ int main () {
 </div>
 </div>
 <div class="sect2">
-<h3 id="matrix_slice"><span id="matrix_slice">Matrix Slice</span></h3>
+<h3 id="_matrix_slice"><span id="matrix_slice">Matrix Slice</span></h3>
 <div class="sect3">
-<h4 id="description_10">Description</h4>
+<h4 id="_description_10">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>matrix_slice&lt;M&gt;</code> allows addressing a sliced sub
 matrix of a matrix.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_6">Example</h4>
+<h4 id="_example_6">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1828,13 +1813,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_9">Definition</h4>
+<h4 id="_definition_9">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters_6">Template parameters</h4>
+<h4 id="_template_parameters_6">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1856,7 +1841,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of_6">Model of</h4>
+<h4 id="_model_of_6">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
@@ -1868,20 +1853,20 @@ That is, access to an element which is outside of the matrix is
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_9">Type requirements</h4>
+<h4 id="_type_requirements_9">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_6">Public base classes</h4>
+<h4 id="_public_base_classes_6">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_expression&lt;matrix_slice&lt;M&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_6">Members</h4>
+<h4 id="_members_6">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -2058,15 +2043,15 @@ the end of the reversed <code>matrix_slice</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_projections_2">Simple Projections</h4>
+<h4 id="_simple_projections_2">Simple Projections</h4>
 <div class="sect4">
-<h5 id="description_11">Description</h5>
+<h5 id="_description_11">Description</h5>
 <div class="paragraph">
 <p>The free <code>subslice</code> functions support the construction of matrix slices.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="prototypes_5">Prototypes</h5>
+<h5 id="_prototypes_5">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">    template&lt;class M&gt;
@@ -2082,9 +2067,9 @@ the end of the reversed <code>matrix_slice</code>.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="generic_projections_2">Generic Projections</h4>
+<h4 id="_generic_projections_2">Generic Projections</h4>
 <div class="sect4">
-<h5 id="description_12">Description</h5>
+<h5 id="_description_12">Description</h5>
 <div class="paragraph">
 <p>The free <code>project</code> functions support the construction of matrix slices.
 Existing <code>matrix_slice</code> 's can be composed with further ranges or slices.
@@ -2093,7 +2078,7 @@ function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="prototypes_6">Prototypes</h5>
+<h5 id="_prototypes_6">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">    template&lt;class M&gt;
@@ -2112,13 +2097,13 @@ function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_10">Definition</h5>
+<h5 id="_definition_10">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header matrix_proxy.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_10">Type requirements</h5>
+<h5 id="_type_requirements_10">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2129,13 +2114,13 @@ function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="complexity_4">Complexity</h5>
+<h5 id="_complexity_4">Complexity</h5>
 <div class="paragraph">
 <p>Quadratic depending from the size of the slices.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="examples_4">Examples</h5>
+<h5 id="_examples_4">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -2168,7 +2153,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 06:03:01 UTC
+Last updated 2021-08-08 06:08:49 UTC
 </div>
 </div>
 </body>

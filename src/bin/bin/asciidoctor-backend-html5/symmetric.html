@@ -436,28 +436,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#symmetric_matrix">Symmetric Matrix</a>
-<ul class="sectlevel2">
-<li><a href="#toc"><span id="symmetric_matrix">Symmetric Matrix</span></a></li>
-<li><a href="#symmetric_adaptor"><span id="symmetric_adaptor">Symmetric Adaptor</span></a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="symmetric_matrix">Symmetric Matrix</h2>
+<h2 id="_symmetric_matrix">Symmetric Matrix</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="symmetric_matrix">Symmetric Matrix</span></h3>
 <div class="sect3">
-<h4 id="description">Description</h4>
+<h4 id="_description">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>symmetric_matrix&lt;T, F1, F2, A&gt;</code> is the base
 container adaptor for symmetric matrices. For a <em>(n x n</em> )-dimensional
@@ -466,7 +455,7 @@ symmetric matrix and <em>0 &lt; = i &lt; n</em>, <em>0 &lt; = j &lt; n</em> hold
 </div>
 </div>
 <div class="sect3">
-<h4 id="example">Example</h4>
+<h4 id="_example">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/symmetric.hpp&gt;
@@ -489,13 +478,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition">Definition</h4>
+<h4 id="_definition">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header symmetric.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters">Template parameters</h4>
+<h4 id="_template_parameters">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -536,26 +525,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of">Model of</h4>
+<h4 id="_model_of">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements">Type requirements</h4>
+<h4 id="_type_requirements">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes">Public base classes</h4>
+<h4 id="_public_base_classes">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_container&lt;symmetric_matrix&lt;T, F1, F2, A&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members">Members</h4>
+<h4 id="_members">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -763,7 +752,7 @@ the end of the reversed <code>symmetric_matrix</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notes">Notes</h4>
+<h4 id="_notes">Notes</h4>
 <div class="paragraph">
 <p><span id="symmetric_matrix_1">[1]</span> Supported parameters for the type of the
 symmetric matrix are <code>lower</code> and <code>upper</code>.</p>
@@ -779,16 +768,16 @@ are <code>unbounded_array&lt;T&gt;</code> , <code>bounded_array&lt;T&gt;</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="symmetric_adaptor"><span id="symmetric_adaptor">Symmetric Adaptor</span></h3>
+<h3 id="_symmetric_adaptor"><span id="symmetric_adaptor">Symmetric Adaptor</span></h3>
 <div class="sect3">
-<h4 id="description_2">Description</h4>
+<h4 id="_description_2">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>symmetric_adaptor&lt;M, F&gt;</code> is a symmetric matrix
 adaptor for other matrices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="example_2">Example</h4>
+<h4 id="_example_2">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/symmetric.hpp&gt;
@@ -812,13 +801,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="definition_2">Definition</h4>
+<h4 id="_definition_2">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header symmetric.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="template_parameters_2">Template parameters</h4>
+<h4 id="_template_parameters_2">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -848,26 +837,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="model_of_2">Model of</h4>
+<h4 id="_model_of_2">Model of</h4>
 <div class="paragraph">
 <p><a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="type_requirements_2">Type requirements</h4>
+<h4 id="_type_requirements_2">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="public_base_classes_2">Public base classes</h4>
+<h4 id="_public_base_classes_2">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_expression&lt;symmetric_adaptor&lt;M, F&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members_2">Members</h4>
+<h4 id="_members_2">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1060,7 +1049,7 @@ the end of the reversed <code>symmetric_adaptor</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notes_2">Notes</h4>
+<h4 id="_notes_2">Notes</h4>
 <div class="paragraph">
 <p><span id="symmetric_adaptor_1">[1]</span> Supported parameters for the type of the
 symmetric adaptor are <code>lower</code> and <code>upper</code>.</p>
@@ -1080,7 +1069,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 06:03:47 UTC
+Last updated 2021-08-08 06:09:30 UTC
 </div>
 </div>
 </body>

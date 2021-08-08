@@ -436,47 +436,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#iterator_concepts">Iterator Concepts</a>
-<ul class="sectlevel2">
-<li><a href="#indexed_bidirectional_iterator"><span id="indexed_bidirectional_iterator">Indexed Bidirectional Iterator</span></a></li>
-<li><a href="#indexed_random_access_iterator"><span id="indexed_random_access_iterator">Indexed Random Access Iterator</span></a></li>
-<li><a href="#indexed_bidirectional_columnrow_iterator"><span id="indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row Iterator</span></a></li>
-<li><a href="#indexed_random_access_columnrow_iterator"><span id="indexed_random_access_cr_iterator">Indexed Random Access Column/Row Iterator</span></a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="iterator_concepts">Iterator Concepts</h2>
+<h2 id="_iterator_concepts">Iterator Concepts</h2>
 <div class="sectionbody">
 <div id="toc" class="paragraph">
 <p>An Iterator is a restricted pointer-like object pointing into a vector
 or matrix container.</p>
 </div>
 <div class="sect2">
-<h3 id="indexed_bidirectional_iterator"><span id="indexed_bidirectional_iterator">Indexed Bidirectional Iterator</span></h3>
+<h3 id="_indexed_bidirectional_iterator"><span id="indexed_bidirectional_iterator">Indexed Bidirectional Iterator</span></h3>
 <div class="sect3">
-<h4 id="description">Description</h4>
+<h4 id="_description">Description</h4>
 <div class="paragraph">
 <p>An Indexed Bidirectional Iterator is an iterator of a container that can
 be dereferenced, incremented, decremented and carries index information.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of">Refinement of</h4>
+<h4 id="_refinement_of">Refinement of</h4>
 <div class="paragraph">
 <p>Assignable, Equality Comparable, Default Constructible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types">Associated types</h4>
+<h4 id="_associated_types">Associated types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -497,7 +484,7 @@ Iterator points into.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notation">Notation</h4>
+<h4 id="_notation">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -532,7 +519,7 @@ Iterator points into.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions">Definitions</h4>
+<h4 id="_definitions">Definitions</h4>
 <div class="paragraph">
 <p>A Indexed Bidirectional Iterator may be <em>mutable</em>, meaning that the
 values referred to by objects of that type may be modified, or
@@ -559,7 +546,7 @@ nondereferenceable.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="valid_expressions">Valid expressions</h4>
+<h4 id="_valid_expressions">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined for Assignable, Equality
 Comparable and Default Constructible, the following expressions must be
@@ -637,7 +624,7 @@ valid.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics">Expression Semantics</h4>
+<h4 id="_expression_semantics">Expression Semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in, Assignable, Equality Comparable and Default
@@ -751,14 +738,14 @@ then <code>it1.index () &gt; (-- it2).index ()</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The complexity of operations on indexed bidirectional iterators is
 guaranteed to be amortized constant time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants">Invariants</h4>
+<h4 id="_invariants">Invariants</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -786,7 +773,7 @@ is dereferenceable, <code>*it == it () (it.index ())</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="models">Models</h4>
+<h4 id="_models">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -797,9 +784,9 @@ is dereferenceable, <code>*it == it () (it.index ())</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="indexed_random_access_iterator"><span id="indexed_random_access_iterator">Indexed Random Access Iterator</span></h3>
+<h3 id="_indexed_random_access_iterator"><span id="indexed_random_access_iterator">Indexed Random Access Iterator</span></h3>
 <div class="sect3">
-<h4 id="description_2">Description</h4>
+<h4 id="_description_2">Description</h4>
 <div class="paragraph">
 <p>An Indexed Random Access Iterator is an iterator of a container that can
 be dereferenced, moved forward, moved backward and carries index
@@ -807,14 +794,14 @@ information.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of_2">Refinement of</h4>
+<h4 id="_refinement_of_2">Refinement of</h4>
 <div class="paragraph">
 <p>LessThanComparable, <a href="#indexed_bidirectional_iterator">Indexed
 Bidirectional Iterator</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types_2">Associated types</h4>
+<h4 id="_associated_types_2">Associated types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -835,7 +822,7 @@ Iterator points into.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notation_2">Notation</h4>
+<h4 id="_notation_2">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -870,7 +857,7 @@ Iterator points into.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions_2">Definitions</h4>
+<h4 id="_definitions_2">Definitions</h4>
 <div class="paragraph">
 <p>An Indexed Random Access Iterator <code>it1</code> is <em>reachable</em> from an Indexed
 Random Access Iterator <code>it2</code> if, after applying <code>operator ++</code> to <code>it2</code> a
@@ -878,7 +865,7 @@ finite number of times, <code>it1 == it2</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="valid_expressions_2">Valid expressions</h4>
+<h4 id="_valid_expressions_2">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined for
 <a href="#indexed_bidirectional_iterator">Indexed Bidirectional Iterator</a> ,
@@ -944,7 +931,7 @@ the following expressions must be valid.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics_2">Expression Semantics</h4>
+<h4 id="_expression_semantics_2">Expression Semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in, <a href="#indexed_bidirectional_iterator">Indexed
@@ -1035,14 +1022,14 @@ is reachable from <code>it1</code>, or both.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees_2">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees_2">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The complexity of operations on indexed random access iterators is
 guaranteed to be amortized constant time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants_2">Invariants</h4>
+<h4 id="_invariants_2">Invariants</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1070,7 +1057,7 @@ then <code>it1 == it2 + (it1 - it2)</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="models_2">Models</h4>
+<h4 id="_models_2">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1081,9 +1068,9 @@ then <code>it1 == it2 + (it1 - it2)</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="indexed_bidirectional_columnrow_iterator"><span id="indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row Iterator</span></h3>
+<h3 id="_indexed_bidirectional_columnrow_iterator"><span id="indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row Iterator</span></h3>
 <div class="sect3">
-<h4 id="description_3">Description</h4>
+<h4 id="_description_3">Description</h4>
 <div class="paragraph">
 <p>An Indexed Bidirectional Column/Row Iterator is an iterator of a
 container that can be dereferenced, incremented, decremented and carries
@@ -1091,13 +1078,13 @@ index information.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of_3">Refinement of</h4>
+<h4 id="_refinement_of_3">Refinement of</h4>
 <div class="paragraph">
 <p>Assignable, Equality Comparable, Default Constructible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types_3">Associated types</h4>
+<h4 id="_associated_types_3">Associated types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1118,7 +1105,7 @@ Column/Row Iterator points into.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notation_3">Notation</h4>
+<h4 id="_notation_3">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1163,11 +1150,11 @@ Iterator</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions_3">Definitions</h4>
+<h4 id="_definitions_3">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="valid_expressions_3">Valid expressions</h4>
+<h4 id="_valid_expressions_3">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined for Assignable, Equality
 Comparable and Default Constructible, the following expressions must be
@@ -1275,7 +1262,7 @@ valid.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics_3">Expression Semantics</h4>
+<h4 id="_expression_semantics_3">Expression Semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in, Assignable, Equality Comparable and Default
@@ -1456,7 +1443,7 @@ with <code>it2.index2 () == it.index2 ()</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees_3">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees_3">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The complexity of operations on indexed bidirectional column/row
 iterators is guaranteed to be logarithmic depending on the size of the
@@ -1468,7 +1455,7 @@ column respectively.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants_3">Invariants</h4>
+<h4 id="_invariants_3">Invariants</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1522,7 +1509,7 @@ and <code>it2t ().index2 () == it2 ().index2 ()</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="models_3">Models</h4>
+<h4 id="_models_3">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1536,9 +1523,9 @@ and <code>it2t ().index2 () == it2 ().index2 ()</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="indexed_random_access_columnrow_iterator"><span id="indexed_random_access_cr_iterator">Indexed Random Access Column/Row Iterator</span></h3>
+<h3 id="_indexed_random_access_columnrow_iterator"><span id="indexed_random_access_cr_iterator">Indexed Random Access Column/Row Iterator</span></h3>
 <div class="sect3">
-<h4 id="description_4">Description</h4>
+<h4 id="_description_4">Description</h4>
 <div class="paragraph">
 <p>An Indexed Random Access Column/Row Iterator is an iterator of a
 container that can be dereferenced, incremented, decremented and carries
@@ -1546,14 +1533,14 @@ index information.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of_4">Refinement of</h4>
+<h4 id="_refinement_of_4">Refinement of</h4>
 <div class="paragraph">
 <p><a href="#indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row
 Iterator</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types_4">Associated types</h4>
+<h4 id="_associated_types_4">Associated types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1574,7 +1561,7 @@ Column/Row Iterator points into.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notation_4">Notation</h4>
+<h4 id="_notation_4">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1610,11 +1597,11 @@ Iterator</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions_4">Definitions</h4>
+<h4 id="_definitions_4">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="valid_expressions_4">Valid expressions</h4>
+<h4 id="_valid_expressions_4">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined for
 <a href="#indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row
@@ -1680,7 +1667,7 @@ Iterator</a> , the following expressions must be valid.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics_4">Expression Semantics</h4>
+<h4 id="_expression_semantics_4">Expression Semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in, <a href="#indexed_bidirectional_cr_iterator">Indexed
@@ -1771,14 +1758,14 @@ is reachable from <code>it1</code>, or both.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees_4">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees_4">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The complexity of operations on indexed random access Column/Row
 iterators is guaranteed to be amortized constant time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants_4">Invariants</h4>
+<h4 id="_invariants_4">Invariants</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1806,7 +1793,7 @@ then <code>it1 == it2 + (it1 - it2)</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="models_4">Models</h4>
+<h4 id="_models_4">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1832,7 +1819,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 06:02:52 UTC
+Last updated 2021-08-08 06:08:42 UTC
 </div>
 </div>
 </body>

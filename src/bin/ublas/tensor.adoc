@@ -1,9 +1,3 @@
-:toc: left
-:toclevels: 2
-:idprefix:
-:listing-caption: Code Example
-:docinfo: private-footer
-
 == Tensor
 
 [[toc]]

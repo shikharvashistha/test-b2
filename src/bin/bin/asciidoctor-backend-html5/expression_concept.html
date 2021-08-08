@@ -436,41 +436,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#expression_concepts">Expression Concepts</a>
-<ul class="sectlevel2">
-<li><a href="#toc"><span id="scalar_expression">Scalar Expression</span></a></li>
-<li><a href="#vector_expression"><span id="vector_expression">Vector Expression</span></a></li>
-<li><a href="#matrix_expression"><span id="matrix_expression">Matrix Expression</span></a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="expression_concepts">Expression Concepts</h2>
+<h2 id="_expression_concepts">Expression Concepts</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="scalar_expression">Scalar Expression</span></h3>
 <div class="sect3">
-<h4 id="description">Description</h4>
+<h4 id="_description">Description</h4>
 <div class="paragraph">
 <p>A Scalar Expression is an expression convertible to a scalar type.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of">Refinement of</h4>
+<h4 id="_refinement_of">Refinement of</h4>
 <div class="paragraph">
 <p>Default Constructible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types">Associated types</h4>
+<h4 id="_associated_types">Associated types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -493,7 +481,7 @@ base type.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="notation">Notation</h4>
+<h4 id="_notation">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -508,11 +496,11 @@ base type.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions">Definitions</h4>
+<h4 id="_definitions">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="valid_expressions">Valid expressions</h4>
+<h4 id="_valid_expressions">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined in Default Constructible the
 following expressions must be valid.</p>
@@ -541,7 +529,7 @@ following expressions must be valid.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics">Expression semantics</h4>
+<h4 id="_expression_semantics">Expression semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in Default Constructible.</p>
@@ -576,18 +564,18 @@ expression.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The run-time complexity of the evaluation is specific for the evaluated
 scalar expression.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants">Invariants</h4>
+<h4 id="_invariants">Invariants</h4>
 
 </div>
 <div class="sect3">
-<h4 id="models">Models</h4>
+<h4 id="_models">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -601,9 +589,9 @@ scalar expression.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="vector_expression"><span id="vector_expression">Vector Expression</span></h3>
+<h3 id="_vector_expression"><span id="vector_expression">Vector Expression</span></h3>
 <div class="sect3">
-<h4 id="description_2">Description</h4>
+<h4 id="_description_2">Description</h4>
 <div class="paragraph">
 <p>A Vector Expression is an expression evaluatable to a vector. Vector
 Expression provides an
@@ -614,13 +602,13 @@ Access Iterator</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of_2">Refinement of</h4>
+<h4 id="_refinement_of_2">Refinement of</h4>
 <div class="paragraph">
 <p>Default Constructible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types_2">Associated types</h4>
+<h4 id="_associated_types_2">Associated types</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 34%;">
@@ -695,7 +683,7 @@ whose base iterator type is the vector expression&#8217;s iterator type.</p></td
 </table>
 </div>
 <div class="sect3">
-<h4 id="notation_2">Notation</h4>
+<h4 id="_notation_2">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -722,11 +710,11 @@ whose base iterator type is the vector expression&#8217;s iterator type.</p></td
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions_2">Definitions</h4>
+<h4 id="_definitions_2">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="valid_expressions_2">Valid expressions</h4>
+<h4 id="_valid_expressions_2">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined in Default Constructible the
 following expressions must be valid.</p>
@@ -862,7 +850,7 @@ convertible to <code>V</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics_2">Expression semantics</h4>
+<h4 id="_expression_semantics_2">Expression semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in Default Constructible.</p>
@@ -1005,7 +993,7 @@ element of <code>v1</code> from the corresponding element of <code>v2</code>.</p
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees_2">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees_2">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The run-time complexity of <code>begin ()</code> and <code>end ()</code> is specific for the
 evaluated vector expression, typically amortized constant time.</p>
@@ -1033,7 +1021,7 @@ expressions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants_2">Invariants</h4>
+<h4 id="_invariants_2">Invariants</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1063,7 +1051,7 @@ the same as the distance from <code>v.rbegin ()</code> to <code>v.rend ()</code>
 </table>
 </div>
 <div class="sect3">
-<h4 id="models_2">Models</h4>
+<h4 id="_models_2">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1113,9 +1101,9 @@ the same as the distance from <code>v.rbegin ()</code> to <code>v.rend ()</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matrix_expression"><span id="matrix_expression">Matrix Expression</span></h3>
+<h3 id="_matrix_expression"><span id="matrix_expression">Matrix Expression</span></h3>
 <div class="sect3">
-<h4 id="description_3">Description</h4>
+<h4 id="_description_3">Description</h4>
 <div class="paragraph">
 <p>A Matrix Expression is an expression evaluatable to a matrix. Matrix
 Expression provides an
@@ -1126,15 +1114,15 @@ Random Access Column/Row Iterator</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refinement_of_3">Refinement of</h4>
+<h4 id="_refinement_of_3">Refinement of</h4>
 <div class="paragraph">
 <p>Default Constructible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="associated_types_3">Associated types</h4>
+<h4 id="_associated_types_3">Associated types</h4>
 <div class="sect4">
-<h5 id="immutable_types">immutable types</h5>
+<h5 id="_immutable_types">immutable types</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 34%;">
@@ -1202,7 +1190,7 @@ iterator type is the matrix expression&#8217;s const row iterator type.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="mutable_types">mutable types</h5>
+<h5 id="_mutable_types">mutable types</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 34%;">
@@ -1247,7 +1235,7 @@ type is the matrix expression&#8217;s row iterator type.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="notation_3">Notation</h4>
+<h4 id="_notation_3">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1274,17 +1262,17 @@ type is the matrix expression&#8217;s row iterator type.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="definitions_3">Definitions</h4>
+<h4 id="_definitions_3">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="valid_expressions_3">Valid expressions</h4>
+<h4 id="_valid_expressions_3">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined in Default Constructible the
 following expressions must be valid.</p>
 </div>
 <div class="sect4">
-<h5 id="immutable_expressions">immutable expressions</h5>
+<h5 id="_immutable_expressions">immutable expressions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1317,7 +1305,7 @@ following expressions must be valid.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="possibly_mutable_expressions">possibly mutable expressions</h5>
+<h5 id="_possibly_mutable_expressions">possibly mutable expressions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1493,7 +1481,7 @@ convertible to <code>M</code>.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="expression_semantics_3">Expression semantics</h4>
+<h4 id="_expression_semantics_3">Expression semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in Default Constructible.</p>
@@ -1681,7 +1669,7 @@ corresponding element of <code>m2</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="complexity_guarantees_3">Complexity guarantees</h4>
+<h4 id="_complexity_guarantees_3">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The run-time complexity of <code>begin1 ()</code>, <code>begin2 ()</code> , <code>end1 ()</code> and
 <code>end2 ()</code> is specific for the evaluated matrix expression.</p>
@@ -1709,7 +1697,7 @@ proxies.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="invariants_3">Invariants</h4>
+<h4 id="_invariants_3">Invariants</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1744,7 +1732,7 @@ from <code>m.rbegin2 ()</code> to <code>m.rend2 ()</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="models_3">Models</h4>
+<h4 id="_models_3">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1800,7 +1788,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 06:02:43 UTC
+Last updated 2021-08-08 06:08:36 UTC
 </div>
 </div>
 </body>
