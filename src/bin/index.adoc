@@ -12,6 +12,12 @@ Distributed under the Boost Software License, Version 1.0.
 :listing-caption: Code Example
 :docinfo: private-footer
 
+:leveloffset: +1
+
+include::ublas/overview.adoc[]
+
+:leveloffset: -1
+
 == Basic Linear Algebra Library
 
 [[toc]]

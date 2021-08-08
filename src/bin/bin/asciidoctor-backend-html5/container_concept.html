@@ -436,23 +436,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#container_concepts">Container Concepts</a>
+<ul class="sectlevel2">
+<li><a href="#toc"><span id="vector">Vector</span></a></li>
+<li><a href="#matrix"><span id="matrix">Matrix</span></a></li>
+<li><a href="#tensor"><span id="tensor">Tensor</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_container_concepts">Container Concepts</h2>
+<h2 id="container_concepts">Container Concepts</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="vector">Vector</span></h3>
 <div class="sect3">
-<h4 id="_description">Description</h4>
+<h4 id="description">Description</h4>
 <div class="paragraph">
 <p>A Vector describes common aspects of dense, packed and sparse vectors.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_refinement_of">Refinement of</h4>
+<h4 id="refinement_of">Refinement of</h4>
 <div class="paragraph">
 <p><a href="https://www.boost.org/sgi/stl/DefaultConstructible.html">DefaultConstructible</a>,
 <a href="expression_concept.adoc#vector_expression">Vector Expression</a>
@@ -460,7 +472,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect3">
-<h4 id="_associated_types">Associated types</h4>
+<h4 id="associated_types">Associated types</h4>
 <div class="paragraph">
 <p>In addition to the types defined by
 <a href="expression_concept.adoc#vector_expression">Vector Expression</a></p>
@@ -489,7 +501,7 @@ storage array used to store the elements. The array_type must model the
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notation">Notation</h4>
+<h4 id="notation">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -520,11 +532,11 @@ storage array used to store the elements. The array_type must model the
 </table>
 </div>
 <div class="sect3">
-<h4 id="_definitions">Definitions</h4>
+<h4 id="definitions">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_valid_expressions">Valid expressions</h4>
+<h4 id="valid_expressions">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined in
 <a href="https://www.boost.org/sgi/stl/DefaultConstructible.html">DefaultConstructible</a>,
@@ -589,7 +601,7 @@ mutable, <code>const array_type&amp;</code> otherwise</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expression_semantics">Expression semantics</h4>
+<h4 id="expression_semantics">Expression semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in <a href="expression_concept.adoc#vector_expression">Vector
@@ -681,7 +693,7 @@ storage.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_complexity_guarantees">Complexity guarantees</h4>
+<h4 id="complexity_guarantees">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The run-time complexity of the sizing constructor is linear in the
 vector&#8217;s size.</p>
@@ -696,11 +708,11 @@ requirements.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_invariants">Invariants</h4>
+<h4 id="invariants">Invariants</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_models">Models</h4>
+<h4 id="models">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -716,7 +728,7 @@ requirements.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_notes">Notes</h4>
+<h4 id="notes">Notes</h4>
 <div class="paragraph">
 <p><span id="vector_expression_note">[1]</span> As a user you need not care about Vector
 being a refinement of the VectorExpression. Being a refinement of the
@@ -733,15 +745,15 @@ both vectors and matrices.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_matrix"><span id="matrix">Matrix</span></h3>
+<h3 id="matrix"><span id="matrix">Matrix</span></h3>
 <div class="sect3">
-<h4 id="_description_2">Description</h4>
+<h4 id="description_2">Description</h4>
 <div class="paragraph">
 <p>A Matrix describes common aspects of dense, packed and sparse matrices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_refinement_of_2">Refinement of</h4>
+<h4 id="refinement_of_2">Refinement of</h4>
 <div class="paragraph">
 <p><a href="https://www.boost.org/sgi/stl/DefaultConstructible.html">DefaultConstructible</a>,
 <a href="expression_concept.adoc#matrix_expression">Matrix Expression</a>
@@ -749,7 +761,7 @@ both vectors and matrices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_associated_types_2">Associated types</h4>
+<h4 id="associated_types_2">Associated types</h4>
 <div class="paragraph">
 <p>In addition to the types defined by
 <a href="expression_concept.adoc#matrix_expression">Matrix Expression</a></p>
@@ -778,7 +790,7 @@ storage array used to store the elements. The array_type must model the
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notation_2">Notation</h4>
+<h4 id="notation_2">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -809,11 +821,11 @@ storage array used to store the elements. The array_type must model the
 </table>
 </div>
 <div class="sect3">
-<h4 id="_definitions_2">Definitions</h4>
+<h4 id="definitions_2">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_valid_expressions_2">Valid expressions</h4>
+<h4 id="valid_expressions_2">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined in
 <a href="expression_concept.adoc#matrix_expression">Matrix Expression</a> the
@@ -877,7 +889,7 @@ mutable, <code>const array_type&amp;</code> otherwise</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expression_semantics_2">Expression semantics</h4>
+<h4 id="expression_semantics_2">Expression semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in <a href="expression_concept.adoc#matrix_expression">Matrix
@@ -958,7 +970,7 @@ that after an equivalent sizing constructor.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_complexity_guarantees_2">Complexity guarantees</h4>
+<h4 id="complexity_guarantees_2">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The run-time complexity of the sizing constructor is quadratic in the
 matrix&#8217;s size.</p>
@@ -973,11 +985,11 @@ requirements.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_invariants_2">Invariants</h4>
+<h4 id="invariants_2">Invariants</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_models_2">Models</h4>
+<h4 id="models_2">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -996,7 +1008,7 @@ requirements.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_notes_2">Notes</h4>
+<h4 id="notes_2">Notes</h4>
 <div class="paragraph">
 <p><span id="matrix_expression_note">[1]</span> As a user you need not care about Matrix
 being a refinement of the MatrixExpression. Being a refinement of the
@@ -1007,15 +1019,15 @@ but not the user.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_tensor"><span id="tensor">Tensor</span></h3>
+<h3 id="tensor"><span id="tensor">Tensor</span></h3>
 <div class="sect3">
-<h4 id="_description_3">Description</h4>
+<h4 id="description_3">Description</h4>
 <div class="paragraph">
 <p>A Tensor describes common aspects of dense multidimensional arrays.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_refinement_of_3">Refinement of</h4>
+<h4 id="refinement_of_3">Refinement of</h4>
 <div class="paragraph">
 <p><a href="https://www.boost.org/sgi/stl/DefaultConstructible.html">DefaultConstructible</a>,
 <a href="expression_concept.adoc#tensor_expression">Tensor Expression</a>
@@ -1023,7 +1035,7 @@ but not the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_associated_types_3">Associated types</h4>
+<h4 id="associated_types_3">Associated types</h4>
 <div class="paragraph">
 <p>In addition to the types defined by
 <a href="expression_concept.adoc#tensor_expression">Tensor Expression</a></p>
@@ -1052,7 +1064,7 @@ model the <a href="storage_concept.adoc"><strong>Storage</strong></a> concept.</
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notation_3">Notation</h4>
+<h4 id="notation_3">Notation</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1086,11 +1098,11 @@ model the <a href="storage_concept.adoc"><strong>Storage</strong></a> concept.</
 </table>
 </div>
 <div class="sect3">
-<h4 id="_definitions_3">Definitions</h4>
+<h4 id="definitions_3">Definitions</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_valid_expressions_3">Valid expressions</h4>
+<h4 id="valid_expressions_3">Valid expressions</h4>
 <div class="paragraph">
 <p>In addition to the expressions defined in
 <a href="expression_concept.adoc#tensor_expression">Tensor Expression</a> the
@@ -1153,7 +1165,7 @@ mutable, <code>const_pointer</code> otherwise</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expression_semantics_3">Expression semantics</h4>
+<h4 id="expression_semantics_3">Expression semantics</h4>
 <div class="paragraph">
 <p>Semantics of an expression is defined only where it differs from, or is
 not defined in <a href="expression_concept.adoc#tensor_expression">Tensor
@@ -1223,7 +1235,7 @@ Expression</a> .</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_complexity_guarantees_3">Complexity guarantees</h4>
+<h4 id="complexity_guarantees_3">Complexity guarantees</h4>
 <div class="paragraph">
 <p>The run-time complexity of contructor is linear in the tensor&#8217;s size
 <code><em>n</em><sub><em>1</em></sub> x <em>n</em><sub><em>2</em></sub> x &#8230;&#8203; <em>n</em><sub><em>p</em></sub></code>.</p>
@@ -1238,11 +1250,11 @@ of the tensor.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_invariants_3">Invariants</h4>
+<h4 id="invariants_3">Invariants</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_models_3">Models</h4>
+<h4 id="models_3">Models</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1252,7 +1264,7 @@ of the tensor.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_notes_3">Notes</h4>
+<h4 id="notes_3">Notes</h4>
 <div class="paragraph">
 <p><span id="tensor_expression_note">[1]</span> As a user you need not care about Tensor
 being a refinement of the TensorExpression. Being a refinement of the
@@ -1275,7 +1287,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:02:39 UTC
 </div>
 </div>
 </body>

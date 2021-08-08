@@ -436,30 +436,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#vector_expressions">Vector Expressions</a>
+<ul class="sectlevel2">
+<li><a href="#toc"><span id="vector_expression">Vector Expression</span></a></li>
+<li><a href="#vector_container"><span id="vector_container">Vector Container</span></a></li>
+<li><a href="#vector_references"><span id="vector_references">Vector References</span></a></li>
+<li><a href="#vector_operations"><span id="vector_operations">Vector Operations</span></a></li>
+<li><a href="#vector_reductions"><span id="vector_reductions">Vector Reductions</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_vector_expressions">Vector Expressions</h2>
+<h2 id="vector_expressions">Vector Expressions</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="vector_expression">Vector Expression</span></h3>
 <div class="sect3">
-<h4 id="_description">Description</h4>
+<h4 id="description">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>vector_expression&lt;E&gt;</code> is required to be a public
 base of all classes which model the Vector Expression concept.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition">Definition</h4>
+<h4 id="definition">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header expression_types.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters">Template parameters</h4>
+<h4 id="template_parameters">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -481,25 +495,25 @@ base of all classes which model the Vector Expression concept.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of">Model of</h4>
+<h4 id="model_of">Model of</h4>
 <div class="paragraph">
 <p>None. Not a Vector Expression!</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements">Type requirements</h4>
+<h4 id="type_requirements">Type requirements</h4>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes">Public base classes</h4>
+<h4 id="public_base_classes">Public base classes</h4>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members">Members</h4>
+<h4 id="members">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -526,7 +540,7 @@ expression.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notes">Notes</h4>
+<h4 id="notes">Notes</h4>
 <div class="paragraph">
 <p>The <code>range</code>, <code>slice</code> and <code>project</code> functions have been removed. Use the
 free functions defined in <a href="vector_proxy.html">vector proxy</a> instead.</p>
@@ -534,9 +548,9 @@ free functions defined in <a href="vector_proxy.html">vector proxy</a> instead.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vector_container"><span id="vector_container">Vector Container</span></h3>
+<h3 id="vector_container"><span id="vector_container">Vector Container</span></h3>
 <div class="sect3">
-<h4 id="_description_2">Description</h4>
+<h4 id="description_2">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>vector_container&lt;C&gt;</code> is required to be a public
 base of all classes which model the Vector concept. This includes the
@@ -544,13 +558,13 @@ class <code>vector</code> itself.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition_2">Definition</h4>
+<h4 id="definition_2">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header expression_types.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters_2">Template parameters</h4>
+<h4 id="template_parameters_2">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -572,25 +586,25 @@ class <code>vector</code> itself.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of_2">Model of</h4>
+<h4 id="model_of_2">Model of</h4>
 <div class="paragraph">
 <p>None. Not a Vector Expression OR Vector!</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements_2">Type requirements</h4>
+<h4 id="type_requirements_2">Type requirements</h4>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes_2">Public base classes</h4>
+<h4 id="public_base_classes_2">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_expression&lt;C&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members_2">Members</h4>
+<h4 id="members_2">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -617,24 +631,24 @@ reference of the container.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vector_references"><span id="vector_references">Vector References</span></h3>
+<h3 id="vector_references"><span id="vector_references">Vector References</span></h3>
 <div class="sect3">
-<h4 id="_reference">Reference</h4>
+<h4 id="reference">Reference</h4>
 <div class="sect4">
-<h5 id="_description_3">Description</h5>
+<h5 id="description_3">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>vector_reference&lt;E&gt;</code> contains a reference to a
 vector expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_3">Definition</h5>
+<h5 id="definition_3">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_template_parameters_3">Template parameters</h5>
+<h5 id="template_parameters_3">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -656,26 +670,26 @@ vector expression.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_model_of_3">Model of</h5>
+<h5 id="model_of_3">Model of</h5>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_3">Type requirements</h5>
+<h5 id="type_requirements_3">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_public_base_classes_3">Public base classes</h5>
+<h5 id="public_base_classes_3">Public base classes</h5>
 <div class="paragraph">
 <p><code>vector_expression&lt;vector_reference&lt;E&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_members_3">Members</h5>
+<h5 id="members_3">Members</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -759,24 +773,24 @@ the end of the reversed expression.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vector_operations"><span id="vector_operations">Vector Operations</span></h3>
+<h3 id="vector_operations"><span id="vector_operations">Vector Operations</span></h3>
 <div class="sect3">
-<h4 id="_unary_operation_description">Unary Operation Description</h4>
+<h4 id="unary_operation_description">Unary Operation Description</h4>
 <div class="sect4">
-<h5 id="_description_4">Description</h5>
+<h5 id="description_4">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>vector_unary&lt;E, F&gt;</code> describes a unary vector
 operation.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_4">Definition</h5>
+<h5 id="definition_4">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_template_parameters_4">Template parameters</h5>
+<h5 id="template_parameters_4">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -803,26 +817,26 @@ operation.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_model_of_4">Model of</h5>
+<h5 id="model_of_4">Model of</h5>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_4">Type requirements</h5>
+<h5 id="type_requirements_4">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_public_base_classes_4">Public base classes</h5>
+<h5 id="public_base_classes_4">Public base classes</h5>
 <div class="paragraph">
 <p><code>vector_expression&lt;vector_unary&lt;E, F&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_members_4">Members</h5>
+<h5 id="members_4">Members</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -875,9 +889,9 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_unary_operations">Unary Operations</h4>
+<h4 id="unary_operations">Unary Operations</h4>
 <div class="sect4">
-<h5 id="_prototypes">Prototypes</h5>
+<h5 id="prototypes">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;class E, class F&gt;
@@ -919,7 +933,7 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_5">Description</h5>
+<h5 id="description_5">Description</h5>
 <div class="paragraph">
 <p><code>operator -</code> computes the additive inverse of a vector expression.
 <code>conj</code> computes the complex conjugate of a vector expression. <code>real</code> and
@@ -930,13 +944,13 @@ expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_5">Definition</h5>
+<h5 id="definition_5">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_5">Type requirements</h5>
+<h5 id="type_requirements_5">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -947,19 +961,19 @@ expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_preconditions">Preconditions</h5>
+<h5 id="preconditions">Preconditions</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complexity">Complexity</h5>
+<h5 id="complexity">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the vector expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_examples">Examples</h5>
+<h5 id="examples">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -983,22 +997,22 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binary_operation_description">Binary Operation Description</h4>
+<h4 id="binary_operation_description">Binary Operation Description</h4>
 <div class="sect4">
-<h5 id="_description_6">Description</h5>
+<h5 id="description_6">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>vector_binary&lt;E1, E2, F&gt;</code> describes a binary vector
 operation.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_6">Definition</h5>
+<h5 id="definition_6">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_template_parameters_5">Template parameters</h5>
+<h5 id="template_parameters_5">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1030,26 +1044,26 @@ operation.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_model_of_5">Model of</h5>
+<h5 id="model_of_5">Model of</h5>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_6">Type requirements</h5>
+<h5 id="type_requirements_6">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_public_base_classes_5">Public base classes</h5>
+<h5 id="public_base_classes_5">Public base classes</h5>
 <div class="paragraph">
 <p><code>vector_expression&lt;vector_binary&lt;E1, E2, F&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_members_5">Members</h5>
+<h5 id="members_5">Members</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1101,9 +1115,9 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binary_operations">Binary Operations</h4>
+<h4 id="binary_operations">Binary Operations</h4>
 <div class="sect4">
-<h5 id="_prototypes_2">Prototypes</h5>
+<h5 id="prototypes_2">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;class E1, class E2, class F&gt;
@@ -1130,20 +1144,20 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_7">Description</h5>
+<h5 id="description_7">Description</h5>
 <div class="paragraph">
 <p><code>operator +</code> computes the sum of two vector expressions. <code>operator -</code>
 computes the difference of two vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_7">Definition</h5>
+<h5 id="definition_7">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_7">Type requirements</h5>
+<h5 id="type_requirements_7">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1158,7 +1172,7 @@ computes the difference of two vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_preconditions_2">Preconditions</h5>
+<h5 id="preconditions_2">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1168,13 +1182,13 @@ computes the difference of two vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complexity_2">Complexity</h5>
+<h5 id="complexity_2">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_examples_2">Examples</h5>
+<h5 id="examples_2">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -1194,22 +1208,22 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binary_outer_operation_description">Binary Outer Operation Description</h4>
+<h4 id="binary_outer_operation_description">Binary Outer Operation Description</h4>
 <div class="sect4">
-<h5 id="_description_8">Description</h5>
+<h5 id="description_8">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>vector_matrix_binary&lt;E1, E2, F&gt;</code> describes a binary
 outer vector operation.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_8">Definition</h5>
+<h5 id="definition_8">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header matrix_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_template_parameters_6">Template parameters</h5>
+<h5 id="template_parameters_6">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1241,26 +1255,26 @@ outer vector operation.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_model_of_6">Model of</h5>
+<h5 id="model_of_6">Model of</h5>
 <div class="paragraph">
 <p><a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_8">Type requirements</h5>
+<h5 id="type_requirements_8">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#matrix_expression">Matrix Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_public_base_classes_6">Public base classes</h5>
+<h5 id="public_base_classes_6">Public base classes</h5>
 <div class="paragraph">
 <p><code>matrix_expression&lt;vector_matrix_binary&lt;E1, E2, F&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_members_6">Members</h5>
+<h5 id="members_6">Members</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1339,9 +1353,9 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binary_outer_operations">Binary Outer Operations</h4>
+<h4 id="binary_outer_operations">Binary Outer Operations</h4>
 <div class="sect4">
-<h5 id="_prototypes_3">Prototypes</h5>
+<h5 id="prototypes_3">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;class E1, class E2, class F&gt;
@@ -1360,19 +1374,19 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_9">Description</h5>
+<h5 id="description_9">Description</h5>
 <div class="paragraph">
 <p><code>outer_prod</code> computes the outer product of two vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_9">Definition</h5>
+<h5 id="definition_9">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header matrix_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_9">Type requirements</h5>
+<h5 id="type_requirements_9">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1387,19 +1401,19 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_preconditions_3">Preconditions</h5>
+<h5 id="preconditions_3">Preconditions</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complexity_3">Complexity</h5>
+<h5 id="complexity_3">Complexity</h5>
 <div class="paragraph">
 <p>Quadratic depending from the size of the vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_examples_3">Examples</h5>
+<h5 id="examples_3">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix.hpp&gt;
@@ -1418,9 +1432,9 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_scalar_vector_operation_description">Scalar Vector Operation Description</h4>
+<h4 id="scalar_vector_operation_description">Scalar Vector Operation Description</h4>
 <div class="sect4">
-<h5 id="_description_10">Description</h5>
+<h5 id="description_10">Description</h5>
 <div class="paragraph">
 <p>The templated classes <code>vector_binary_scalar1&lt;E1, E2, F&gt;</code> and
 <code>vector_binary_scalar2&lt;E1, E2, F&gt;</code> describe binary operations between a
@@ -1428,13 +1442,13 @@ scalar and a vector.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_10">Definition</h5>
+<h5 id="definition_10">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_template_parameters_7">Template parameters</h5>
+<h5 id="template_parameters_7">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1466,27 +1480,27 @@ scalar and a vector.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_model_of_7">Model of</h5>
+<h5 id="model_of_7">Model of</h5>
 <div class="paragraph">
 <p><a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_10">Type requirements</h5>
+<h5 id="type_requirements_10">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="expression_concept.html#vector_expression">Vector Expression</a> .</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_public_base_classes_7">Public base classes</h5>
+<h5 id="public_base_classes_7">Public base classes</h5>
 <div class="paragraph">
 <p><code>vector_expression&lt;vector_binary_scalar1&lt;E1, E2, F&gt; &gt;</code> and
 <code>vector_expression&lt;vector_binary_scalar2&lt;E1, E2, F&gt; &gt;</code> resp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_members_7">Members</h5>
+<h5 id="members_7">Members</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1542,9 +1556,9 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_scalar_vector_operations">Scalar Vector Operations</h4>
+<h4 id="scalar_vector_operations">Scalar Vector Operations</h4>
 <div class="sect4">
-<h5 id="_prototypes_4">Prototypes</h5>
+<h5 id="prototypes_4">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;class T1, class E2, class F&gt;
@@ -1582,20 +1596,20 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_11">Description</h5>
+<h5 id="description_11">Description</h5>
 <div class="paragraph">
 <p><code>operator *</code> computes the product of a scalar and a vector expression.
 <code>operator /</code> multiplies the vector with the reciprocal of the scalar.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_11">Definition</h5>
+<h5 id="definition_11">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_11">Type requirements</h5>
+<h5 id="type_requirements_11">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1610,19 +1624,19 @@ expression.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_preconditions_4">Preconditions</h5>
+<h5 id="preconditions_4">Preconditions</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complexity_4">Complexity</h5>
+<h5 id="complexity_4">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the vector expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_examples_4">Examples</h5>
+<h5 id="examples_4">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -1643,11 +1657,11 @@ int main () {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vector_reductions"><span id="vector_reductions">Vector Reductions</span></h3>
+<h3 id="vector_reductions"><span id="vector_reductions">Vector Reductions</span></h3>
 <div class="sect3">
-<h4 id="_unary_reductions">Unary Reductions</h4>
+<h4 id="unary_reductions">Unary Reductions</h4>
 <div class="sect4">
-<h5 id="_prototypes_5">Prototypes</h5>
+<h5 id="prototypes_5">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;class E, class F&gt;
@@ -1688,7 +1702,7 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_12">Description</h5>
+<h5 id="description_12">Description</h5>
 <div class="paragraph">
 <p><code>sum</code> computes the sum of the vector expression&#8217;s elements. <code>norm_1</code>,
 <code>norm_2</code> and <code>norm_inf</code> compute the corresponding <em>||.||</em><sub><em>1</em></sub>,
@@ -1698,13 +1712,13 @@ maximal absolute value.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_12">Definition</h5>
+<h5 id="definition_12">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_12">Type requirements</h5>
+<h5 id="type_requirements_12">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1714,19 +1728,19 @@ maximal absolute value.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_preconditions_5">Preconditions</h5>
+<h5 id="preconditions_5">Preconditions</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complexity_5">Complexity</h5>
+<h5 id="complexity_5">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the vector expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_examples_5">Examples</h5>
+<h5 id="examples_5">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -1748,9 +1762,9 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binary_reductions">Binary Reductions</h4>
+<h4 id="binary_reductions">Binary Reductions</h4>
 <div class="sect4">
-<h5 id="_prototypes_6">Prototypes</h5>
+<h5 id="prototypes_6">Prototypes</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;class E1, class E2, class F&gt;
@@ -1778,7 +1792,7 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_13">Description</h5>
+<h5 id="description_13">Description</h5>
 <div class="paragraph">
 <p><code>inner_prod</code> computes the inner product of the vector expressions.
 <code>prec_inner_prod</code> computes the double precision inner product of the
@@ -1786,13 +1800,13 @@ vector expressions`.`</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_definition_13">Definition</h5>
+<h5 id="definition_13">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header vector_expression.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_requirements_13">Type requirements</h5>
+<h5 id="type_requirements_13">Type requirements</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1805,7 +1819,7 @@ vector expressions`.`</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_preconditions_6">Preconditions</h5>
+<h5 id="preconditions_6">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1815,13 +1829,13 @@ vector expressions`.`</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complexity_6">Complexity</h5>
+<h5 id="complexity_6">Complexity</h5>
 <div class="paragraph">
 <p>Linear depending from the size of the vector expressions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_examples_6">Examples</h5>
+<h5 id="examples_6">Examples</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -1852,7 +1866,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:04:06 UTC
 </div>
 </div>
 </body>

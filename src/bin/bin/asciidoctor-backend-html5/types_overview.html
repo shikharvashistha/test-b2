@@ -436,12 +436,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#overview_of_tensor_matrix_and_vector_types">Overview of Tensor, Matrix- and Vector Types</a>
+<ul class="sectlevel2">
+<li><a href="#notation">Notation</a></li>
+<li><a href="#vectors"><span id="vectors">Vectors</span></a></li>
+<li><a href="#vector_proxies"><span id="vector_proxies">Vector Proxies</span></a></li>
+<li><a href="#matrices"><span id="matrices">Matrices</span></a></li>
+<li><a href="#matrix_proxies"><span id="matrix_proxies">Matrix Proxies</span></a></li>
+<li><a href="#tensors"><span id="tensors">Tensors</span></a></li>
+<li><a href="#special_storage_layouts"><span id="storage_layout">Special Storage Layouts</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_overview_of_tensor_matrix_and_vector_types">Overview of Tensor, Matrix- and Vector Types</h2>
+<h2 id="overview_of_tensor_matrix_and_vector_types">Overview of Tensor, Matrix- and Vector Types</h2>
 <div class="sectionbody">
 <div id="toc" class="paragraph">
 <p>Contents:
@@ -459,7 +475,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <a href="#storage_layout">Special Storage Layouts</a></p>
 </div>
 <div class="sect2">
-<h3 id="_notation">Notation</h3>
+<h3 id="notation">Notation</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -515,7 +531,7 @@ section "storage layout".</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_vectors"><span id="vectors">Vectors</span></h3>
+<h3 id="vectors"><span id="vectors">Vectors</span></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -588,7 +604,7 @@ real value.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vector_proxies"><span id="vector_proxies">Vector Proxies</span></h3>
+<h3 id="vector_proxies"><span id="vector_proxies">Vector Proxies</span></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -627,7 +643,7 @@ row of matrix <code>m</code></p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_matrices"><span id="matrices">Matrices</span></h3>
+<h3 id="matrices"><span id="matrices">Matrices</span></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -746,7 +762,7 @@ stored as a vector of sparse vectors, e.g.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_matrix_proxies"><span id="matrix_proxies">Matrix Proxies</span></h3>
+<h3 id="matrix_proxies"><span id="matrix_proxies">Matrix Proxies</span></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -793,7 +809,7 @@ a non continues submatrix of elements in the matrix <code>m</code>.</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_tensors"><span id="tensors">Tensors</span></h3>
+<h3 id="tensors"><span id="tensors">Tensors</span></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -818,7 +834,7 @@ initialise their value.</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_special_storage_layouts"><span id="storage_layout">Special Storage Layouts</span></h3>
+<h3 id="special_storage_layouts"><span id="storage_layout">Special Storage Layouts</span></h3>
 <div class="paragraph">
 <p>The library supports conventional dense, packed and basic sparse vector
 and matrix storage layouts. The description of the most common
@@ -1004,7 +1020,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:03:59 UTC
 </div>
 </div>
 </body>

@@ -5,21 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-      jax: ["input/TeX", "output/HTML-CSS"],
-      extensions: ["tex2jax.js"],
-      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], scale: "80" },
-      tex2jax: { 
-      	inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
-      	displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], 
-      	processEscapes: true, 
-      	ignoreClass: "tex2jax_ignore|dno" },
-      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
-      messageStyle: "none"
-    });
-</script>    
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js"></script> 
 <title>Tensor</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -451,12 +436,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#tensor">Tensor</a>
+<ul class="sectlevel3">
+<li><a href="#a_description">a. <span id="tensor_1">Description</span></a></li>
+<li><a href="#b_example">b. <span id="tensor_2">Example</span></a></li>
+<li><a href="#c_definition">c. <span id="tensor_3">Definition</span></a></li>
+<li><a href="#d_model_of">d. <span id="tensor_4">Model of</span></a></li>
+<li><a href="#e_type_requirements">e. <span id="tensor_5">Type requirements</span></a></li>
+<li><a href="#f_public_base_classes">f. <span id="tensor_6">Public base classes</span></a></li>
+<li><a href="#g_template_parameters">g. <span id="tensor_7">Template parameters</span></a></li>
+<li><a href="#h_member_types">h. <span id="tensor_8">Member types</span></a></li>
+<li><a href="#i_alias_templates">i. <span id="tensor_9">Alias templates</span></a></li>
+<li><a href="#j_member_functions">j. <span id="tensor_10">Member Functions</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_tensor">Tensor</h2>
+<h2 id="tensor">Tensor</h2>
 <div class="sectionbody">
 <div id="toc" class="olist arabic">
 <ol class="arabic">
@@ -528,20 +532,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_a_description">a. <span id="tensor_1">Description</span></h4>
+<h4 id="a_description">a. <span id="tensor_1">Description</span></h4>
 <div class="paragraph">
 <p>The templated class <code>tensor&lt;value_t,format_t,storage_t&gt;</code> is the base
 container adaptor for dense tensors. Every element
-$t_{i_1,i_2,\dots,i_p}$ of a $p$-order $(n_1 \times n_2 \times \cdots \times n_p)$
--dimensional tensor $T$ is mapped to $j$-th element of a
-one-dimensional container where $j = \sum_{r=1}^p i_r \cdot w_r$ with
+$(t_/ i_1, i_2, \dots, i_p)$ of a $p$-order $(n_1 \times n_2 \times \cdots
+\times n_p)$-dimensional tensor $T$ is mapped to $j$-th element of a
+one-dimensional container where $(j = \sum_ /{r=1}^p i_r \cdot w_r)$ with
 $1 \leq i_r \leq n_r $ for $1 \leq r \leq p$. For the first-order
-orientation $w_1 = 1$ and $w_k = n_{k-1} \cdot w_{k-1}$ for $k &gt; 1$.
-For last-order orientation $ w_k = n_{k+1} \cdot w_{k+1}$ for $k &lt; p$.</p>
+orientation $w_1 = 1$ and $(w_k = n_{k-1} \cdot w_{k-1})$ for $k &gt; 1$.
+For last-order orientation $w_p = 1$ and $(w_k = n_/{k+1} \cdot w_/{k+1})$ for $k &lt; p$.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_b_example">b. <span id="tensor_2">Example</span></h4>
+<h4 id="b_example">b. <span id="tensor_2">Example</span></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/tensor.hpp&gt;
@@ -560,32 +564,32 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_c_definition">c. <span id="tensor_3">Definition</span></h4>
+<h4 id="c_definition">c. <span id="tensor_3">Definition</span></h4>
 <div class="paragraph">
 <p>Defined in the header file <code>tensor/tensor.hpp</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_d_model_of">d. <span id="tensor_4">Model of</span></h4>
+<h4 id="d_model_of">d. <span id="tensor_4">Model of</span></h4>
 <div class="paragraph">
 <p><a href="container_concept.html#tensor">Tensor</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_e_type_requirements">e. <span id="tensor_5">Type requirements</span></h4>
+<h4 id="e_type_requirements">e. <span id="tensor_5">Type requirements</span></h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#tensor">Tensor</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_f_public_base_classes">f. <span id="tensor_6">Public base classes</span></h4>
+<h4 id="f_public_base_classes">f. <span id="tensor_6">Public base classes</span></h4>
 <div class="paragraph">
 <p><code>tensor_container&lt;tensor&lt;value_t,format_t,storage_t&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_g_template_parameters">g. <span id="tensor_7">Template parameters</span></h4>
+<h4 id="g_template_parameters">g. <span id="tensor_7">Template parameters</span></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -619,7 +623,7 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_h_member_types">h. <span id="tensor_8">Member types</span></h4>
+<h4 id="h_member_types">h. <span id="tensor_8">Member types</span></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -722,7 +726,7 @@ interacts.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_i_alias_templates">i. <span id="tensor_9">Alias templates</span></h4>
+<h4 id="i_alias_templates">i. <span id="tensor_9">Alias templates</span></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -751,9 +755,9 @@ interacts.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_j_member_functions">j. <span id="tensor_10">Member Functions</span></h4>
+<h4 id="j_member_functions">j. <span id="tensor_10">Member Functions</span></h4>
 <div class="sect4">
-<h5 id="_i_construction">i. <span id="tensor_11">Construction</span></h5>
+<h5 id="i_construction">i. <span id="tensor_11">Construction</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -850,7 +854,7 @@ tensor by evaluating the <a href="vector_expression.html">vector expression</a>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_ii_assignment">ii. <span id="tensor_12">Assignment</span></h5>
+<h5 id="ii_assignment">ii. <span id="tensor_12">Assignment</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -881,7 +885,7 @@ tensor with <code>v</code>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_iii_capacity">iii. <span id="tensor_13">Capacity</span></h5>
+<h5 id="iii_capacity">iii. <span id="tensor_13">Capacity</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -926,7 +930,7 @@ the <a href="tensor/extents.html">extents</a> of the tensor.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_iv_element_access">iv. <span id="tensor_14">Element access</span></h5>
+<h5 id="iv_element_access">iv. <span id="tensor_14">Element access</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -976,7 +980,7 @@ elements. If <code>sizeof&#8230;&#8203;(is)==0</code>, <code>tensor::operator[i]
 </table>
 </div>
 <div class="sect4">
-<h5 id="_v_proxy_generation">v. <span id="tensor_15">Proxy Generation</span></h5>
+<h5 id="v_proxy_generation">v. <span id="tensor_15">Proxy Generation</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -999,7 +1003,7 @@ index objects <code>(p,ps&#8230;&#8203;)</code> for a tensor contraction where
 </table>
 </div>
 <div class="sect4">
-<h5 id="_vi_iterators">vi. <span id="tensor_16">Iterators</span></h5>
+<h5 id="vi_iterators">vi. <span id="tensor_16">Iterators</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1046,7 +1050,7 @@ the last element of the tensor.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_vii_modifiers">vii. <span id="tensor_17">Modifiers</span></h5>
+<h5 id="vii_modifiers">vii. <span id="tensor_17">Modifiers</span></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1068,7 +1072,7 @@ greater than <code>tensor::size()</code>, the tensor is resized with <code>v</co
 </table>
 </div>
 <div class="sect4">
-<h5 id="_viii_notes">viii. <span id="tensor_18">Notes</span></h5>
+<h5 id="viii_notes">viii. <span id="tensor_18">Notes</span></h5>
 <div class="paragraph">
 <p><span id="tensor_1">[1]</span> Supported parameters for the storage organization are
 <code>first_order</code> and <code>last_order</code>.</p>
@@ -1092,7 +1096,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:03:52 UTC
 </div>
 </div>
 </body>

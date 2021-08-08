@@ -436,17 +436,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#vector">Vector</a>
+<ul class="sectlevel2">
+<li><a href="#toc"><span id="vector">Vector</span></a></li>
+<li><a href="#unit_vector"><span id="unit_vector">Unit Vector</span></a></li>
+<li><a href="#zero_vector"><span id="zero_vector">Zero Vector</span></a></li>
+<li><a href="#scalar_vector"><span id="scalar_vector">Scalar Vector</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_vector">Vector</h2>
+<h2 id="vector">Vector</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="vector">Vector</span></h3>
 <div class="sect3">
-<h4 id="_description">Description</h4>
+<h4 id="description">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>vector&lt;T, A&gt;</code> is the base container adaptor for
 dense vectors. For a <em>n</em>-dimensional vector and <em>0 &lt; = i &lt; n</em> every
@@ -454,7 +467,7 @@ element <em>v</em><sub><em>i</em></sub> is mapped to the <em>i-</em>th element o
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example">Example</h4>
+<h4 id="example">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -471,13 +484,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition">Definition</h4>
+<h4 id="definition">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header vector.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters">Template parameters</h4>
+<h4 id="template_parameters">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -507,14 +520,14 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of">Model of</h4>
+<h4 id="model_of">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#vector">Vector</a>,
 <a href="http://www.boost.org/sgi/stl/RandomAccessContainer.html">RandomAccessContainer</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements">Type requirements</h4>
+<h4 id="type_requirements">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#vector">Vector</a> and
@@ -522,13 +535,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes">Public base classes</h4>
+<h4 id="public_base_classes">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_container&lt;vector&lt;T, A&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members">Members</h4>
+<h4 id="members">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -801,7 +814,7 @@ reversed <code>vector</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notes">Notes</h4>
+<h4 id="notes">Notes</h4>
 <div class="paragraph">
 <p><span id="vector_1">[1]</span> Common parameters for the Storage array are
 <code>unbounded_array&lt;T&gt;</code> , <code>bounded_array&lt;T&gt;</code> and <code>std::vector&lt;T&gt;</code> .</p>
@@ -809,9 +822,9 @@ reversed <code>vector</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_unit_vector"><span id="unit_vector">Unit Vector</span></h3>
+<h3 id="unit_vector"><span id="unit_vector">Unit Vector</span></h3>
 <div class="sect3">
-<h4 id="_description_2">Description</h4>
+<h4 id="description_2">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>unit_vector&lt;T, ALLOC&gt;</code> represents canonical unit
 vectors. For the <em>k</em>-th <em>n</em>-dimensional canonical unit vector and <em>0 &#8656;
@@ -820,7 +833,7 @@ i &lt; n</em> holds <em>u</em><sup><em>k</em></sup><sub><em>i</em></sub> <em>= 0
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_2">Example</h4>
+<h4 id="example_2">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -837,13 +850,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition_2">Definition</h4>
+<h4 id="definition_2">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header vector.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters_2">Template parameters</h4>
+<h4 id="template_parameters_2">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -872,26 +885,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of_2">Model of</h4>
+<h4 id="model_of_2">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#vector">Vector</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements_2">Type requirements</h4>
+<h4 id="type_requirements_2">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#vector">Vector</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes_2">Public base classes</h4>
+<h4 id="public_base_classes_2">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_container&lt;unit_vector&lt;T&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members_2">Members</h4>
+<h4 id="members_2">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -982,16 +995,16 @@ the end of the <code>unit_vector</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_zero_vector"><span id="zero_vector">Zero Vector</span></h3>
+<h3 id="zero_vector"><span id="zero_vector">Zero Vector</span></h3>
 <div class="sect3">
-<h4 id="_description_3">Description</h4>
+<h4 id="description_3">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>zero_vector&lt;T, ALLOC&gt;</code> represents zero vectors. For
 a <em>n</em>-dimensional zero vector and <em>0 &#8656; i &lt; n</em> holds <em>z</em><sub><em>i</em></sub> <em>= 0</em>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_3">Example</h4>
+<h4 id="example_3">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -1006,13 +1019,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition_3">Definition</h4>
+<h4 id="definition_3">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header vector.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters_3">Template parameters</h4>
+<h4 id="template_parameters_3">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1041,26 +1054,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of_3">Model of</h4>
+<h4 id="model_of_3">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#vector">Vector</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements_3">Type requirements</h4>
+<h4 id="type_requirements_3">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#vector">Vector</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes_3">Public base classes</h4>
+<h4 id="public_base_classes_3">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_container&lt;zero_vector&lt;T&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members_3">Members</h4>
+<h4 id="members_3">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1147,9 +1160,9 @@ the end of the <code>zero_vector</code>.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_scalar_vector"><span id="scalar_vector">Scalar Vector</span></h3>
+<h3 id="scalar_vector"><span id="scalar_vector">Scalar Vector</span></h3>
 <div class="sect3">
-<h4 id="_description_4">Description</h4>
+<h4 id="description_4">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>scalar_vector&lt;T, ALLOC&gt;</code> represents scalar vectors.
 For a <em>n</em>-dimensional scalar vector and <em>0 &#8656; i &lt; n</em> holds <em>z</em><sub><em>i</em></sub> <em>=
@@ -1157,7 +1170,7 @@ s</em>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_4">Example</h4>
+<h4 id="example_4">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/vector.hpp&gt;
@@ -1172,13 +1185,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition_4">Definition</h4>
+<h4 id="definition_4">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header vector.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters_4">Template parameters</h4>
+<h4 id="template_parameters_4">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1207,26 +1220,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of_4">Model of</h4>
+<h4 id="model_of_4">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#vector">Vector</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements_4">Type requirements</h4>
+<h4 id="type_requirements_4">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#vector">Vector</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes_4">Public base classes</h4>
+<h4 id="public_base_classes_4">Public base classes</h4>
 <div class="paragraph">
 <p><code>vector_container&lt;scalar_vector&lt;T&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members_4">Members</h4>
+<h4 id="members_4">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1327,7 +1340,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:04:17 UTC
 </div>
 </div>
 </body>

@@ -436,18 +436,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#boost_basic_linear_algebra_configuration_options">Boost Basic Linear Algebra - Configuration Options</a>
+<ul class="sectlevel2">
+<li><a href="#ndebug">NDEBUG</a></li>
+<li><a href="#boost_ublas_move_semantics">BOOST_UBLAS_MOVE_SEMANTICS</a></li>
+<li><a href="#boost_ublas_check_enable">BOOST_UBLAS_CHECK_ENABLE</a></li>
+<li><a href="#boost_ublas_type_check">BOOST_UBLAS_TYPE_CHECK</a></li>
+<li><a href="#boost_ublas_use_long_double">BOOST_UBLAS_USE_LONG_DOUBLE</a></li>
+<li><a href="#boost_ublas_use_interval">BOOST_UBLAS_USE_INTERVAL</a></li>
+<li><a href="#configuring_ublas_with_macros">Configuring uBLAS with Macros</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_boost_basic_linear_algebra_configuration_options">Boost Basic Linear Algebra - Configuration Options</h2>
+<h2 id="boost_basic_linear_algebra_configuration_options">Boost Basic Linear Algebra - Configuration Options</h2>
 <div class="sectionbody">
 <div id="toc" class="paragraph">
 <p><a href="index.html">back to uBLAS home</a></p>
 </div>
 <div class="sect2">
-<h3 id="_ndebug">NDEBUG</h3>
+<h3 id="ndebug">NDEBUG</h3>
 <div class="paragraph">
 <p><strong>Make sure you define NDEBUG</strong> The only way uBLAS knows you want a
 release configuration is to check if you have defined NDEBUG. If you
@@ -456,7 +472,7 @@ useful runtime check. However these are very slow!</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_boost_ublas_move_semantics">BOOST_UBLAS_MOVE_SEMANTICS</h3>
+<h3 id="boost_ublas_move_semantics">BOOST_UBLAS_MOVE_SEMANTICS</h3>
 <div class="paragraph">
 <p>The patch and description was provided by Nasos Iliopoulos.</p>
 </div>
@@ -550,7 +566,7 @@ It With Rvalue References</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_boost_ublas_check_enable">BOOST_UBLAS_CHECK_ENABLE</h3>
+<h3 id="boost_ublas_check_enable">BOOST_UBLAS_CHECK_ENABLE</h3>
 <div class="paragraph">
 <p>When BOOST_UBLAS_CHECK_ENABLE is defined then all index and parameter
 checks are enabled. This is enabled in debug mode and disabled in
@@ -558,7 +574,7 @@ release mode.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_boost_ublas_type_check">BOOST_UBLAS_TYPE_CHECK</h3>
+<h3 id="boost_ublas_type_check">BOOST_UBLAS_TYPE_CHECK</h3>
 <div class="paragraph">
 <p>When BOOST_UBLAS_TYPE_CHECK is enabled then all possibly expensive
 structure checks are enabled. If this is not desireable then use #define
@@ -569,20 +585,20 @@ this check.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_boost_ublas_use_long_double">BOOST_UBLAS_USE_LONG_DOUBLE</h3>
+<h3 id="boost_ublas_use_long_double">BOOST_UBLAS_USE_LONG_DOUBLE</h3>
 <div class="paragraph">
 <p>Enable uBLAS expressions that involve containers of 'long double'</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_boost_ublas_use_interval">BOOST_UBLAS_USE_INTERVAL</h3>
+<h3 id="boost_ublas_use_interval">BOOST_UBLAS_USE_INTERVAL</h3>
 <div class="paragraph">
 <p>Enable uBLAS expressions that involve containers of
 'boost::numeric::interval' types</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuring_ublas_with_macros">Configuring uBLAS with Macros</h3>
+<h3 id="configuring_ublas_with_macros">Configuring uBLAS with Macros</h3>
 <div class="paragraph">
 <p>Many macro&#8217;s appear in ublas/config.hpp and elsewhere. Hopefully in the
 future some of these will disappear! They fall into 4 groups:</p>
@@ -759,7 +775,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:03:20 UTC
 </div>
 </div>
 </body>

@@ -436,17 +436,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#sparse_matricies">Sparse Matricies</a>
+<ul class="sectlevel2">
+<li><a href="#toc"><span id="mapped_matrix">Mapped Matrix</span></a></li>
+<li><a href="#compressed_matrix"><span id="compressed_matrix">Compressed Matrix</span></a></li>
+<li><a href="#coordinate_matrix"><span id="coordinate_matrix">Coordinate Matrix</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_sparse_matricies">Sparse Matricies</h2>
+<h2 id="sparse_matricies">Sparse Matricies</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="toc"><span id="mapped_matrix">Mapped Matrix</span></h3>
 <div class="sect3">
-<h4 id="_description">Description</h4>
+<h4 id="description">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>mapped_matrix&lt;T, F, A&gt;</code> is the base container
 adaptor for sparse matricies using element maps. For a <em>(m
@@ -462,7 +474,7 @@ orientation or </em>j<em><sub><em>1</em></sub> </em>&lt; j<em><sub><em>2</em></s
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example">Example</h4>
+<h4 id="example">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix_sparse.hpp&gt;
@@ -480,13 +492,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition">Definition</h4>
+<h4 id="definition">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_sparse.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters">Template parameters</h4>
+<h4 id="template_parameters">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -521,26 +533,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of">Model of</h4>
+<h4 id="model_of">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements">Type requirements</h4>
+<h4 id="type_requirements">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes">Public base classes</h4>
+<h4 id="public_base_classes">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_container&lt;mapped_matrix&lt;T, F, A&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members">Members</h4>
+<h4 id="members">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -753,7 +765,7 @@ the end of the reversed <code>mapped_matrix</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notes">Notes</h4>
+<h4 id="notes">Notes</h4>
 <div class="paragraph">
 <p><span id="mapped_matrix_1">[1]</span> Supported parameters for the storage
 organization are <code>row_major</code> and <code>column_major</code>.</p>
@@ -766,9 +778,9 @@ equivalent to <code>std::map&lt;std::size_t, T&gt;</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_compressed_matrix"><span id="compressed_matrix">Compressed Matrix</span></h3>
+<h3 id="compressed_matrix"><span id="compressed_matrix">Compressed Matrix</span></h3>
 <div class="sect3">
-<h4 id="_description_2">Description</h4>
+<h4 id="description_2">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>compressed_matrix&lt;T, F, IB, IA, TA&gt;</code> is the base
 container adaptor for compressed matrices. For a <em>(m x n</em> )-dimensional
@@ -784,7 +796,7 @@ orientation or </em>j<em><sub><em>1</em></sub> </em>&lt; j<em><sub><em>2</em></s
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_2">Example</h4>
+<h4 id="example_2">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix_sparse.hpp&gt;
@@ -802,13 +814,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition_2">Definition</h4>
+<h4 id="definition_2">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_sparse.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters_2">Template parameters</h4>
+<h4 id="template_parameters_2">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -856,26 +868,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of_2">Model of</h4>
+<h4 id="model_of_2">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements_2">Type requirements</h4>
+<h4 id="type_requirements_2">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes_2">Public base classes</h4>
+<h4 id="public_base_classes_2">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_container&lt;compressed_matrix&lt;T, F, IB, IA, TA&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members_2">Members</h4>
+<h4 id="members_2">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1088,7 +1100,7 @@ the end of the reversed <code>compressed_matrix</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notes_2">Notes</h4>
+<h4 id="notes_2">Notes</h4>
 <div class="paragraph">
 <p><span id="compressed_matrix_1">[1]</span> Supported parameters for the storage
 organization are <code>row_major</code> and <code>column_major</code>.</p>
@@ -1104,9 +1116,9 @@ are <code>unbounded_array&lt;&gt;</code> , <code>bounded_array&lt;&gt;</code> an
 </div>
 </div>
 <div class="sect2">
-<h3 id="_coordinate_matrix"><span id="coordinate_matrix">Coordinate Matrix</span></h3>
+<h3 id="coordinate_matrix"><span id="coordinate_matrix">Coordinate Matrix</span></h3>
 <div class="sect3">
-<h4 id="_description_3">Description</h4>
+<h4 id="description_3">Description</h4>
 <div class="paragraph">
 <p>The templated class <code>coordinate_matrix&lt;T, F, IB, IA, TA&gt;</code> is the base
 container adaptor for compressed matrices. For a <em>(m x n</em> )-dimensional
@@ -1122,7 +1134,7 @@ j<em><sub><em>2</em></sub> and </em>i<em><sub><em>1</em></sub> </em>&lt; i__<sub
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_3">Example</h4>
+<h4 id="example_3">Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/matrix_sparse.hpp&gt;
@@ -1140,13 +1152,13 @@ int main () {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_definition_3">Definition</h4>
+<h4 id="definition_3">Definition</h4>
 <div class="paragraph">
 <p>Defined in the header matrix_sparse.hpp.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_template_parameters_3">Template parameters</h4>
+<h4 id="template_parameters_3">Template parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1194,26 +1206,26 @@ int main () {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_model_of_3">Model of</h4>
+<h4 id="model_of_3">Model of</h4>
 <div class="paragraph">
 <p><a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements_3">Type requirements</h4>
+<h4 id="type_requirements_3">Type requirements</h4>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of
 <a href="container_concept.html#matrix">Matrix</a> .</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_public_base_classes_3">Public base classes</h4>
+<h4 id="public_base_classes_3">Public base classes</h4>
 <div class="paragraph">
 <p><code>matrix_container&lt;coordinate_matrix&lt;T, F, IB, IA, TA&gt; &gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_members_3">Members</h4>
+<h4 id="members_3">Members</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1433,7 +1445,7 @@ the end of the reversed <code>coordinate_matrix</code>.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_notes_3">Notes</h4>
+<h4 id="notes_3">Notes</h4>
 <div class="paragraph">
 <p><span id="coordinate_matrix_1">[1]</span> Supported parameters for the storage
 organization are <code>row_major</code> and <code>column_major</code>.</p>
@@ -1461,7 +1473,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 04:36:01 UTC
+Last updated 2021-08-08 06:03:08 UTC
 </div>
 </div>
 </body>
