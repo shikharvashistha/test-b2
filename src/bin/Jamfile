@@ -10,7 +10,7 @@ explicit ublas.pdf ;
 
 install pdf_ : ublas.pdf : <location>pdf ;
 
-explicit pdf_ ;
+explicit pdf_ ; 
 
 alias boostdoc ;
 
