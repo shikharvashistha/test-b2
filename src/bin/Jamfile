@@ -7,11 +7,13 @@
 # Distributed under the Boost Software License, Version 1.0.
 # (http://www.boost.org/LICENSE_1_0.txt)
 
-using asciidoctor ;
+import asciidoctor ;
 
-html tensor/extents : ublas/tensor/extents.adoc ;
+html ublas : ublas.adoc ;
 
 html tensor/strides : ublas/tensor/strides.adoc ;
+
+html tensor/extents : ublas/tensor/extents.adoc ;
 
 html banded : ublas/banded.adoc ;
 
@@ -69,15 +71,13 @@ html vector_sparse : ublas/vector_sparse.adoc ;
 
 html vector : ublas/vector.adoc ;
 
-html index.html : index.adoc ;
+#install html_ : ublas.html : <location>html ;
 
-install html_ : index.html : <location>html ;
+pdf ublas.pdf : ublas.adoc ;
 
-pdf index.pdf : index.adoc ;
+explicit ublas.pdf ;
 
-explicit index.pdf ;
-
-install pdf_ : index.pdf : <location>pdf ;
+install pdf_ : ublas.pdf : <location>pdf ;
 
 explicit pdf_ ;
 
