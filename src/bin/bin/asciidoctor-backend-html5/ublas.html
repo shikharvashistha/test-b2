@@ -449,18 +449,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#concepts">Concepts</a>
 <ul class="sectlevel4">
 <li><a href="#mathematical_notation">Mathematical Notation</a></li>
-<li><a href="#efficiency">Efficiency</a>
-<ul class="sectlevel5">
-<li><a href="#eliminating_temporaries">Eliminating Temporaries</a></li>
-<li><a href="#aliases">Aliases</a></li>
-<li><a href="#complexity">Complexity</a></li>
-<li><a href="#eliminating_virtual_function_calls">Eliminating Virtual Function Calls</a></li>
-<li><a href="#compilation_times">Compilation times</a></li>
-<li><a href="#blas_level_1">Blas Level 1</a></li>
-<li><a href="#blas_level_2">Blas Level 2</a></li>
-<li><a href="#blas_level_3">Blas Level 3</a></li>
-</ul>
-</li>
+<li><a href="#efficiency">Efficiency</a></li>
 </ul>
 </li>
 <li><a href="#storage_layout">Storage Layout</a></li>
@@ -480,6 +469,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#frequently_asked_questions">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li><a href="#vector">Vector</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="vector">Vector</span></a>
 <ul class="sectlevel4">
 <li><a href="#description">Description</a></li>
@@ -529,6 +522,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#members_4">Members</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#sparse_vector">Sparse Vector</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="mapped_vector">Mapped Vector</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_5">Description</a></li>
@@ -568,6 +565,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_4">Notes</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#vector_proxies">Vector Proxies</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="vector_range">Vector Range</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_8">Description</a></li>
@@ -578,22 +579,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#type_requirements_8">Type requirements</a></li>
 <li><a href="#public_base_classes_8">Public base classes</a></li>
 <li><a href="#members_8">Members</a></li>
-<li><a href="#simple_projections">Simple Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_9">Description</a></li>
-<li><a href="#prototypes">Prototypes</a></li>
-</ul>
-</li>
-<li><a href="#generic_projections">Generic Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_10">Description</a></li>
-<li><a href="#prototypes_2">Prototypes</a></li>
-<li><a href="#definition_9">Definition</a></li>
-<li><a href="#type_requirements_9">Type requirements</a></li>
-<li><a href="#complexity_2">Complexity</a></li>
-<li><a href="#examples">Examples</a></li>
-</ul>
-</li>
+<li><a href="#simple_projections">Simple Projections</a></li>
+<li><a href="#generic_projections">Generic Projections</a></li>
 </ul>
 </li>
 <li><a href="#vector_slice"><span id="vector_slice">Vector Slice</span></a>
@@ -606,24 +593,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#type_requirements_10">Type requirements</a></li>
 <li><a href="#public_base_classes_9">Public base classes</a></li>
 <li><a href="#members_9">Members</a></li>
-<li><a href="#simple_projections_2">Simple Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_12">Description</a></li>
-<li><a href="#prototypes_3">Prototypes</a></li>
-</ul>
-</li>
-<li><a href="#generic_projections_2">Generic Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_13">Description</a></li>
-<li><a href="#prototypes_4">Prototypes</a></li>
-<li><a href="#definition_11">Definition</a></li>
-<li><a href="#type_requirements_11">Type requirements</a></li>
-<li><a href="#complexity_3">Complexity</a></li>
-<li><a href="#examples_2">Examples</a></li>
+<li><a href="#simple_projections_2">Simple Projections</a></li>
+<li><a href="#generic_projections_2">Generic Projections</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#vector_expressions">Vector Expressions</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="vector_expression">Vector Expression</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_14">Description</a></li>
@@ -649,137 +626,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#vector_references"><span id="vector_references">Vector References</span></a>
 <ul class="sectlevel4">
-<li><a href="#reference">Reference</a>
-<ul class="sectlevel5">
-<li><a href="#description_16">Description</a></li>
-<li><a href="#definition_14">Definition</a></li>
-<li><a href="#template_parameters_12">Template parameters</a></li>
-<li><a href="#model_of_12">Model of</a></li>
-<li><a href="#type_requirements_14">Type requirements</a></li>
-<li><a href="#public_base_classes_12">Public base classes</a></li>
-<li><a href="#members_12">Members</a></li>
-</ul>
-</li>
+<li><a href="#reference">Reference</a></li>
 </ul>
 </li>
 <li><a href="#vector_operations"><span id="vector_operations">Vector Operations</span></a>
 <ul class="sectlevel4">
-<li><a href="#unary_operation_description">Unary Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_17">Description</a></li>
-<li><a href="#definition_15">Definition</a></li>
-<li><a href="#template_parameters_13">Template parameters</a></li>
-<li><a href="#model_of_13">Model of</a></li>
-<li><a href="#type_requirements_15">Type requirements</a></li>
-<li><a href="#public_base_classes_13">Public base classes</a></li>
-<li><a href="#members_13">Members</a></li>
-</ul>
-</li>
-<li><a href="#unary_operations">Unary Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_5">Prototypes</a></li>
-<li><a href="#description_18">Description</a></li>
-<li><a href="#definition_16">Definition</a></li>
-<li><a href="#type_requirements_16">Type requirements</a></li>
-<li><a href="#preconditions">Preconditions</a></li>
-<li><a href="#complexity_4">Complexity</a></li>
-<li><a href="#examples_3">Examples</a></li>
-</ul>
-</li>
-<li><a href="#binary_operation_description">Binary Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_19">Description</a></li>
-<li><a href="#definition_17">Definition</a></li>
-<li><a href="#template_parameters_14">Template parameters</a></li>
-<li><a href="#model_of_14">Model of</a></li>
-<li><a href="#type_requirements_17">Type requirements</a></li>
-<li><a href="#public_base_classes_14">Public base classes</a></li>
-<li><a href="#members_14">Members</a></li>
-</ul>
-</li>
-<li><a href="#binary_operations">Binary Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_6">Prototypes</a></li>
-<li><a href="#description_20">Description</a></li>
-<li><a href="#definition_18">Definition</a></li>
-<li><a href="#type_requirements_18">Type requirements</a></li>
-<li><a href="#preconditions_2">Preconditions</a></li>
-<li><a href="#complexity_5">Complexity</a></li>
-<li><a href="#examples_4">Examples</a></li>
-</ul>
-</li>
-<li><a href="#binary_outer_operation_description">Binary Outer Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_21">Description</a></li>
-<li><a href="#definition_19">Definition</a></li>
-<li><a href="#template_parameters_15">Template parameters</a></li>
-<li><a href="#model_of_15">Model of</a></li>
-<li><a href="#type_requirements_19">Type requirements</a></li>
-<li><a href="#public_base_classes_15">Public base classes</a></li>
-<li><a href="#members_15">Members</a></li>
-</ul>
-</li>
-<li><a href="#binary_outer_operations">Binary Outer Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_7">Prototypes</a></li>
-<li><a href="#description_22">Description</a></li>
-<li><a href="#definition_20">Definition</a></li>
-<li><a href="#type_requirements_20">Type requirements</a></li>
-<li><a href="#preconditions_3">Preconditions</a></li>
-<li><a href="#complexity_6">Complexity</a></li>
-<li><a href="#examples_5">Examples</a></li>
-</ul>
-</li>
-<li><a href="#scalar_vector_operation_description">Scalar Vector Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_23">Description</a></li>
-<li><a href="#definition_21">Definition</a></li>
-<li><a href="#template_parameters_16">Template parameters</a></li>
-<li><a href="#model_of_16">Model of</a></li>
-<li><a href="#type_requirements_21">Type requirements</a></li>
-<li><a href="#public_base_classes_16">Public base classes</a></li>
-<li><a href="#members_16">Members</a></li>
-</ul>
-</li>
-<li><a href="#scalar_vector_operations">Scalar Vector Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_8">Prototypes</a></li>
-<li><a href="#description_24">Description</a></li>
-<li><a href="#definition_22">Definition</a></li>
-<li><a href="#type_requirements_22">Type requirements</a></li>
-<li><a href="#preconditions_4">Preconditions</a></li>
-<li><a href="#complexity_7">Complexity</a></li>
-<li><a href="#examples_6">Examples</a></li>
-</ul>
-</li>
+<li><a href="#unary_operation_description">Unary Operation Description</a></li>
+<li><a href="#unary_operations">Unary Operations</a></li>
+<li><a href="#binary_operation_description">Binary Operation Description</a></li>
+<li><a href="#binary_operations">Binary Operations</a></li>
+<li><a href="#binary_outer_operation_description">Binary Outer Operation Description</a></li>
+<li><a href="#binary_outer_operations">Binary Outer Operations</a></li>
+<li><a href="#scalar_vector_operation_description">Scalar Vector Operation Description</a></li>
+<li><a href="#scalar_vector_operations">Scalar Vector Operations</a></li>
 </ul>
 </li>
 <li><a href="#vector_reductions"><span id="vector_reductions">Vector Reductions</span></a>
 <ul class="sectlevel4">
-<li><a href="#unary_reductions">Unary Reductions</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_9">Prototypes</a></li>
-<li><a href="#description_25">Description</a></li>
-<li><a href="#definition_23">Definition</a></li>
-<li><a href="#type_requirements_23">Type requirements</a></li>
-<li><a href="#preconditions_5">Preconditions</a></li>
-<li><a href="#complexity_8">Complexity</a></li>
-<li><a href="#examples_7">Examples</a></li>
-</ul>
-</li>
-<li><a href="#binary_reductions">Binary Reductions</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_10">Prototypes</a></li>
-<li><a href="#description_26">Description</a></li>
-<li><a href="#definition_24">Definition</a></li>
-<li><a href="#type_requirements_24">Type requirements</a></li>
-<li><a href="#preconditions_6">Preconditions</a></li>
-<li><a href="#complexity_9">Complexity</a></li>
-<li><a href="#examples_8">Examples</a></li>
+<li><a href="#unary_reductions">Unary Reductions</a></li>
+<li><a href="#binary_reductions">Binary Reductions</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#matrix">Matrix</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="matrix">Matrix</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_27">Description</a></li>
@@ -829,6 +700,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#members_20">Members</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#triangular_matrix">Triangular Matrix</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="triangular_matrix">Triangular Matrix</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_31">Description</a></li>
@@ -855,6 +730,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_8">Notes</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#symmetric_matrix">Symmetric Matrix</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="symmetric_matrix">Symmetric Matrix</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_33">Description</a></li>
@@ -881,6 +760,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_10">Notes</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#hermitian_matrix">Hermitian Matrix</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="hermitian_matrix">Hermitian Matrix</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_35">Description</a></li>
@@ -907,6 +790,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_12">Notes</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#banded_matrix">Banded Matrix</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="banded_matrix">Banded Matrix</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_37">Description</a></li>
@@ -932,6 +819,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#members_28">Members</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#sparse_matricies">Sparse Matricies</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="mapped_matrix">Mapped Matrix</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_39">Description</a></li>
@@ -971,6 +862,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_16">Notes</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#matrix_proxies">Matrix Proxies</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="matrix_row">Matrix Row</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_42">Description</a></li>
@@ -981,16 +876,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#type_requirements_40">Type requirements</a></li>
 <li><a href="#public_base_classes_32">Public base classes</a></li>
 <li><a href="#members_32">Members</a></li>
-<li><a href="#projections">Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_43">Description</a></li>
-<li><a href="#prototypes_11">Prototypes</a></li>
-<li><a href="#definition_41">Definition</a></li>
-<li><a href="#type_requirements_41">Type requirements</a></li>
-<li><a href="#complexity_10">Complexity</a></li>
-<li><a href="#examples_9">Examples</a></li>
-</ul>
-</li>
+<li><a href="#projections">Projections</a></li>
 </ul>
 </li>
 <li><a href="#matrix_column"><span id="matrix_column">Matrix Column</span></a>
@@ -1003,16 +889,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#type_requirements_42">Type requirements</a></li>
 <li><a href="#public_base_classes_33">Public base classes</a></li>
 <li><a href="#members_33">Members</a></li>
-<li><a href="#projections_2">Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_45">Description</a></li>
-<li><a href="#prototypes_12">Prototypes</a></li>
-<li><a href="#definition_43">Definition</a></li>
-<li><a href="#type_requirements_43">Type requirements</a></li>
-<li><a href="#complexity_11">Complexity</a></li>
-<li><a href="#examples_10">Examples</a></li>
-</ul>
-</li>
+<li><a href="#projections_2">Projections</a></li>
 </ul>
 </li>
 <li><a href="#vector_range"><span id="vector_range">Vector Range</span></a>
@@ -1049,22 +926,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#type_requirements_46">Type requirements</a></li>
 <li><a href="#public_base_classes_36">Public base classes</a></li>
 <li><a href="#members_36">Members</a></li>
-<li><a href="#simple_projections_3">Simple Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_49">Description</a></li>
-<li><a href="#prototypes_13">Prototypes</a></li>
-</ul>
-</li>
-<li><a href="#generic_projections_3">Generic Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_50">Description</a></li>
-<li><a href="#prototypes_14">Prototypes</a></li>
-<li><a href="#definition_47">Definition</a></li>
-<li><a href="#type_requirements_47">Type requirements</a></li>
-<li><a href="#complexity_12">Complexity</a></li>
-<li><a href="#examples_11">Examples</a></li>
-</ul>
-</li>
+<li><a href="#simple_projections_3">Simple Projections</a></li>
+<li><a href="#generic_projections_3">Generic Projections</a></li>
 </ul>
 </li>
 <li><a href="#matrix_slice"><span id="matrix_slice">Matrix Slice</span></a>
@@ -1077,24 +940,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#type_requirements_48">Type requirements</a></li>
 <li><a href="#public_base_classes_37">Public base classes</a></li>
 <li><a href="#members_37">Members</a></li>
-<li><a href="#simple_projections_4">Simple Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_52">Description</a></li>
-<li><a href="#prototypes_15">Prototypes</a></li>
-</ul>
-</li>
-<li><a href="#generic_projections_4">Generic Projections</a>
-<ul class="sectlevel5">
-<li><a href="#description_53">Description</a></li>
-<li><a href="#prototypes_16">Prototypes</a></li>
-<li><a href="#definition_49">Definition</a></li>
-<li><a href="#type_requirements_49">Type requirements</a></li>
-<li><a href="#complexity_13">Complexity</a></li>
-<li><a href="#examples_12">Examples</a></li>
+<li><a href="#simple_projections_4">Simple Projections</a></li>
+<li><a href="#generic_projections_4">Generic Projections</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#matrix_expressions">Matrix Expressions</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="matrix_expression">Matrix Expression</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_54">Description</a></li>
@@ -1120,161 +973,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#matrix_references"><span id="matrix_references">Matrix References</span></a>
 <ul class="sectlevel4">
-<li><a href="#reference_2">Reference</a>
-<ul class="sectlevel5">
-<li><a href="#description_56">Description</a></li>
-<li><a href="#definition_52">Definition</a></li>
-<li><a href="#template_parameters_40">Template parameters</a></li>
-<li><a href="#model_of_40">Model of</a></li>
-<li><a href="#type_requirements_52">Type requirements</a></li>
-<li><a href="#public_base_classes_40">Public base classes</a></li>
-<li><a href="#members_40">Members</a></li>
-</ul>
-</li>
+<li><a href="#reference_2">Reference</a></li>
 </ul>
 </li>
 <li><a href="#matrix_operations"><span id="matrix_operations">Matrix Operations</span></a>
 <ul class="sectlevel4">
-<li><a href="#unary_operation_description_2">Unary Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_57">Description</a></li>
-<li><a href="#definition_53">Definition</a></li>
-<li><a href="#template_parameters_41">Template parameters</a></li>
-<li><a href="#model_of_41">Model of</a></li>
-<li><a href="#type_requirements_53">Type requirements</a></li>
-<li><a href="#public_base_classes_41">Public base classes</a></li>
-<li><a href="#members_41">Members</a></li>
-</ul>
-</li>
-<li><a href="#unary_operations_2">Unary Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_17">Prototypes</a></li>
-<li><a href="#description_58">Description</a></li>
-<li><a href="#definition_54">Definition</a></li>
-<li><a href="#type_requirements_54">Type requirements</a></li>
-<li><a href="#preconditions_7">Preconditions</a></li>
-<li><a href="#complexity_14">Complexity</a></li>
-<li><a href="#examples_13">Examples</a></li>
-</ul>
-</li>
-<li><a href="#binary_operation_description_2">Binary Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_59">Description</a></li>
-<li><a href="#definition_55">Definition</a></li>
-<li><a href="#template_parameters_42">Template parameters</a></li>
-<li><a href="#model_of_42">Model of</a></li>
-<li><a href="#type_requirements_55">Type requirements</a></li>
-<li><a href="#public_base_classes_42">Public base classes</a></li>
-<li><a href="#members_42">Members</a></li>
-</ul>
-</li>
-<li><a href="#binary_operations_2">Binary Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_18">Prototypes</a></li>
-<li><a href="#description_60">Description</a></li>
-<li><a href="#definition_56">Definition</a></li>
-<li><a href="#type_requirements_56">Type requirements</a></li>
-<li><a href="#preconditions_8">Preconditions</a></li>
-<li><a href="#complexity_15">Complexity</a></li>
-<li><a href="#examples_14">Examples</a></li>
-</ul>
-</li>
-<li><a href="#scalar_matrix_operation_description">Scalar Matrix Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_61">Description</a></li>
-<li><a href="#definition_57">Definition</a></li>
-<li><a href="#template_parameters_43">Template parameters</a></li>
-<li><a href="#model_of_43">Model of</a></li>
-<li><a href="#type_requirements_57">Type requirements</a></li>
-<li><a href="#public_base_classes_43">Public base classes</a></li>
-<li><a href="#members_43">Members</a></li>
-</ul>
-</li>
-<li><a href="#scalar_matrix_operations">Scalar Matrix Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_19">Prototypes</a></li>
-<li><a href="#description_62">Description</a></li>
-<li><a href="#definition_58">Definition</a></li>
-<li><a href="#type_requirements_58">Type requirements</a></li>
-<li><a href="#preconditions_9">Preconditions</a></li>
-<li><a href="#complexity_16">Complexity</a></li>
-<li><a href="#examples_15">Examples</a></li>
-</ul>
-</li>
+<li><a href="#unary_operation_description_2">Unary Operation Description</a></li>
+<li><a href="#unary_operations_2">Unary Operations</a></li>
+<li><a href="#binary_operation_description_2">Binary Operation Description</a></li>
+<li><a href="#binary_operations_2">Binary Operations</a></li>
+<li><a href="#scalar_matrix_operation_description">Scalar Matrix Operation Description</a></li>
+<li><a href="#scalar_matrix_operations">Scalar Matrix Operations</a></li>
 </ul>
 </li>
 <li><a href="#matrix_vector_operations"><span id="matrix_vector_operations">Matrix Vector Operations</span></a>
 <ul class="sectlevel4">
-<li><a href="#binary_operation_description_3">Binary Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_63">Description</a></li>
-<li><a href="#definition_59">Definition</a></li>
-<li><a href="#template_parameters_44">Template parameters</a></li>
-<li><a href="#model_of_44">Model of</a></li>
-<li><a href="#type_requirements_59">Type requirements</a></li>
-<li><a href="#public_base_classes_44">Public base classes</a></li>
-<li><a href="#members_44">Members</a></li>
-</ul>
-</li>
-<li><a href="#binary_operations_3">Binary Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_20">Prototypes</a></li>
-<li><a href="#description_64">Description</a></li>
-<li><a href="#definition_60">Definition</a></li>
-<li><a href="#type_requirements_60">Type requirements</a></li>
-<li><a href="#preconditions_10">Preconditions</a></li>
-<li><a href="#complexity_17">Complexity</a></li>
-<li><a href="#examples_16">Examples</a></li>
-</ul>
-</li>
-<li><a href="#triangular_solver">Triangular Solver</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_21">Prototypes</a></li>
-<li><a href="#description_65">Description</a></li>
-<li><a href="#definition_61">Definition</a></li>
-<li><a href="#type_requirements_61">Type requirements</a></li>
-<li><a href="#preconditions_11">Preconditions</a></li>
-<li><a href="#complexity_18">Complexity</a></li>
-<li><a href="#examples_17">Examples</a></li>
-</ul>
-</li>
+<li><a href="#binary_operation_description_3">Binary Operation Description</a></li>
+<li><a href="#binary_operations_3">Binary Operations</a></li>
+<li><a href="#triangular_solver">Triangular Solver</a></li>
 </ul>
 </li>
 <li><a href="#matrix_matrix_operations"><span id="matrix_matrix_operations">Matrix Matrix Operations</span></a>
 <ul class="sectlevel4">
-<li><a href="#binary_operation_description_4">Binary Operation Description</a>
-<ul class="sectlevel5">
-<li><a href="#description_66">Description</a></li>
-<li><a href="#definition_62">Definition</a></li>
-<li><a href="#template_parameters_45">Template parameters</a></li>
-<li><a href="#model_of_45">Model of</a></li>
-<li><a href="#type_requirements_62">Type requirements</a></li>
-<li><a href="#public_base_classes_45">Public base classes</a></li>
-<li><a href="#members_45">Members</a></li>
+<li><a href="#binary_operation_description_4">Binary Operation Description</a></li>
+<li><a href="#binary_operations_4">Binary Operations</a></li>
+<li><a href="#triangular_solvers">Triangular Solvers</a></li>
 </ul>
 </li>
-<li><a href="#binary_operations_4">Binary Operations</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_22">Prototypes</a></li>
-<li><a href="#description_67">Description</a></li>
-<li><a href="#definition_63">Definition</a></li>
-<li><a href="#type_requirements_63">Type requirements</a></li>
-<li><a href="#preconditions_12">Preconditions</a></li>
-<li><a href="#complexity_19">Complexity</a></li>
-<li><a href="#examples_18">Examples</a></li>
 </ul>
 </li>
-<li><a href="#triangular_solvers">Triangular Solvers</a>
-<ul class="sectlevel5">
-<li><a href="#prototypes_23">Prototypes</a></li>
-<li><a href="#description_68">Description</a></li>
-<li><a href="#definition_64">Definition</a></li>
-<li><a href="#type_requirements_64">Type requirements</a></li>
-<li><a href="#preconditions_13">Preconditions</a></li>
-<li><a href="#complexity_20">Complexity</a></li>
-<li><a href="#examples_19">Examples</a></li>
-</ul>
-</li>
+<li><a href="#tensor">Tensor</a>
+<ul class="sectlevel4">
 <li><a href="#a_description">a. <span id="tensor_1">Description</span></a></li>
 <li><a href="#b_example">b. <span id="tensor_2">Example</span></a></li>
 <li><a href="#c_definition">c. <span id="tensor_3">Definition</span></a></li>
@@ -1284,122 +1013,202 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#g_template_parameters">g. <span id="tensor_7">Template parameters</span></a></li>
 <li><a href="#h_member_types">h. <span id="tensor_8">Member types</span></a></li>
 <li><a href="#i_alias_templates">i. <span id="tensor_9">Alias templates</span></a></li>
-<li><a href="#j_member_functions">j. <span id="tensor_10">Member Functions</span></a>
-<ul class="sectlevel5">
-<li><a href="#i_construction">i. <span id="tensor_11">Construction</span></a></li>
-<li><a href="#ii_assignment">ii. <span id="tensor_12">Assignment</span></a></li>
-<li><a href="#iii_capacity">iii. <span id="tensor_13">Capacity</span></a></li>
-<li><a href="#iv_element_access">iv. <span id="tensor_14">Element access</span></a></li>
-<li><a href="#v_proxy_generation">v. <span id="tensor_15">Proxy Generation</span></a></li>
-<li><a href="#vi_iterators">vi. <span id="tensor_16">Iterators</span></a></li>
-<li><a href="#vii_modifiers">vii. <span id="tensor_17">Modifiers</span></a></li>
-<li><a href="#viii_notes">viii. <span id="tensor_18">Notes</span></a></li>
+<li><a href="#j_member_functions">j. <span id="tensor_10">Member Functions</span></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#toc"><span id="unbounded_array">Unbounded Array</span></a>
+<li><a href="#tensor_expressions">Tensor Expressions</a>
+<ul class="sectlevel3">
+<li><a href="#toc"><span id="tensor_expression">Tensor Expression</span></a>
 <ul class="sectlevel4">
 <li><a href="#description_69">Description</a></li>
-<li><a href="#example_31">Example</a></li>
 <li><a href="#definition_65">Definition</a></li>
-<li><a href="#template_parameters_46">Template parameters</a></li>
 <li><a href="#model_of_46">Model of</a></li>
 <li><a href="#type_requirements_65">Type requirements</a></li>
 <li><a href="#public_base_classes_46">Public base classes</a></li>
+<li><a href="#template_parameters_46">Template parameters</a></li>
+<li><a href="#member_types">Member types</a></li>
+<li><a href="#public_member_functions">Public Member Functions</a></li>
+</ul>
+</li>
+<li><a href="#entrywise_tensor_operations"><span id="entrywise_tensor_operations">Entrywise Tensor Operations</span></a>
+<ul class="sectlevel4">
+<li><a href="#binary_tensor_expression"><span id="binary_tensor_expression">Binary Tensor Expression</span></a></li>
+<li><a href="#unary_tensor_expression"><span id="unary_tensor_expression">Unary Tensor Expression</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#unbounded_array_storage">Unbounded Array Storage</a>
+<ul class="sectlevel3">
+<li><a href="#toc"><span id="unbounded_array">Unbounded Array</span></a>
+<ul class="sectlevel4">
+<li><a href="#description_72">Description</a></li>
+<li><a href="#example_31">Example</a></li>
+<li><a href="#definition_68">Definition</a></li>
+<li><a href="#template_parameters_49">Template parameters</a></li>
+<li><a href="#model_of_49">Model of</a></li>
+<li><a href="#type_requirements_68">Type requirements</a></li>
+<li><a href="#public_base_classes_49">Public base classes</a></li>
 <li><a href="#members_46">Members</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#bounded_array_storage">Bounded Array Storage</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="bounded_array">Bounded Array</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_70">Description</a></li>
+<li><a href="#description_73">Description</a></li>
 <li><a href="#example_32">Example</a></li>
-<li><a href="#definition_66">Definition</a></li>
-<li><a href="#template_parameters_47">Template parameters</a></li>
-<li><a href="#model_of_47">Model of</a></li>
-<li><a href="#type_requirements_66">Type requirements</a></li>
-<li><a href="#public_base_classes_47">Public base classes</a></li>
+<li><a href="#definition_69">Definition</a></li>
+<li><a href="#template_parameters_50">Template parameters</a></li>
+<li><a href="#model_of_50">Model of</a></li>
+<li><a href="#type_requirements_69">Type requirements</a></li>
+<li><a href="#public_base_classes_50">Public base classes</a></li>
 <li><a href="#members_47">Members</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#range_and_slice_storage">Range and Slice Storage</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="range">Range&lt;SizeType,DistanceType&gt;</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_71">Description</a></li>
+<li><a href="#description_74">Description</a></li>
 <li><a href="#example_33">Example</a></li>
-<li><a href="#definition_67">Definition</a></li>
-<li><a href="#model_of_48">Model of</a></li>
-<li><a href="#type_requirements_67">Type requirements</a></li>
-<li><a href="#public_base_classes_48">Public base classes</a></li>
+<li><a href="#definition_70">Definition</a></li>
+<li><a href="#model_of_51">Model of</a></li>
+<li><a href="#type_requirements_70">Type requirements</a></li>
+<li><a href="#public_base_classes_51">Public base classes</a></li>
 <li><a href="#members_48">Members</a></li>
 <li><a href="#preconditions_14">Preconditions</a></li>
 </ul>
 </li>
 <li><a href="#slicesizetypedistancetype"><span id="slice">Slice&lt;SizeType,DistanceType&gt;</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_72">Description</a></li>
+<li><a href="#description_75">Description</a></li>
 <li><a href="#example_34">Example</a></li>
-<li><a href="#definition_68">Definition</a></li>
-<li><a href="#model_of_49">Model of</a></li>
-<li><a href="#type_requirements_68">Type requirements</a></li>
-<li><a href="#public_base_classes_49">Public base classes</a></li>
+<li><a href="#definition_71">Definition</a></li>
+<li><a href="#model_of_52">Model of</a></li>
+<li><a href="#type_requirements_71">Type requirements</a></li>
+<li><a href="#public_base_classes_52">Public base classes</a></li>
 <li><a href="#members_49">Members</a></li>
 <li><a href="#preconditions_15">Preconditions</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#extents">Extents</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="extents">basic_extents&lt;size_type&gt;</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_73">Description</a></li>
+<li><a href="#description_76">Description</a></li>
 <li><a href="#example_35">Example</a></li>
-<li><a href="#definition_69">Definition</a></li>
-<li><a href="#public_base_classes_50">Public base classes</a></li>
+<li><a href="#definition_72">Definition</a></li>
+<li><a href="#public_base_classes_53">Public base classes</a></li>
 <li><a href="#specialization">Specialization</a></li>
-<li><a href="#template_parameters_48">Template parameters</a></li>
-<li><a href="#member_types">Member types</a></li>
+<li><a href="#template_parameters_51">Template parameters</a></li>
+<li><a href="#member_types_4">Member types</a></li>
 <li><a href="#member_functions">Member Functions</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#strides">Strides</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="extents">basic_strides&lt;size_type, format_type&gt;</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_74">Description</a></li>
+<li><a href="#description_77">Description</a></li>
 <li><a href="#example_36">Example</a></li>
-<li><a href="#definition_70">Definition</a></li>
-<li><a href="#public_base_classes_51">Public base classes</a></li>
+<li><a href="#definition_73">Definition</a></li>
+<li><a href="#public_base_classes_54">Public base classes</a></li>
 <li><a href="#specialization_2">Specialization</a></li>
-<li><a href="#template_parameters_49">Template parameters</a></li>
-<li><a href="#member_types_2">Member types</a></li>
+<li><a href="#template_parameters_52">Template parameters</a></li>
+<li><a href="#member_types_5">Member types</a></li>
 <li><a href="#member_functions_2">Member Functions</a></li>
 <li><a href="#non_member_functions">Non-Member Functions</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#tensor_expressions_2">Tensor Expressions</a>
+<ul class="sectlevel3">
+<li><a href="#toc"><span id="tensor_expression">Tensor Expression</span></a>
+<ul class="sectlevel4">
+<li><a href="#description_78">Description</a></li>
+<li><a href="#definition_74">Definition</a></li>
+<li><a href="#model_of_53">Model of</a></li>
+<li><a href="#type_requirements_72">Type requirements</a></li>
+<li><a href="#public_base_classes_55">Public base classes</a></li>
+<li><a href="#template_parameters_53">Template parameters</a></li>
+<li><a href="#member_types_6">Member types</a></li>
+<li><a href="#public_member_functions_4">Public Member Functions</a></li>
+</ul>
+</li>
+<li><a href="#entrywise_tensor_operations_2"><span id="entrywise_tensor_operations">Entrywise Tensor Operations</span></a>
+<ul class="sectlevel4">
+<li><a href="#binary_tensor_expression_2"><span id="binary_tensor_expression">Binary Tensor Expression</span></a></li>
+<li><a href="#unary_tensor_expression_2"><span id="unary_tensor_expression">Unary Tensor Expression</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tensor_index">Tensor Index</a>
+<ul class="sectlevel3">
+<li><a href="#toc"><span id="tensor index">tensor_index&lt;value_t, storage_t, array_t, N&gt;</span></a>
+<ul class="sectlevel4">
+<li><a href="#description_81">Description</a></li>
+<li><a href="#example_37">Example</a></li>
+<li><a href="#definition_77">Definition</a></li>
+<li><a href="#public_base_classes_58">Public base classes</a></li>
+<li><a href="#template_parameters_56">Template parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sparse_storage">Sparse Storage</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="map_std">Default Standard Map</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_75">Description</a></li>
-<li><a href="#example_37">Example</a></li>
-<li><a href="#definition_71">Definition</a></li>
-<li><a href="#template_parameters_50">Template parameters</a></li>
-<li><a href="#model_of_50">Model of</a></li>
-<li><a href="#type_requirements_69">Type requirements</a></li>
-<li><a href="#public_base_classes_52">Public base classes</a></li>
+<li><a href="#description_82">Description</a></li>
+<li><a href="#example_38">Example</a></li>
+<li><a href="#definition_78">Definition</a></li>
+<li><a href="#template_parameters_57">Template parameters</a></li>
+<li><a href="#model_of_56">Model of</a></li>
+<li><a href="#type_requirements_75">Type requirements</a></li>
+<li><a href="#public_base_classes_59">Public base classes</a></li>
 </ul>
 </li>
 <li><a href="#map_array"><span id="map_array">Map Array</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_76">Description</a></li>
-<li><a href="#example_38">Example</a></li>
-<li><a href="#definition_72">Definition</a></li>
-<li><a href="#template_parameters_51">Template parameters</a></li>
-<li><a href="#model_of_51">Model of</a></li>
-<li><a href="#type_requirements_70">Type requirements</a></li>
-<li><a href="#public_base_classes_53">Public base classes</a></li>
+<li><a href="#description_83">Description</a></li>
+<li><a href="#example_39">Example</a></li>
+<li><a href="#definition_79">Definition</a></li>
+<li><a href="#template_parameters_58">Template parameters</a></li>
+<li><a href="#model_of_57">Model of</a></li>
+<li><a href="#type_requirements_76">Type requirements</a></li>
+<li><a href="#public_base_classes_60">Public base classes</a></li>
 <li><a href="#members_50">Members</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#special_products">Special Products</a>
+<ul class="sectlevel3">
 <li><a href="#toc">Functions</a></li>
+</ul>
+</li>
+<li><a href="#level_3_blas">Level 3 BLAS</a>
+<ul class="sectlevel3">
 <li><a href="#functions">Functions</a></li>
 <li><a href="#function_documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li><a href="#container_concepts">Container Concepts</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="vector">Vector</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_77">Description</a></li>
+<li><a href="#description_84">Description</a></li>
 <li><a href="#refinement_of">Refinement of</a></li>
 <li><a href="#associated_types">Associated types</a></li>
 <li><a href="#notation">Notation</a></li>
@@ -1412,9 +1221,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_18">Notes</a></li>
 </ul>
 </li>
-<li><a href="#matrix"><span id="matrix">Matrix</span></a>
+<li><a href="#matrix_2"><span id="matrix">Matrix</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_78">Description</a></li>
+<li><a href="#description_85">Description</a></li>
 <li><a href="#refinement_of_2">Refinement of</a></li>
 <li><a href="#associated_types_2">Associated types</a></li>
 <li><a href="#notation_2">Notation</a></li>
@@ -1427,9 +1236,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_19">Notes</a></li>
 </ul>
 </li>
-<li><a href="#tensor"><span id="tensor">Tensor</span></a>
+<li><a href="#tensor_2"><span id="tensor">Tensor</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_79">Description</a></li>
+<li><a href="#description_86">Description</a></li>
 <li><a href="#refinement_of_3">Refinement of</a></li>
 <li><a href="#associated_types_3">Associated types</a></li>
 <li><a href="#notation_3">Notation</a></li>
@@ -1442,9 +1251,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notes_20">Notes</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#expression_concepts">Expression Concepts</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="scalar_expression">Scalar Expression</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_80">Description</a></li>
+<li><a href="#description_87">Description</a></li>
 <li><a href="#refinement_of_4">Refinement of</a></li>
 <li><a href="#associated_types_4">Associated types</a></li>
 <li><a href="#notation_4">Notation</a></li>
@@ -1458,7 +1271,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#vector_expression"><span id="vector_expression">Vector Expression</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_81">Description</a></li>
+<li><a href="#description_88">Description</a></li>
 <li><a href="#refinement_of_5">Refinement of</a></li>
 <li><a href="#associated_types_5">Associated types</a></li>
 <li><a href="#notation_5">Notation</a></li>
@@ -1472,49 +1285,40 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#matrix_expression"><span id="matrix_expression">Matrix Expression</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_82">Description</a></li>
+<li><a href="#description_89">Description</a></li>
 <li><a href="#refinement_of_6">Refinement of</a></li>
-<li><a href="#associated_types_6">Associated types</a>
-<ul class="sectlevel5">
-<li><a href="#immutable_types">immutable types</a></li>
-<li><a href="#mutable_types">mutable types</a></li>
-</ul>
-</li>
+<li><a href="#associated_types_6">Associated types</a></li>
 <li><a href="#notation_6">Notation</a></li>
 <li><a href="#definitions_6">Definitions</a></li>
-<li><a href="#valid_expressions_6">Valid expressions</a>
-<ul class="sectlevel5">
-<li><a href="#immutable_expressions">immutable expressions</a></li>
-<li><a href="#possibly_mutable_expressions">possibly mutable expressions</a></li>
-</ul>
-</li>
+<li><a href="#valid_expressions_6">Valid expressions</a></li>
 <li><a href="#expression_semantics_6">Expression semantics</a></li>
 <li><a href="#complexity_guarantees_6">Complexity guarantees</a></li>
 <li><a href="#invariants_6">Invariants</a></li>
 <li><a href="#models_6">Models</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#storage_concept">Storage concept</a>
+<ul class="sectlevel3">
 <li><a href="#toc"><span id="range">Storage concept</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_83">Description</a></li>
+<li><a href="#description_90">Description</a></li>
 <li><a href="#refinement_of_7">Refinement of</a></li>
 <li><a href="#associated_types_7">Associated types</a></li>
 <li><a href="#notation_7">Notation</a></li>
 <li><a href="#definitions_7">Definitions</a></li>
 <li><a href="#valid_expressions_7">Valid expressions</a></li>
-<li><a href="#expression_semantics_7">Expression semantics</a>
-<ul class="sectlevel5">
-<li><a href="#complexity_guarantees_7">Complexity guarantees</a></li>
-<li><a href="#invariants_7">Invariants</a></li>
-<li><a href="#models_7">Models</a></li>
-<li><a href="#notes_21">Notes</a></li>
+<li><a href="#expression_semantics_7">Expression semantics</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#iterator_concepts">Iterator Concepts</a>
+<ul class="sectlevel3">
 <li><a href="#indexed_bidirectional_iterator"><span id="indexed_bidirectional_iterator">Indexed Bidirectional Iterator</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_84">Description</a></li>
+<li><a href="#description_91">Description</a></li>
 <li><a href="#refinement_of_8">Refinement of</a></li>
 <li><a href="#associated_types_8">Associated types</a></li>
 <li><a href="#notation_8">Notation</a></li>
@@ -1528,7 +1332,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#indexed_random_access_iterator"><span id="indexed_random_access_iterator">Indexed Random Access Iterator</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_85">Description</a></li>
+<li><a href="#description_92">Description</a></li>
 <li><a href="#refinement_of_9">Refinement of</a></li>
 <li><a href="#associated_types_9">Associated types</a></li>
 <li><a href="#notation_9">Notation</a></li>
@@ -1542,7 +1346,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#indexed_bidirectional_columnrow_iterator"><span id="indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row Iterator</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_86">Description</a></li>
+<li><a href="#description_93">Description</a></li>
 <li><a href="#refinement_of_10">Refinement of</a></li>
 <li><a href="#associated_types_10">Associated types</a></li>
 <li><a href="#notation_10">Notation</a></li>
@@ -1556,7 +1360,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#indexed_random_access_columnrow_iterator"><span id="indexed_random_access_cr_iterator">Indexed Random Access Column/Row Iterator</span></a>
 <ul class="sectlevel4">
-<li><a href="#description_87">Description</a></li>
+<li><a href="#description_94">Description</a></li>
 <li><a href="#refinement_of_11">Refinement of</a></li>
 <li><a href="#associated_types_11">Associated types</a></li>
 <li><a href="#notation_11">Notation</a></li>
@@ -3190,10 +2994,12 @@ David Bellot<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Vector</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="vector">Vector</h3>
 <div class="sect3">
 <h4 id="toc"><span id="vector">Vector</span></h4>
 <div class="sect4">
@@ -4069,11 +3875,13 @@ the end of the <code>scalar_vector</code>.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Sparse Vector</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="sparse_vector">Sparse Vector</h3>
 <div class="sect3">
 <h4 id="toc"><span id="mapped_vector">Mapped Vector</span></h4>
 <div class="sect4">
@@ -4926,11 +4734,13 @@ are <code>unbounded_array&lt;&gt;</code> , <code>bounded_array&lt;&gt;</code> an
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Vector Proxies</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="vector_proxies">Vector Proxies</h3>
 <div class="sect3">
 <h4 id="toc"><span id="vector_range">Vector Range</span></h4>
 <div class="sect4">
@@ -5568,12 +5378,14 @@ int main () {
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Vector Expressions</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="vector_expressions">Vector Expressions</h3>
 <div class="sect3">
 <h4 id="toc"><span id="vector_expression">Vector Expression</span></h4>
 <div class="sect4">
@@ -6973,12 +6785,14 @@ int main () {
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Matrix</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="matrix">Matrix</h3>
 <div class="sect3">
 <h4 id="toc"><span id="matrix">Matrix</span></h4>
 <div class="sect4">
@@ -7865,11 +7679,13 @@ to the end of the <code>scalar_matrix</code>.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Triangular Matrix</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="triangular_matrix">Triangular Matrix</h3>
 <div class="sect3">
 <h4 id="toc"><span id="triangular_matrix">Triangular Matrix</span></h4>
 <div class="sect4">
@@ -8503,11 +8319,13 @@ triangular adaptor are <code>lower</code> , <code>unit_lower</code>, <code>upper
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Symmetric Matrix</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="symmetric_matrix">Symmetric Matrix</h3>
 <div class="sect3">
 <h4 id="toc"><span id="symmetric_matrix">Symmetric Matrix</span></h4>
 <div class="sect4">
@@ -9125,11 +8943,13 @@ symmetric adaptor are <code>lower</code> and <code>upper</code>.</p>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Hermitian Matrix</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="hermitian_matrix">Hermitian Matrix</h3>
 <div class="sect3">
 <h4 id="toc"><span id="hermitian_matrix">Hermitian Matrix</span></h4>
 <div class="sect4">
@@ -9755,11 +9575,13 @@ hermitian adaptor are <code>lower</code> and <code>upper</code>.</p>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Banded Matrix</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="banded_matrix">Banded Matrix</h3>
 <div class="sect3">
 <h4 id="toc"><span id="banded_matrix">Banded Matrix</span></h4>
 <div class="sect4">
@@ -10365,11 +10187,13 @@ the end of the reversed <code>banded_adaptor</code>.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a>).
-== Sparse Matricies</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a>).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="sparse_matricies">Sparse Matricies</h3>
 <div class="sect3">
 <h4 id="toc"><span id="mapped_matrix">Mapped Matrix</span></h4>
 <div class="sect4">
@@ -11379,11 +11203,13 @@ are <code>unbounded_array&lt;&gt;</code> , <code>bounded_array&lt;&gt;</code> an
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Matrix Proxies</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="matrix_proxies">Matrix Proxies</h3>
 <div class="sect3">
 <h4 id="toc"><span id="matrix_row">Matrix Row</span></h4>
 <div class="sect4">
@@ -13084,12 +12910,14 @@ int main () {
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Matrix Expressions</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="matrix_expressions">Matrix Expressions</h3>
 <div class="sect3">
 <h4 id="toc"><span id="matrix_expression">Matrix Expression</span></h4>
 <div class="sect4">
@@ -15043,9 +14871,14 @@ int main () {
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Tensor</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tensor">Tensor</h3>
 <div id="toc" class="olist arabic">
 <ol class="arabic">
 <li>
@@ -15114,8 +14947,6 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 </li>
 </ol>
-</div>
-</div>
 </div>
 <div class="sect4">
 <h5 id="a_description">a. <span id="tensor_1">Description</span></h5>
@@ -15673,17 +15504,367 @@ greater than <code>tensor::size()</code>, the tensor is resized with <code>v</co
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-Unresolved directive in ublas.adoc - include::ublas/tensor/tensor_expression.adoc[]
-== Unbounded Array Storage</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tensor_expressions">Tensor Expressions</h3>
+<div class="sect3">
+<h4 id="toc"><span id="tensor_expression">Tensor Expression</span></h4>
+<div class="sect4">
+<h5 id="description_69">Description</h5>
+<div class="paragraph">
+<p>The templated class <code>tensor_expression&lt;T,E&gt;</code> is required to be a public
+base of all classes. There is no Tensor Expression concept defined.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="definition_65">Definition</h5>
+<div class="paragraph">
+<p>Defined in the header tensor/expression.hpp.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="model_of_46">Model of</h5>
+<div class="paragraph">
+<p>None. Not a Tensor Expression!</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="type_requirements_65">Type requirements</h5>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="public_base_classes_46">Public base classes</h5>
+<div class="paragraph">
+<p><code>ublas_expression&lt;E&gt;</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="template_parameters_46">Template parameters</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the tensor expression.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="member_types">Member types</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Member type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the derived expression which is <code>E</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type_category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag for categorization which is <code>tensor_tag</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>T</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="public_member_functions">Public Member Functions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const expression_type &amp;operator()() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const</code>
+reference to the derived expression.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect3">
+<h4 id="entrywise_tensor_operations"><span id="entrywise_tensor_operations">Entrywise Tensor Operations</span></h4>
+<div class="sect4">
+<h5 id="binary_tensor_expression"><span id="binary_tensor_expression">Binary Tensor Expression</span></h5>
+<div class="sect5">
+<h6 id="description_70">Description</h6>
+<div class="paragraph">
+<p>The templated class <code>binary_tensor_expression&lt;T,EL,ER,OP&gt;</code> contains a
+constant reference to a left and right expression that can be evaluated
+by using the access operator.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="definition_66">Definition</h6>
+<div class="paragraph">
+<p>Defined in the header tensor/expression.hpp.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model_of_47">Model of</h6>
+<div class="paragraph">
+<p>Tensor Expression</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="type_requirements_66">Type requirements</h6>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="public_base_classes_47">Public base classes</h6>
+<div class="paragraph">
+<p><code>tensor_expression&lt;T,binary_tensor_expression&lt;T,EL,ER,OP&gt;&gt;</code></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="template_parameters_47">Template parameters</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the left binary tensor expression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the right binary tensor expression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the binary operation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="member_types_2">Member types</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Member type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the left expression which is <code>EL</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the right expression which is <code>ER</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>T</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>binary_operation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the binary operation which is <code>OP</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="public_member_functions_2">Public Member Functions</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decltype(auto) operator()(std::size_t i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const</code>
+reference to the i-th element of the expression.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="unary_tensor_expression"><span id="unary_tensor_expression">Unary Tensor Expression</span></h5>
+<div class="sect5">
+<h6 id="description_71">Description</h6>
+<div class="paragraph">
+<p>The templated class <code>unary_tensor_expression&lt;T,E,OP&gt;</code> contains a
+constant reference to an expression that can be evaluated by using the
+access operator.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="definition_67">Definition</h6>
+<div class="paragraph">
+<p>Defined in the header tensor/expression.hpp.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model_of_48">Model of</h6>
+<div class="paragraph">
+<p>Tensor Expression</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="type_requirements_67">Type requirements</h6>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="public_base_classes_48">Public base classes</h6>
+<div class="paragraph">
+<p><code>tensor_expression&lt;T,unary_tensor_expression&lt;T,E,OP&gt;&gt;</code></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="template_parameters_48">Template parameters</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the unary tensor expression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the unary operation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="member_types_3">Member types</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Member type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the expression which is <code>E</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>T</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unary_operation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the unary operation which is <code>OP</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="public_member_functions_3">Public Member Functions</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decltype(auto) operator()(std::size_t i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const</code>
+reference to the i-th element of the expression.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2018 Cem Bassoy<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unbounded_array_storage">Unbounded Array Storage</h3>
+<div class="sect3">
 <h4 id="toc"><span id="unbounded_array">Unbounded Array</span></h4>
 <div class="sect4">
-<h5 id="description_69">Description</h5>
+<h5 id="description_72">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>unbounded_array&lt;T, ALLOC&gt;</code> implements a unbounded
 storage array using an allocator. The unbounded array is similar to a
@@ -15715,13 +15896,13 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_65">Definition</h5>
+<h5 id="definition_68">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header storage.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="template_parameters_46">Template parameters</h5>
+<h5 id="template_parameters_49">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -15748,19 +15929,19 @@ int main () {
 </table>
 </div>
 <div class="sect4">
-<h5 id="model_of_46">Model of</h5>
+<h5 id="model_of_49">Model of</h5>
 <div class="paragraph">
 <p><a href="storage_concept.html">Storage</a></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_65">Type requirements</h5>
+<h5 id="type_requirements_68">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Storage.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_46">Public base classes</h5>
+<h5 id="public_base_classes_49">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -15974,15 +16155,17 @@ of the concept.</p>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Bounded Array Storage</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="bounded_array_storage">Bounded Array Storage</h3>
 <div class="sect3">
 <h4 id="toc"><span id="bounded_array">Bounded Array</span></h4>
 <div class="sect4">
-<h5 id="description_70">Description</h5>
+<h5 id="description_73">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>bounded_array&lt;T, N, ALLOC&gt;</code> implements a bounded
 storage array. The bounded array is similar to a C++ array type in that
@@ -16014,13 +16197,13 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_66">Definition</h5>
+<h5 id="definition_69">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header storage.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="template_parameters_47">Template parameters</h5>
+<h5 id="template_parameters_50">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -16052,19 +16235,19 @@ int main () {
 </table>
 </div>
 <div class="sect4">
-<h5 id="model_of_47">Model of</h5>
+<h5 id="model_of_50">Model of</h5>
 <div class="paragraph">
 <p><a href="storage_concept.html">Storage</a></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_66">Type requirements</h5>
+<h5 id="type_requirements_69">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Storage.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_47">Public base classes</h5>
+<h5 id="public_base_classes_50">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -16274,15 +16457,17 @@ Gunter Winkler<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Range and Slice Storage</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="range_and_slice_storage">Range and Slice Storage</h3>
 <div class="sect3">
 <h4 id="toc"><span id="range">Range&lt;SizeType,DistanceType&gt;</span></h4>
 <div class="sect4">
-<h5 id="description_71">Description</h5>
+<h5 id="description_74">Description</h5>
 <div class="paragraph">
 <p>The class <code>range</code> specifies a range of indicies. The range is a sequence
 of indices from a start value to stop value. The indices increase by one
@@ -16307,26 +16492,26 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_67">Definition</h5>
+<h5 id="definition_70">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header storage.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="model_of_48">Model of</h5>
+<h5 id="model_of_51">Model of</h5>
 <div class="paragraph">
 <p>Reversible Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_67">Type requirements</h5>
+<h5 id="type_requirements_70">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Reversible
 Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_48">Public base classes</h5>
+<h5 id="public_base_classes_51">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -16416,7 +16601,7 @@ the end of the <code>range</code>.</p></td>
 <div class="sect3">
 <h4 id="slicesizetypedistancetype"><span id="slice">Slice&lt;SizeType,DistanceType&gt;</span></h4>
 <div class="sect4">
-<h5 id="description_72">Description</h5>
+<h5 id="description_75">Description</h5>
 <div class="paragraph">
 <p>The class <code>slice</code> specifies a 'slice' of indicies. Slices are more
 general then ranges, the stride allows the sequence of indicies to
@@ -16442,26 +16627,26 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_68">Definition</h5>
+<h5 id="definition_71">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header storage.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="model_of_49">Model of</h5>
+<h5 id="model_of_52">Model of</h5>
 <div class="paragraph">
 <p>Reversible Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_68">Type requirements</h5>
+<h5 id="type_requirements_71">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Reversible
 Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_49">Public base classes</h5>
+<h5 id="public_base_classes_52">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -16567,15 +16752,17 @@ Gunter Winkler<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Extents</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="extents">Extents</h3>
 <div class="sect3">
 <h4 id="toc"><span id="extents">basic_extents&lt;size_type&gt;</span></h4>
 <div class="sect4">
-<h5 id="description_73">Description</h5>
+<h5 id="description_76">Description</h5>
 <div class="paragraph">
 <p>The template class <code>basic_extents</code> specifies dimension extents of a
 <a href="../tensor.html#tensor">tensor</a> instance.</p>
@@ -16598,13 +16785,13 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_69">Definition</h5>
+<h5 id="definition_72">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header tensor/extents.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_50">Public base classes</h5>
+<h5 id="public_base_classes_53">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -16616,7 +16803,7 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="template_parameters_48">Template parameters</h5>
+<h5 id="template_parameters_51">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -16635,7 +16822,7 @@ int main () {
 </table>
 </div>
 <div class="sect4">
-<h5 id="member_types">Member types</h5>
+<h5 id="member_types_4">Member types</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -16811,15 +16998,17 @@ int main () {
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Strides</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="strides">Strides</h3>
 <div class="sect3">
 <h4 id="toc"><span id="extents">basic_strides&lt;size_type, format_type&gt;</span></h4>
 <div class="sect4">
-<h5 id="description_74">Description</h5>
+<h5 id="description_77">Description</h5>
 <div class="paragraph">
 <p>The template class <code>basic_strides</code> contains weights for a given storage
 format in order to map multi-indices to scalar memory indices for
@@ -16848,13 +17037,13 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_70">Definition</h5>
+<h5 id="definition_73">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header tensor/strides.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_51">Public base classes</h5>
+<h5 id="public_base_classes_54">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -16866,7 +17055,7 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="template_parameters_49">Template parameters</h5>
+<h5 id="template_parameters_52">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -16885,7 +17074,7 @@ int main () {
 </table>
 </div>
 <div class="sect4">
-<h5 id="member_types_2">Member types</h5>
+<h5 id="member_types_5">Member types</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -17067,15 +17256,454 @@ sequence container holding all elements.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Sparse Storage</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tensor_expressions_2">Tensor Expressions</h3>
+<div class="sect3">
+<h4 id="toc"><span id="tensor_expression">Tensor Expression</span></h4>
+<div class="sect4">
+<h5 id="description_78">Description</h5>
+<div class="paragraph">
+<p>The templated class <code>tensor_expression&lt;T,E&gt;</code> is required to be a public
+base of all classes. There is no Tensor Expression concept defined.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="definition_74">Definition</h5>
+<div class="paragraph">
+<p>Defined in the header tensor/expression.hpp.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="model_of_53">Model of</h5>
+<div class="paragraph">
+<p>None. Not a Tensor Expression!</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="type_requirements_72">Type requirements</h5>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="public_base_classes_55">Public base classes</h5>
+<div class="paragraph">
+<p><code>ublas_expression&lt;E&gt;</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="template_parameters_53">Template parameters</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the tensor expression.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="member_types_6">Member types</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Member type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the derived expression which is <code>E</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type_category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag for categorization which is <code>tensor_tag</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>T</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="public_member_functions_4">Public Member Functions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>const expression_type &amp;operator()() const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const</code>
+reference to the derived expression.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect3">
+<h4 id="entrywise_tensor_operations_2"><span id="entrywise_tensor_operations">Entrywise Tensor Operations</span></h4>
+<div class="sect4">
+<h5 id="binary_tensor_expression_2"><span id="binary_tensor_expression">Binary Tensor Expression</span></h5>
+<div class="sect5">
+<h6 id="description_79">Description</h6>
+<div class="paragraph">
+<p>The templated class <code>binary_tensor_expression&lt;T,EL,ER,OP&gt;</code> contains a
+constant reference to a left and right expression that can be evaluated
+by using the access operator.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="definition_75">Definition</h6>
+<div class="paragraph">
+<p>Defined in the header tensor/expression.hpp.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model_of_54">Model of</h6>
+<div class="paragraph">
+<p>Tensor Expression</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="type_requirements_73">Type requirements</h6>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="public_base_classes_56">Public base classes</h6>
+<div class="paragraph">
+<p><code>tensor_expression&lt;T,binary_tensor_expression&lt;T,EL,ER,OP&gt;&gt;</code></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="template_parameters_54">Template parameters</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the left binary tensor expression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the right binary tensor expression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the binary operation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="member_types_7">Member types</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Member type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the left expression which is <code>EL</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the right expression which is <code>ER</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>T</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>binary_operation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the binary operation which is <code>OP</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="public_member_functions_5">Public Member Functions</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decltype(auto) operator()(std::size_t i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const</code>
+reference to the i-th element of the expression.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="unary_tensor_expression_2"><span id="unary_tensor_expression">Unary Tensor Expression</span></h5>
+<div class="sect5">
+<h6 id="description_80">Description</h6>
+<div class="paragraph">
+<p>The templated class <code>unary_tensor_expression&lt;T,E,OP&gt;</code> contains a
+constant reference to an expression that can be evaluated by using the
+access operator.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="definition_76">Definition</h6>
+<div class="paragraph">
+<p>Defined in the header tensor/expression.hpp.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model_of_55">Model of</h6>
+<div class="paragraph">
+<p>Tensor Expression</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="type_requirements_74">Type requirements</h6>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="public_base_classes_57">Public base classes</h6>
+<div class="paragraph">
+<p><code>tensor_expression&lt;T,unary_tensor_expression&lt;T,E,OP&gt;&gt;</code></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="template_parameters_55">Template parameters</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the tensor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the unary tensor expression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the unary operation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="member_types_8">Member types</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Member type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expression_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the expression which is <code>E</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tensor_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference type which is <code>T</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unary_operation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the unary operation which is <code>OP</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="public_member_functions_6">Public Member Functions</h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decltype(auto) operator()(std::size_t i) const</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a <code>const</code>
+reference to the i-th element of the expression.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2018 Cem Bassoy<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tensor_index">Tensor Index</h3>
+<div class="sect3">
+<h4 id="toc"><span id="tensor index">tensor_index&lt;value_t, storage_t, array_t, N&gt;</span></h4>
+<div class="sect4">
+<h5 id="description_81">Description</h5>
+<div class="paragraph">
+<p>The template class <code>tensor_index</code> decorates the
+<a href="../tensor.html#tensor">tensor</a> template class with indices for
+tensor contraction.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_37">Example</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/tensor/einstein.hpp&gt;
+
+int main () {
+    using namespace boost::numeric::ublas;
+    shape s{4,3,2};
+    for (auto i = 0u; i &lt; s.size(); ++i) {
+        std::cout &lt;&lt; s.at(i) &lt;&lt; std::endl;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="definition_77">Definition</h5>
+<div class="paragraph">
+<p>Defined in the header tensor/tensor_einstein.hpp.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="public_base_classes_58">Public base classes</h5>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="template_parameters_56">Template parameters</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of object stored in the tensor.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>format_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage organization of the tensor.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>storage_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the storage array of the tensor.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of indices provided.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p>Copyright (©) 2018 Cem Bassoy<br>
+Copyright (©) 2021 Shikhar Vashistha<br>
+Use, modification and distribution are subject to the Boost Software
+License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sparse_storage">Sparse Storage</h3>
+<div class="sect3">
 <h4 id="toc"><span id="map_std">Default Standard Map</span></h4>
 <div class="sect4">
-<h5 id="description_75">Description</h5>
+<h5 id="description_82">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>map_std&lt;I, T, ALLOC&gt;</code> provides a wrapper for the
 standard library associative container <code>std::map</code>. The wrapper has one
@@ -17084,7 +17712,7 @@ simple purpose. It allows the definition of a default template parameter
 </div>
 </div>
 <div class="sect4">
-<h5 id="example_37">Example</h5>
+<h5 id="example_38">Example</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage_sparse.hpp&gt;
@@ -17101,13 +17729,13 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_71">Definition</h5>
+<h5 id="definition_78">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header storage_sparse.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="template_parameters_50">Template parameters</h5>
+<h5 id="template_parameters_57">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -17139,20 +17767,20 @@ int main () {
 </table>
 </div>
 <div class="sect4">
-<h5 id="model_of_50">Model of</h5>
+<h5 id="model_of_56">Model of</h5>
 <div class="paragraph">
 <p>Reversible Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_69">Type requirements</h5>
+<h5 id="type_requirements_75">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Reversible
 Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_52">Public base classes</h5>
+<h5 id="public_base_classes_59">Public base classes</h5>
 <div class="paragraph">
 <p>std::map</p>
 </div>
@@ -17161,7 +17789,7 @@ Container.</p>
 <div class="sect3">
 <h4 id="map_array"><span id="map_array">Map Array</span></h4>
 <div class="sect4">
-<h5 id="description_76">Description</h5>
+<h5 id="description_83">Description</h5>
 <div class="paragraph">
 <p>The templated class <code>map_array&lt;I, T, ALLOC&gt;</code> implements a <code>std::map</code>
 like associative container as a sorted array. It therefore some of the
@@ -17177,7 +17805,7 @@ are invalidated. The capacity can be directly control using the
 </div>
 </div>
 <div class="sect4">
-<h5 id="example_38">Example</h5>
+<h5 id="example_39">Example</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;boost/numeric/ublas/storage_sparse.hpp&gt;
@@ -17194,13 +17822,13 @@ int main () {
 </div>
 </div>
 <div class="sect4">
-<h5 id="definition_72">Definition</h5>
+<h5 id="definition_79">Definition</h5>
 <div class="paragraph">
 <p>Defined in the header storage_sparse.hpp.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="template_parameters_51">Template parameters</h5>
+<h5 id="template_parameters_58">Template parameters</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -17232,20 +17860,20 @@ int main () {
 </table>
 </div>
 <div class="sect4">
-<h5 id="model_of_51">Model of</h5>
+<h5 id="model_of_57">Model of</h5>
 <div class="paragraph">
 <p>Reversible Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="type_requirements_70">Type requirements</h5>
+<h5 id="type_requirements_76">Type requirements</h5>
 <div class="paragraph">
 <p>None, except for those imposed by the requirements of Reversible
 Container.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="public_base_classes_53">Public base classes</h5>
+<h5 id="public_base_classes_60">Public base classes</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -17410,11 +18038,13 @@ the end of the reversed <code>map_array</code>.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Special Products</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="special_products">Special Products</h3>
 <div class="sect3">
 <h4 id="toc">Functions</h4>
 <table class="tableblock frame-all grid-all stretch">
@@ -17796,11 +18426,13 @@ Gunter Winkler<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Level 3 BLAS</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="level_3_blas">Level 3 BLAS</h3>
 <hr>
-</div>
 <div class="sect3">
 <h4 id="functions">Functions</h4>
 <table class="tableblock frame-all grid-all stretch">
@@ -18371,14 +19003,16 @@ Gunter Winkler<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a>).
-== Container Concepts</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a>).</p>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="container_concepts">Container Concepts</h3>
 <div class="sect3">
 <h4 id="toc"><span id="vector">Vector</span></h4>
 <div class="sect4">
-<h5 id="description_77">Description</h5>
+<h5 id="description_84">Description</h5>
 <div class="paragraph">
 <p>A Vector describes common aspects of dense, packed and sparse vectors.</p>
 </div>
@@ -18665,9 +19299,9 @@ both vectors and matrices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="matrix"><span id="matrix">Matrix</span></h4>
+<h4 id="matrix_2"><span id="matrix">Matrix</span></h4>
 <div class="sect4">
-<h5 id="description_78">Description</h5>
+<h5 id="description_85">Description</h5>
 <div class="paragraph">
 <p>A Matrix describes common aspects of dense, packed and sparse matrices.</p>
 </div>
@@ -18939,9 +19573,9 @@ but not the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tensor"><span id="tensor">Tensor</span></h4>
+<h4 id="tensor_2"><span id="tensor">Tensor</span></h4>
 <div class="sect4">
-<h5 id="description_79">Description</h5>
+<h5 id="description_86">Description</h5>
 <div class="paragraph">
 <p>A Tensor describes common aspects of dense multidimensional arrays.</p>
 </div>
@@ -19198,15 +19832,17 @@ Copyright (©) 2018 Cem Bassoy<br>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Expression Concepts</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="expression_concepts">Expression Concepts</h3>
 <div class="sect3">
 <h4 id="toc"><span id="scalar_expression">Scalar Expression</span></h4>
 <div class="sect4">
-<h5 id="description_80">Description</h5>
+<h5 id="description_87">Description</h5>
 <div class="paragraph">
 <p>A Scalar Expression is an expression convertible to a scalar type.</p>
 </div>
@@ -19351,7 +19987,7 @@ scalar expression.</p>
 <div class="sect3">
 <h4 id="vector_expression"><span id="vector_expression">Vector Expression</span></h4>
 <div class="sect4">
-<h5 id="description_81">Description</h5>
+<h5 id="description_88">Description</h5>
 <div class="paragraph">
 <p>A Vector Expression is an expression evaluatable to a vector. Vector
 Expression provides an
@@ -19863,7 +20499,7 @@ the same as the distance from <code>v.rbegin ()</code> to <code>v.rend ()</code>
 <div class="sect3">
 <h4 id="matrix_expression"><span id="matrix_expression">Matrix Expression</span></h4>
 <div class="sect4">
-<h5 id="description_82">Description</h5>
+<h5 id="description_89">Description</h5>
 <div class="paragraph">
 <p>A Matrix Expression is an expression evaluatable to a matrix. Matrix
 Expression provides an
@@ -20539,15 +21175,17 @@ from <code>m.rbegin2 ()</code> to <code>m.rend2 ()</code>.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Storage concept</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="storage_concept">Storage concept</h3>
 <div class="sect3">
 <h4 id="toc"><span id="range">Storage concept</span></h4>
 <div class="sect4">
-<h5 id="description_83">Description</h5>
+<h5 id="description_90">Description</h5>
 <div class="paragraph">
 <p>Storage is a variable-size container whose elements are arranged in a
 strict linear order.</p>
@@ -20765,20 +21403,22 @@ omitted" in section 5.3.4 paragraph 15 of the ISO C++ standard.</p></td>
 Copyright (©) 2021 Shikhar Vashistha<br>
 Use, modification and distribution are subject to the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).
-== Iterator Concepts</p>
+<a href="http://www.boost.org/LICENSE_1_0.txt" class="bare">http://www.boost.org/LICENSE_1_0.txt</a> ).</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="iterator_concepts">Iterator Concepts</h3>
 <div id="toc" class="paragraph">
 <p>An Iterator is a restricted pointer-like object pointing into a vector
 or matrix container.</p>
 </div>
-</div>
-</div>
-</div>
 <div class="sect3">
 <h4 id="indexed_bidirectional_iterator"><span id="indexed_bidirectional_iterator">Indexed Bidirectional Iterator</span></h4>
 <div class="sect4">
-<h5 id="description_84">Description</h5>
+<h5 id="description_91">Description</h5>
 <div class="paragraph">
 <p>An Indexed Bidirectional Iterator is an iterator of a container that can
 be dereferenced, incremented, decremented and carries index information.</p>
@@ -21114,7 +21754,7 @@ is dereferenceable, <code>*it == it () (it.index ())</code>.</p></td>
 <div class="sect3">
 <h4 id="indexed_random_access_iterator"><span id="indexed_random_access_iterator">Indexed Random Access Iterator</span></h4>
 <div class="sect4">
-<h5 id="description_85">Description</h5>
+<h5 id="description_92">Description</h5>
 <div class="paragraph">
 <p>An Indexed Random Access Iterator is an iterator of a container that can
 be dereferenced, moved forward, moved backward and carries index
@@ -21398,7 +22038,7 @@ then <code>it1 == it2 + (it1 - it2)</code>.</p></td>
 <div class="sect3">
 <h4 id="indexed_bidirectional_columnrow_iterator"><span id="indexed_bidirectional_cr_iterator">Indexed Bidirectional Column/Row Iterator</span></h4>
 <div class="sect4">
-<h5 id="description_86">Description</h5>
+<h5 id="description_93">Description</h5>
 <div class="paragraph">
 <p>An Indexed Bidirectional Column/Row Iterator is an iterator of a
 container that can be dereferenced, incremented, decremented and carries
@@ -21853,7 +22493,7 @@ and <code>it2t ().index2 () == it2 ().index2 ()</code>.</p>
 <div class="sect3">
 <h4 id="indexed_random_access_columnrow_iterator"><span id="indexed_random_access_cr_iterator">Indexed Random Access Column/Row Iterator</span></h4>
 <div class="sect4">
-<h5 id="description_87">Description</h5>
+<h5 id="description_94">Description</h5>
 <div class="paragraph">
 <p>An Indexed Random Access Column/Row Iterator is an iterator of a
 container that can be dereferenced, incremented, decremented and carries
@@ -22164,7 +22804,7 @@ License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-08 07:36:45 UTC
+Last updated 2021-08-17 03:58:16 UTC
 </div>
 </div>
 <style>
