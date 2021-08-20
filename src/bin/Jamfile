@@ -1,8 +1,10 @@
 using asciidoctor ;
 
-html ublas.html : ublas.adoc ;
+html ublas.html : ublas.adoc : <asciidoctor-attribute>stylesheet=zajo-dark.css <asciidoctor-attribute>linkcss ;
+install html_ : ublas.html skin.png zajo-dark.css zajo-light.css rouge-github.css : <location>html ;
 
-install html_ : ublas.html : <location>html ; 
+pdf ublas.pdf : ublas.adoc : <asciidoctor-doctype>book <asciidoctor-attribute>pdf-themesdir=. <asciidoctor-attribute>pdf-theme=qvm ;
+install pdf_ : ublas.pdf : <location>html ;
 
 alias boostdoc ;
 
